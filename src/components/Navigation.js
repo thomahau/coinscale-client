@@ -1,32 +1,54 @@
 import React from 'react';
 import {
+  Button,
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu
 } from 'reactstrap';
-// import { Field, reduxForm, focus } from 'redux-form';
 import LoginForm from './LoginForm';
 
-const Navigation = () => (
-  <Navbar className="navbar-dark bg-dark" expand="xs">
-    <NavbarBrand href="/">coinscale</NavbarBrand>
-    <Nav className="ml-auto" navbar>
-      <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav>Log in</DropdownToggle>
-        <DropdownMenu right>
-          <LoginForm />
-        </DropdownMenu>
-      </UncontrolledDropdown>
-      <NavItem>
-        <NavLink href="#">Sign up</NavLink>
-      </NavItem>
-    </Nav>
-  </Navbar>
-);
+export class Navigation extends React.Component {
+  render() {
+    let navElements;
+    if (this.props.loggedIn) {
+      navElements = (
+        <Nav className="ml-auto" navbar>
+          <NavItem className="navbar-text mr-2">{this.props.username}</NavItem>
+          <NavItem>
+            <Button color="success" style={{ border: '1px solid white' }}>
+              Log out
+            </Button>
+          </NavItem>
+        </Nav>
+      );
+    } else {
+      navElements = (
+        <Nav className="ml-auto" navbar>
+          <UncontrolledDropdown
+            nav
+            inNavbar
+            style={{ border: '1px solid white', borderRadius: '4px' }}
+          >
+            <DropdownToggle nav>Log in</DropdownToggle>
+            <DropdownMenu right>
+              <LoginForm />
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </Nav>
+      );
+    }
+
+    return (
+      <Navbar className="navbar-dark bg-dark" expand="xs">
+        <NavbarBrand href="/">coinscale</NavbarBrand>
+        {navElements}
+      </Navbar>
+    );
+  }
+}
 
 export default Navigation;

@@ -1,13 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Navigation from './Navigation';
 import LandingPage from './LandingPage';
+import Dashboard from '../containers/Dashboard';
 
 const App = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={LandingPage} />
-    </div>
-  </Router>
+  <div>
+    <Navigation loggedIn username="Demo Account" />
+    {/* <Navigation /> */}
+    <Route exact path="/" component={LandingPage} />
+    <Route exact path="/dashboard" component={Dashboard} />
+  </div>
 );
 
 export default App;
@@ -18,7 +21,6 @@ export default App;
 
 // import NavBar from './NavBar';
 // import LandingPage from './LandingPage';
-// import Dashboard from './DashBoard';
 // import LoginForm from './LoginForm';
 // import {refreshAuthToken} from './actions/auth';
 

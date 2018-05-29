@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Card,
   CardImg,
   CardGroup,
@@ -9,18 +10,17 @@ import {
   Container,
   Jumbotron
 } from 'reactstrap';
-// import { Field, reduxForm, focus } from 'redux-form';
-// import SignupForm from './SignupForm';
-import Navigation from './Navigation';
 import Registration from './Registration';
 // import Footer from './Footer';
 
 const LandingPage = () => (
   <div>
-    <Navigation />
     <Jumbotron className="text-center">
       <Container>
         <h1>Your stepping stone to the cryptocurrency markets</h1>
+        <Button color="success" className="my-3">
+          Sign up to get started
+        </Button>
       </Container>
     </Jumbotron>
     <Container className="text-center">
@@ -93,3 +93,22 @@ const LandingPage = () => (
 );
 
 export default LandingPage;
+
+// import React from 'react';
+// import {connect} from 'react-redux';
+// import {Redirect} from 'react-router-dom';
+
+// export function LandingPage(props) {
+//   // If user is logged in, redirect straight to dashboard
+//   if (props.loggedIn) {
+//     <Redirect to="/dashboard" />;
+//   }
+
+//   return ()
+// }
+
+// const mapStateToProps = state => ({
+//   loggedIn: state.auth.currentUser !== null
+// });
+
+// export default connect(mapStateToProps)(LandingPage);

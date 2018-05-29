@@ -1,19 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
-// import './App.css';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Route exact path="/" component={LandingPage} />
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={LandingPage} />
+    </div>
+  </Router>
+);
+
+export default App;
 
 // import React from 'react';
 // import {connect} from 'react-redux';

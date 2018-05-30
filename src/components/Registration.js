@@ -10,15 +10,15 @@ const Registration = () => (
       <Form className="register-form">
         <FormGroup>
           <Label for="registerUsername">Username</Label>
-          <Input type="text" name="username" id="registerUsername" />
+          <Input type="text" name="username" id="registerUsername" bsSize="sm" />
         </FormGroup>
         <FormGroup>
           <Label for="registerPassword">Password</Label>
-          <Input type="password" name="password" id="registerPassword" />
+          <Input type="password" name="password" id="registerPassword" bsSize="sm" />
         </FormGroup>
         <FormGroup>
           <Label for="passwordConfirm">Confirm password</Label>
-          <Input type="password" name="passwordConfirm" id="passwordConfirm" />
+          <Input type="password" name="passwordConfirm" id="passwordConfirm" bsSize="sm" />
         </FormGroup>
         <Button color="success" block>
           Create account

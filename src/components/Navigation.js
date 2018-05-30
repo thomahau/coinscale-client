@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Button,
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu
@@ -13,28 +13,27 @@ import LoginForm from './LoginForm';
 
 export class Navigation extends React.Component {
   render() {
+    // TODO: Conditional (ternary) operator
     let navElements;
     if (this.props.loggedIn) {
       navElements = (
         <Nav className="ml-auto" navbar>
-          <NavItem className="navbar-text mr-2">{this.props.username}</NavItem>
+          <NavItem className="navbar-text mt-1">{this.props.username}</NavItem>
           <NavItem>
-            <Button color="success" style={{ border: '1px solid white' }}>
+            <NavLink href="#" className="active">
               Log out
-            </Button>
+            </NavLink>
           </NavItem>
         </Nav>
       );
     } else {
       navElements = (
         <Nav className="ml-auto" navbar>
-          <UncontrolledDropdown
-            nav
-            inNavbar
-            style={{ border: '1px solid white', borderRadius: '4px' }}
-          >
-            <DropdownToggle nav>Log in</DropdownToggle>
-            <DropdownMenu right>
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle className="active" caret nav>
+              Log in
+            </DropdownToggle>
+            <DropdownMenu right style={{ width: '200px' }}>
               <LoginForm />
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -43,7 +42,7 @@ export class Navigation extends React.Component {
     }
 
     return (
-      <Navbar className="navbar-dark bg-dark" expand="xs">
+      <Navbar className="navbar-dark bg-primary" expand="xs">
         <NavbarBrand href="/">coinscale</NavbarBrand>
         {navElements}
       </Navbar>
@@ -52,3 +51,4 @@ export class Navigation extends React.Component {
 }
 
 export default Navigation;
+// style={{ border: '1px solid white', borderRadius: '4px' }}

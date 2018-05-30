@@ -24,8 +24,8 @@ const LandingPage = () => (
       </Container>
     </Jumbotron>
     <Container className="text-center">
-      <CardGroup>
-        <Card className="py-4">
+      <CardGroup className="my-6">
+        <Card className="py-4" style={{ border: 0 }}>
           <CardImg
             top
             style={{
@@ -34,7 +34,7 @@ const LandingPage = () => (
               marginLeft: 'auto',
               marginRight: 'auto'
             }}
-            src={require('../images/money.png')}
+            src={require('../images/money-g.png')}
             alt="Money icon"
           />
           <CardBody>
@@ -45,7 +45,7 @@ const LandingPage = () => (
             </CardText>
           </CardBody>
         </Card>
-        <Card className="py-4">
+        <Card className="py-4" style={{ border: 0 }}>
           <CardImg
             top
             style={{
@@ -54,7 +54,7 @@ const LandingPage = () => (
               marginLeft: 'auto',
               marginRight: 'auto'
             }}
-            src={require('../images/trade.png')}
+            src={require('../images/trade-g.png')}
             alt="Trade icon"
           />
           <CardBody>
@@ -65,7 +65,7 @@ const LandingPage = () => (
             </CardText>
           </CardBody>
         </Card>
-        <Card className="py-4">
+        <Card className="py-4" style={{ border: 0 }}>
           <CardImg
             top
             style={{
@@ -74,7 +74,7 @@ const LandingPage = () => (
               marginLeft: 'auto',
               marginRight: 'auto'
             }}
-            src={require('../images/line-chart.png')}
+            src={require('../images/line-chart-g.png')}
             alt="Chart icon"
           />
           <CardBody>

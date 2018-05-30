@@ -6,10 +6,10 @@ import Dashboard from '../containers/Dashboard';
 
 const App = () => (
   <div>
-    <Navigation loggedIn username="Demo Account" />
+    <Navigation loggedIn username="Satoshi Nakamoto" />
     {/* <Navigation /> */}
     <Route exact path="/" component={LandingPage} />
-    <Route exact path="/dashboard" component={Dashboard} />
+    <Route path="/dashboard" component={Dashboard} />
   </div>
 );
 

@@ -1,31 +1,49 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { Container, Col, Row, Card, CardHeader, Nav, NavItem, NavLink } from 'reactstrap';
+import { Route, Switch, NavLink } from 'react-router-dom';
+import { Container, Col, Row, Card, CardHeader, CardBody, Nav, NavItem } from 'reactstrap';
+import DateWidget from '../components/DateWidget';
+import Filter from '../components/Filter';
 import FundsContainer from './FundsContainer';
 import HistoryContainer from './HistoryContainer';
 import TradeContainer from './TradeContainer';
+import CoinsTableContainer from './CoinsTableContainer';
 
 const Dashboard = () => (
-  // TODO: https://reactstrap.github.io/components/tabs/
+  // POSSIBLE TODO: https://reactstrap.github.io/components/tabs/
   <Container fluid className="px-5 pt-4">
     <Row>
-      <Col style={{ border: '1px solid black' }}>
-        <Row style={{ height: '80px', border: '1px solid black' }}>Date slider here</Row>
+      <Col>
+        <Row style={{ minHeight: '90px' }}>
+          <Card className="border-dark" style={{ width: '100%' }}>
+            <CardHeader>
+              <h6>Select date</h6>
+            </CardHeader>
+            <CardBody>
+              <DateWidget />
+            </CardBody>
+          </Card>
+        </Row>
         <Row style={{ height: '600px' }}>
           <Card className="border-dark" style={{ width: '100%' }}>
-            <Nav tabs>
-              <NavItem className="mx-0">
-                <NavLink href="/dashboard/funds" active>
-                  Funds
-                </NavLink>
-              </NavItem>
-              <NavItem className="mx-0">
-                <NavLink href="/dashboard/history">History</NavLink>
-              </NavItem>
-              <NavItem className="mx-0">
-                <NavLink href="/dashboard/trade">Trade</NavLink>
-              </NavItem>
-            </Nav>
+            <CardHeader>
+              <Nav justified>
+                <NavItem className="view-option">
+                  <NavLink to="/dashboard/funds" activeClassName="active">
+                    Funds
+                  </NavLink>
+                </NavItem>
+                <NavItem className="view-option">
+                  <NavLink to="/dashboard/history" activeClassName="active">
+                    History
+                  </NavLink>
+                </NavItem>
+                <NavItem className="view-option">
+                  <NavLink to="/dashboard/trade" activeClassName="active">
+                    Trade
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            </CardHeader>
             <Switch>
               <Route path="/dashboard/funds" component={FundsContainer} />
               <Route path="/dashboard/history" component={HistoryContainer} />
@@ -35,9 +53,16 @@ const Dashboard = () => (
           </Card>
         </Row>
       </Col>
-      <Col sm="4" style={{ border: '1px solid black' }}>
-        <h3>Coins</h3>
-        Coins table
+      <Col lg="5" className="px-0">
+        <Card className="border-dark" style={{ height: '100%', width: '100%' }}>
+          <CardHeader>
+            <h6>Cryptocurrencies</h6>
+          </CardHeader>
+          <CardBody>
+            <Filter />
+            <CoinsTableContainer />
+          </CardBody>
+        </Card>
       </Col>
     </Row>
   </Container>

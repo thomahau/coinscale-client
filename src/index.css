@@ -2,3 +2,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.view-option a {
+  color: #919aa1;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.view-option a.active {
+  color: black;
+  font-weight: bold;
+}

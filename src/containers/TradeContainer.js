@@ -27,12 +27,36 @@ const TradeContainer = () => (
         Quantity
       </Label>
       <Col sm={4}>
-        <Input type="number" name="quantity" id="quantity" placeholder="5" size="sm" />
+        <Input type="number" name="quantity" id="quantity" placeholder="1" size="sm" />
       </Col>
     </FormGroup>
     <FormGroup row>
+      <Label for="date" sm={2}>
+        Date
+      </Label>
       <Col sm={4}>
-        <Button color="success" size="sm">
+        <Input type="date" name="date" id="date" size="sm" />
+      </Col>
+    </FormGroup>
+    <FormGroup row>
+      <Label for="price" sm={2}>
+        Price
+      </Label>
+      <Col sm={4}>
+        <FormText className="mt-2">$1017.20</FormText>
+      </Col>
+    </FormGroup>
+    <FormGroup row>
+      <Label for="cost" sm={2}>
+        Total cost
+      </Label>
+      <Col sm={4}>
+        <FormText className="mt-2">$1,017.20</FormText>
+      </Col>
+    </FormGroup>
+    <FormGroup row>
+      <Col sm={{ size: 4, offset: 2 }}>
+        <Button color="success" size="sm" style={{ width: '100%' }}>
           Place trade
         </Button>
       </Col>

@@ -10,10 +10,10 @@ import CoinsTableContainer from './CoinsTableContainer';
 
 const Dashboard = () => (
   // POSSIBLE TODO: https://reactstrap.github.io/components/tabs/
-  <Container fluid className="px-5 pt-4">
+  <Container fluid className="px-4 pt-4">
     <Row>
       <Col>
-        <Row style={{ minHeight: '90px' }}>
+        <Row style={{ minHeight: '90px' }} className="mr-lg-1 mb-lg-3">
           <Card className="border-dark" style={{ width: '100%' }}>
             <CardHeader>
               <h6>Select date</h6>
@@ -23,7 +23,7 @@ const Dashboard = () => (
             </CardBody>
           </Card>
         </Row>
-        <Row style={{ height: '600px' }}>
+        <Row style={{ height: '600px' }} className="mr-lg-1">
           <Card className="border-dark" style={{ width: '100%' }}>
             <CardHeader>
               <Nav justified>

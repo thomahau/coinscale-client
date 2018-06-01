@@ -2,7 +2,7 @@ import React from 'react';
 
 const DateWidget = () => (
   <div style={{ width: '100%' }}>
-    <div className="float-right">1/6/2018</div>
+    <div className="float-right">6/1/2018</div>
     <div className="float-left">1/1/2017</div>
     <input
       type="range"

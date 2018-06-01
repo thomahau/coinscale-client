@@ -6,7 +6,7 @@ const Filter = () => (
     <FormGroup>
       <Label className="mr-lg-2">Filter:</Label>
       <Input type="text" size="sm" className="mr-md-2" />
-      <Button color="success" size="sm">
+      <Button color="success" size="sm" disabled>
         Apply
       </Button>
     </FormGroup>

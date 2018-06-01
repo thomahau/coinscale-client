@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import LoginForm from './LoginForm';
 
-export class Navigation extends React.Component {
+export default class Navigation extends React.Component {
   render() {
     // TODO: Conditional (ternary) operator
     let navElements;
@@ -50,5 +50,5 @@ export class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+// export default Navigation;
 // style={{ border: '1px solid white', borderRadius: '4px' }}

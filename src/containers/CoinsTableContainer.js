@@ -26,7 +26,7 @@ const MOCK_DATA = [
 ];
 
 const CoinsTableContainer = () => (
-  <Table responsive className="mt-3">
+  <Table responsive bordered className="mt-3">
     <thead className="thead-light">
       <tr>
         <th>Symbol</th>

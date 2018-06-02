@@ -23,7 +23,7 @@ const Dashboard = () => (
             </CardBody>
           </Card>
         </Row>
-        <Row style={{ height: '600px' }} className="mr-lg-1">
+        <Row style={{ minHeight: '600px' }} className="mr-lg-1">
           <Card className="border-dark" style={{ width: '100%' }}>
             <CardHeader>
               <Nav justified>
@@ -44,12 +44,14 @@ const Dashboard = () => (
                 </NavItem>
               </Nav>
             </CardHeader>
-            <Switch>
-              <Route path="/dashboard/funds" component={FundsContainer} />
-              <Route path="/dashboard/history" component={HistoryContainer} />
-              <Route path="/dashboard/trade" component={TradeContainer} />
-              <Route exact path="/dashboard" component={FundsContainer} />
-            </Switch>
+            <CardBody>
+              <Switch>
+                <Route path="/dashboard/funds" component={FundsContainer} />
+                <Route path="/dashboard/history" component={HistoryContainer} />
+                <Route path="/dashboard/trade" component={TradeContainer} />
+                <Route exact path="/dashboard" component={FundsContainer} />
+              </Switch>
+            </CardBody>
           </Card>
         </Row>
       </Col>

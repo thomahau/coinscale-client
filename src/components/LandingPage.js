@@ -18,7 +18,7 @@ const LandingPage = () => (
     <Jumbotron className="text-center">
       <Container>
         <h1>Your stepping stone to the cryptocurrency markets</h1>
-        <Button color="success" className="my-3">
+        <Button color="success" className="my-4">
           Sign up to get started
         </Button>
       </Container>

@@ -1,20 +1,19 @@
 import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Container, Col, Row, Card, CardHeader, CardBody, Nav, NavItem } from 'reactstrap';
-import DateWidget from '../components/DateWidget';
-import Filter from '../components/Filter';
-import FundsContainer from './FundsContainer';
-import HistoryContainer from './HistoryContainer';
-import TradeContainer from './TradeContainer';
-import CoinsTableContainer from './CoinsTableContainer';
+import DateWidget from './DateWidget';
+import Filter from './Filter';
+import FundsContainer from '../containers/FundsContainer';
+import HistoryContainer from '../containers/HistoryContainer';
+import TradeContainer from '../containers/TradeContainer';
+import CoinsTableContainer from '../containers/CoinsTableContainer';
 
 const Dashboard = () => (
-  // POSSIBLE TODO: https://reactstrap.github.io/components/tabs/
   <Container fluid className="px-4 pt-4">
     <Row>
       <Col>
-        <Row style={{ minHeight: '90px' }} className="mr-lg-1 mb-lg-3">
-          <Card className="border-dark" style={{ width: '100%' }}>
+        <Row className="mr-lg-1 mb-lg-3">
+          <Card className="border-dark w-100">
             <CardHeader>
               <h6>Select date</h6>
             </CardHeader>
@@ -23,8 +22,8 @@ const Dashboard = () => (
             </CardBody>
           </Card>
         </Row>
-        <Row style={{ minHeight: '600px' }} className="mr-lg-1">
-          <Card className="border-dark" style={{ width: '100%' }}>
+        <Row className="main-dashboard-container mr-lg-1">
+          <Card className="border-dark w-100">
             <CardHeader>
               <Nav justified>
                 <NavItem className="view-option">
@@ -46,9 +45,9 @@ const Dashboard = () => (
             </CardHeader>
             <CardBody>
               <Switch>
-                <Route path="/dashboard/funds" component={FundsContainer} />
-                <Route path="/dashboard/history" component={HistoryContainer} />
-                <Route path="/dashboard/trade" component={TradeContainer} />
+                <Route exact path="/dashboard/funds" component={FundsContainer} />
+                <Route exact path="/dashboard/history" component={HistoryContainer} />
+                <Route exact path="/dashboard/trade" component={TradeContainer} />
                 <Route exact path="/dashboard" component={FundsContainer} />
               </Switch>
             </CardBody>
@@ -56,7 +55,7 @@ const Dashboard = () => (
         </Row>
       </Col>
       <Col lg="5" className="px-0">
-        <Card className="border-dark" style={{ height: '100%', width: '100%' }}>
+        <Card className="border-dark w-100 h-100">
           <CardHeader>
             <h6>Cryptocurrencies</h6>
           </CardHeader>

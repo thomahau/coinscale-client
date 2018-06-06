@@ -13,12 +13,12 @@ import LoginForm from './LoginForm';
 
 export default class Navigation extends React.Component {
   render() {
-    // TODO: Conditional (ternary) operator
+    // TODO: Conditional (ternary) operator?
     let navElements;
     if (this.props.loggedIn) {
       navElements = (
         <Nav className="ml-auto" navbar>
-          <NavItem className="navbar-text mt-1">{this.props.username}</NavItem>
+          <NavItem className="navbar-text mt-1">{this.props.currentUser}</NavItem>
           <NavItem>
             <NavLink href="#" className="active">
               Log out
@@ -33,7 +33,7 @@ export default class Navigation extends React.Component {
             <DropdownToggle className="active" caret nav>
               Log in
             </DropdownToggle>
-            <DropdownMenu right style={{ width: '200px' }}>
+            <DropdownMenu right>
               <LoginForm />
             </DropdownMenu>
           </UncontrolledDropdown>

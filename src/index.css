@@ -3,6 +3,33 @@ body {
   padding: 0;
 }
 
+.dropdown-menu {
+  width: 200px;
+}
+
+.feature-card {
+  border: 0;
+}
+
+.card-img-top {
+  height: 128px;
+  width: 128px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-dashboard-container {
+  min-height: 65vh;
+}
+
+.view-option:first-child {
+  border-right: 1px solid darkgrey;
+}
+
+.view-option:last-child {
+  border-left: 1px solid darkgrey;
+}
+
 .view-option a {
   color: #919aa1;
   text-transform: uppercase;

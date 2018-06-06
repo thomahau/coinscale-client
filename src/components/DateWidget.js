@@ -1,18 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const DateWidget = () => (
-  <div style={{ width: '100%' }}>
-    <div className="float-right">6/1/2018</div>
-    <div className="float-left">1/1/2017</div>
-    <input
-      type="range"
-      min="1483228800"
-      max="1527811200"
-      step="86400"
-      value="1483228800"
-      style={{ width: '100%' }}
-    />
-  </div>
-);
+export function DateWidget(props) {
+  return (
+    <div>
+      <div className="float-right">{new Date(props.MAX_TIMESTAMP * 1000).toLocaleDateString()}</div>
+      <div className="float-left">{new Date(props.MIN_TIMESTAMP * 1000).toLocaleDateString()}</div>
+      <input
+        type="range"
+        min={props.MIN_TIMESTAMP}
+        max={props.MAX_TIMESTAMP}
+        step="86400"
+        value={props.MIN_TIMESTAMP}
+        className="w-100"
+      />
+    </div>
+  );
+}
 
-export default DateWidget;
+const mapStateToProps = state => ({
+  MIN_TIMESTAMP: state.MIN_TIMESTAMP,
+  MAX_TIMESTAMP: state.MAX_TIMESTAMP
+});
+
+export default connect(mapStateToProps)(DateWidget);

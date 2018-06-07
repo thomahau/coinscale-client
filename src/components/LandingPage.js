@@ -38,7 +38,7 @@ export function LandingPage(props) {
             <CardBody>
               <CardTitle>Risk free investing with virtual cash</CardTitle>
               <CardText>
-                Start with $10,000 in virtual cash and put your cryptocurrency investing skills to
+                Start with $20,000 in virtual cash and put your cryptocurrency investing skills to
                 the test.
               </CardText>
             </CardBody>

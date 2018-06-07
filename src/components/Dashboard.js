@@ -6,7 +6,7 @@ import Filter from './Filter';
 import FundsContainer from '../containers/FundsContainer';
 import HistoryContainer from '../containers/HistoryContainer';
 import TradeContainer from '../containers/TradeContainer';
-import CoinsTableContainer from '../containers/CoinsTableContainer';
+import CoinsTable from './CoinsTable';
 
 const Dashboard = () => (
   <Container fluid className="px-4 pt-4">
@@ -61,7 +61,7 @@ const Dashboard = () => (
           </CardHeader>
           <CardBody>
             <Filter />
-            <CoinsTableContainer />
+            <CoinsTable />
           </CardBody>
         </Card>
       </Col>

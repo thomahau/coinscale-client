@@ -55,7 +55,7 @@ const MOCK_PORTFOLIO = [
 const initialState = {
   auth: {
     // authToken: ,
-    currentUser: 'John Doe'
+    currentUser: null
   },
   selected_timestamp: 1505520000, // 16/09/2017
   balance: 18569.3, // after mock purchases $1430.67065

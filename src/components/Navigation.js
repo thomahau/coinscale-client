@@ -49,6 +49,3 @@ export default class Navigation extends React.Component {
     );
   }
 }
-
-// export default Navigation;
-// style={{ border: '1px solid white', borderRadius: '4px' }}

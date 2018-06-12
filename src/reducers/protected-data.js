@@ -53,10 +53,6 @@ const MOCK_PORTFOLIO = [
 ];
 
 const initialState = {
-  auth: {
-    // authToken: ,
-    currentUser: null
-  },
   selected_timestamp: 1505520000, // 16/09/2017
   balance: 18569.3, // after mock purchases $1430.67065
   transactions: MOCK_TRANSACTIONS,
@@ -64,7 +60,7 @@ const initialState = {
   data: MOCK_DATA
 };
 
-export const coinscaleReducer = (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   console.log(action);
   return state;
-};
+}

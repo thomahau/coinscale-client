@@ -10,9 +10,11 @@ import {
   CardText,
   CardBody,
   Container,
-  Jumbotron
+  Jumbotron,
+  Col,
+  Row
 } from 'reactstrap';
-import Registration from './Registration';
+import RegistrationForm from './Registration';
 // import Footer from './Footer';
 
 export function LandingPage(props) {
@@ -67,7 +69,14 @@ export function LandingPage(props) {
         </CardGroup>
       </Container>
       <Container className="pt-lg-3">
-        <Registration />
+        <Row className="my-4">
+          <Col sm="12" className="text-center">
+            <h3>Create your account</h3>
+          </Col>
+          <Col sm="12" md={{ size: 4, offset: 4 }}>
+            <RegistrationForm />
+          </Col>
+        </Row>
       </Container>
     </div>
   );

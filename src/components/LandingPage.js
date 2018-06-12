@@ -14,7 +14,7 @@ import {
   Col,
   Row
 } from 'reactstrap';
-import RegistrationForm from './Registration';
+import RegistrationForm from './RegistrationForm';
 // import Footer from './Footer';
 
 export function LandingPage(props) {

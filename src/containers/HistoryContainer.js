@@ -5,16 +5,16 @@ import { round } from '../helpers';
 import Filter from '../components/Filter';
 
 export function HistoryContainer(props) {
-  const transactionRows = props.transactions.map(transaction => (
-    <tr>
-      <td>{transaction.timestamp}</td>
-      <td>{transaction.currency}</td>
-      <td>{transaction.type}</td>
-      <td>${round(transaction.price)}</td>
-      <td>{transaction.amount}</td>
-      <td>${round(transaction.price * transaction.amount)}</td>
-    </tr>
-  ));
+  // const transactionRows = props.transactions.map(transaction => (
+  //   <tr>
+  //     <td>{transaction.timestamp}</td>
+  //     <td>{transaction.currency}</td>
+  //     <td>{transaction.type}</td>
+  //     <td>${round(transaction.price)}</td>
+  //     <td>{transaction.amount}</td>
+  //     <td>${round(transaction.price * transaction.amount)}</td>
+  //   </tr>
+  // ));
 
   return (
     <div>
@@ -31,7 +31,8 @@ export function HistoryContainer(props) {
             <th>Total</th>
           </tr>
         </thead>
-        <tbody>{transactionRows}</tbody>
+        {/* {transactionRows} */}
+        <tbody />
       </Table>
     </div>
   );

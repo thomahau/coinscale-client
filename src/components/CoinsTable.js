@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 import { round } from '../helpers';
 
 export function CoinsTableContainer(props) {
-  const coinRows = props.data.map(coin => (
-    <tr>
-      <td>{coin.currency}</td>
-      <td>${coin.close}</td>
-      <td>${round(coin.close - coin.open)}</td>
-      <td>
-        <Link to="/dashboard/trade">Trade</Link>
-      </td>
-    </tr>
-  ));
+  // const coinRows = props.data.map(coin => (
+  //   <tr>
+  //     <td>{coin.currency}</td>
+  //     <td>${coin.close}</td>
+  //     <td>${round(coin.close - coin.open)}</td>
+  //     <td>
+  //       <Link to="/dashboard/trade">Trade</Link>
+  //     </td>
+  //   </tr>
+  // ));
 
   return (
     <Table responsive bordered className="mt-3">
@@ -26,7 +26,8 @@ export function CoinsTableContainer(props) {
           <th />
         </tr>
       </thead>
-      <tbody>{coinRows}</tbody>
+      {/* {coinRows} */}
+      <tbody />
     </Table>
   );
 }

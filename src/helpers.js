@@ -36,6 +36,17 @@ export function getHoldingsData(priceData, portfolio, transactions) {
   });
 
   return holdingsData;
+
+  // return [
+  //   {
+  //     currency: 'BTC',
+  //     amount: 1.0
+  //   },
+  //   {
+  //     currency: 'ETH',
+  //     amount: 50
+  //   }
+  // ];
 }
 
 export function getAggregateData(holdingsData) {

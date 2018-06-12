@@ -5,19 +5,19 @@ import { getHoldingsData, getAggregateData } from '../helpers';
 
 export function FundsContainer(props) {
   const { data, portfolio, transactions } = props;
-  const holdingsData = getHoldingsData(data, portfolio, transactions);
-  const aggregateData = getAggregateData(holdingsData);
-  const holdingsDataRows = holdingsData.map(holding => (
-    <tr>
-      <td>{holding.currency}</td>
-      <td>{holding.amount}</td>
-      <td>${holding.costBasis}</td>
-      <td>${holding.currentValue}</td>
-      <td>${holding.currentValue - holding.costBasis}</td>
-      <td>${holding.currentPrice}</td>
-      <td>${holding.wPerformance}</td>
-    </tr>
-  ));
+  // const holdingsData = getHoldingsData(data, portfolio, transactions);
+  // const aggregateData = getAggregateData(holdingsData);
+  // const holdingsDataRows = holdingsData.map(holding => (
+  //   <tr>
+  //     <td>{holding.currency}</td>
+  //     <td>{holding.amount}</td>
+  //     <td>${holding.costBasis}</td>
+  //     <td>${holding.currentValue}</td>
+  //     <td>${holding.currentValue - holding.costBasis}</td>
+  //     <td>${holding.currentPrice}</td>
+  //     <td>${holding.wPerformance}</td>
+  //   </tr>
+  // ));
 
   return (
     <div>
@@ -33,10 +33,10 @@ export function FundsContainer(props) {
         </thead>
         <tbody>
           <tr>
-            <td>${aggregateData.costBasis}</td>
+            {/* <td>${aggregateData.costBasis}</td>
             <td>${aggregateData.currentValue}</td>
             <td>${aggregateData.currentValue - aggregateData.costBasis}</td>
-            <td>${aggregateData.wPerformance}</td>
+            <td>${aggregateData.wPerformance}</td> */}
           </tr>
         </tbody>
       </Table>
@@ -53,7 +53,8 @@ export function FundsContainer(props) {
             <th>7d</th>
           </tr>
         </thead>
-        <tbody>{holdingsDataRows}</tbody>
+        {/* {holdingsDataRows} */}
+        <tbody />
       </Table>
     </div>
   );

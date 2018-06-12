@@ -53,14 +53,18 @@ const MOCK_PORTFOLIO = [
 ];
 
 const initialState = {
+  // selected_timestamp: 1505520000, // 16/09/2017
+  // balance: 18569.3, // after mock purchases $1430.67065
+  // transactions: MOCK_TRANSACTIONS,
+  // portfolio: MOCK_PORTFOLIO,
+  // data: MOCK_DATA
   selected_timestamp: 1505520000, // 16/09/2017
-  balance: 18569.3, // after mock purchases $1430.67065
-  transactions: MOCK_TRANSACTIONS,
-  portfolio: MOCK_PORTFOLIO,
-  data: MOCK_DATA
+  balance: 20000,
+  transactions: [],
+  portfolio: {},
+  data: []
 };
 
 export default function reducer(state = initialState, action) {
-  console.log(action);
   return state;
 }

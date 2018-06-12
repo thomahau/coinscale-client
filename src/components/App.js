@@ -4,37 +4,37 @@ import { Route, withRouter } from 'react-router-dom';
 import Navigation from './Navigation';
 import LandingPage from './LandingPage';
 import Dashboard from './Dashboard';
-// import {refreshAuthToken} from './actions/auth';
+import { refreshAuthToken } from '../actions/auth';
 
 export class App extends React.Component {
-  // componentDidUpdate(prevProps) {
-  //   if (!prevProps.loggedIn && this.props.loggedIn) {
-  //     // When user is logged in, refresh the auth token periodically
-  //     this.startPeriodicRefresh();
-  //   } else if (prevProps.loggedIn && !this.props.loggedIn) {
-  //     // Stop refreshing when user logs out
-  //     this.stopPeriodicRefresh();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
+      // When user is logged in, refresh the auth token periodically
+      this.startPeriodicRefresh();
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      // Stop refreshing when user logs out
+      this.stopPeriodicRefresh();
+    }
+  }
 
-  // componentWillUnmount() {
-  //   this.stopPeriodicRefresh();
-  // }
+  componentWillUnmount() {
+    this.stopPeriodicRefresh();
+  }
 
-  // startPeriodicRefresh() {
-  //   this.refreshInterval = setInterval(
-  //     () => this.props.dispatch(refreshAuthToken()),
-  //     60 * 60 * 1000 // One hour
-  //   );
-  // }
+  startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
+      () => this.props.dispatch(refreshAuthToken()),
+      60 * 60 * 1000 // One hour
+    );
+  }
 
-  // stopPeriodicRefresh() {
-  //   if (!this.refreshInterval) {
-  //     return;
-  //   }
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return;
+    }
 
-  //   clearInterval(this.refreshInterval);
-  // }
+    clearInterval(this.refreshInterval);
+  }
 
   render() {
     return (
@@ -48,9 +48,8 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // hasAuthToken: state.auth.authToken !== null,
-  loggedIn: state.auth.currentUser !== null,
-  currentUser: state.auth.currentUser
+  hasAuthToken: state.auth.authToken !== null,
+  loggedIn: state.auth.currentUser !== null
 });
 
 export default withRouter(connect(mapStateToProps)(App));

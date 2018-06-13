@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -31,8 +31,6 @@ export function LandingPage(props) {
           <Button color="success" className="my-4">
             Sign up to get started
           </Button>
-          <br />
-          <Link to="/dashboard/funds">See dashboard (demo)</Link>
         </Container>
       </Jumbotron>
       <Container className="text-center">

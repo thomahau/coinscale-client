@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import { Button, Form, FormGroup, FormFeedback, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup } from 'reactstrap';
+import FormInput from './FormInput';
 import { login } from '../actions/auth';
 import { required, nonEmpty } from '../validators';
 
@@ -13,44 +14,37 @@ export class LoginForm extends React.Component {
     let error;
     if (this.props.error) {
       error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
+        <FormGroup aria-live="polite">
+          <p className="text-danger">{this.props.error}</p>
+        </FormGroup>
       );
     }
 
     return (
       <Form
         className="login-form px-3 py-3"
-        onSubmit={this.props.handleSubmit((values) => {
-          this.onSubmit(values);
-        })}
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
         <FormGroup>
-          <Label for="username">Username</Label>
-          <Input
-            tag={Field}
-            component="input"
+          <label htmlFor="username">Username</label>
+          <Field
+            component={FormInput}
             type="text"
             name="username"
-            id="username"
-            bsSize="sm"
             validate={[required, nonEmpty]}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
-          <Input
-            tag={Field}
-            component="input"
+          <label htmlFor="password">Password</label>
+          <Field
+            component={FormInput}
             type="password"
             name="password"
-            id="password"
-            bsSize="sm"
             validate={[required, nonEmpty]}
           />
         </FormGroup>
-        <Button color="success" block>
+        {error}
+        <Button color="success" disabled={this.props.submitting} block>
           Log in
         </Button>
       </Form>

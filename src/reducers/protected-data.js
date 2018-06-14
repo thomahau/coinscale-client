@@ -1,4 +1,10 @@
-// import * as actions from '../actions';
+import {
+  CHANGE_DATE,
+  FETCH_PRICE_DATA_SUCCESS,
+  FETCH_PRICE_DATA_ERROR
+} from '../actions/coinscale';
+
+const coinList = ['BTC', 'ETH', 'LTC'];
 
 const MOCK_DATA = [
   {
@@ -53,18 +59,30 @@ const MOCK_PORTFOLIO = [
 ];
 
 const initialState = {
-  // selected_timestamp: 1505520000, // 16/09/2017
-  // balance: 18569.3, // after mock purchases $1430.67065
-  // transactions: MOCK_TRANSACTIONS,
-  // portfolio: MOCK_PORTFOLIO,
-  // data: MOCK_DATA
-  selected_timestamp: 1505520000, // 16/09/2017
+  date: '2017-01-01',
   balance: 20000,
+  coinList,
   transactions: [],
   portfolio: {},
-  data: []
+  priceData: [],
+  error: null
 };
 
 export default function reducer(state = initialState, action) {
+  if (action.type === CHANGE_DATE) {
+    return Object.assign({}, state, {
+      date: action.date
+    });
+  } else if (action.type === FETCH_PRICE_DATA_SUCCESS) {
+    return Object.assign({}, state, {
+      priceData: action.data,
+      error: null
+    });
+  } else if (action.type === FETCH_PRICE_DATA_ERROR) {
+    return Object.assign({}, state, {
+      error: action.error
+    });
+  }
+
   return state;
 }

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { Container, Col, Row, Card, CardHeader, CardBody, Nav, NavItem } from 'reactstrap';
 import RequiresLogin from '../containers/RequiresLogin';
+import DateWidgetContainer from '../containers/DateWidgetContainer';
 import FundsContainer from '../containers/FundsContainer';
 import HistoryContainer from '../containers/HistoryContainer';
 import TradeContainer from '../containers/TradeContainer';
 import CoinsTable from './CoinsTable';
-import DateWidget from './DateWidget';
+
 import Filter from './Filter';
 // import { fetchProtectedData } from '../actions/protected-data';
 
@@ -27,7 +28,7 @@ export class Dashboard extends React.Component {
                   <h6>Select date</h6>
                 </CardHeader>
                 <CardBody>
-                  <DateWidget />
+                  <DateWidgetContainer />
                 </CardBody>
               </Card>
             </Row>
@@ -79,14 +80,6 @@ export class Dashboard extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = (state) => {
-//   const { currentUser } = state.auth;
-//   return {
-//     username: state.auth.currentUser.username
-//     // protectedData: state.protectedData.data
-//   };
-// };
 
 const mapStateToProps = state => ({
   username: state.auth.currentUser.username // TODO: don't need this

@@ -14,7 +14,7 @@ export class CoinsTableContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  date: state.date,
+  date: state.protectedData.date,
   priceData: state.protectedData.priceData
 });
 

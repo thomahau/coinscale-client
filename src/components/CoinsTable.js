@@ -1,12 +1,19 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Table, UncontrolledTooltip } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { round } from '../helpers';
 
 export default function CoinsTable(props) {
   const coinRows = props.priceData.map(coin => (
-    <tr>
-      <td>{coin.currency}</td>
+    <tr key={coin.currency}>
+      <td>
+        <Link to="/dashboard/trade" id={coin.currency}>
+          {coin.currency}
+        </Link>
+        <UncontrolledTooltip delay={{ show: 0, hide: 0 }} target={coin.currency}>
+          {coin.name}
+        </UncontrolledTooltip>
+      </td>
       <td>${coin.current}</td>
       <td>${coin.sevenDaysAgo === 'N/A' ? 'N/A' : round(coin.current - coin.sevenDaysAgo)}</td>
       <td>
@@ -25,8 +32,7 @@ export default function CoinsTable(props) {
           <th />
         </tr>
       </thead>
-      {coinRows}
-      <tbody />
+      <tbody>{coinRows}</tbody>
     </Table>
   );
 }

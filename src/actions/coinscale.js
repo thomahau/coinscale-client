@@ -9,20 +9,26 @@ export const changeDate = date => ({
   date
 });
 
-export const FETCH_PRICE_DATA_SUCCESS = 'FETCH_PRICE_DATA_SUCCESS';
-export const fetchPriceDataSuccess = data => ({
-  type: FETCH_PRICE_DATA_SUCCESS,
+export const PRICE_DATA_REQUEST = 'PRICE_DATA_REQUEST';
+export const priceDataRequest = () => ({
+  type: PRICE_DATA_REQUEST
+});
+
+export const PRICE_DATA_SUCCESS = 'PRICE_DATA_SUCCESS';
+export const priceDataSuccess = data => ({
+  type: PRICE_DATA_SUCCESS,
   data
 });
 
-export const FETCH_PRICE_DATA_ERROR = 'FETCH_PRICE_DATA_ERROR';
-export const fetchPriceDataError = error => ({
-  type: FETCH_PRICE_DATA_ERROR,
+export const PRICE_DATA_ERROR = 'PRICE_DATA_ERROR';
+export const priceDataError = error => ({
+  type: PRICE_DATA_ERROR,
   error
 });
 
 export const fetchPriceData = date => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
+  dispatch(priceDataRequest());
   return fetch(`${API_BASE_URL}/prices?date=${date}`, {
     method: 'GET',
     headers: {
@@ -31,8 +37,8 @@ export const fetchPriceData = date => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ priceData }) => dispatch(fetchPriceDataSuccess(priceData)))
+    .then(({ priceData }) => dispatch(priceDataSuccess(priceData)))
     .catch((err) => {
-      dispatch(fetchPriceDataError(err));
+      dispatch(priceDataError(err));
     });
 };

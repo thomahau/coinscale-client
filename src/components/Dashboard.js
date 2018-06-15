@@ -4,11 +4,10 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import { Container, Col, Row, Card, CardHeader, CardBody, Nav, NavItem } from 'reactstrap';
 import RequiresLogin from '../containers/RequiresLogin';
 import DateWidgetContainer from '../containers/DateWidgetContainer';
+import CoinsTableContainer from '../containers/CoinsTableContainer';
 import FundsContainer from '../containers/FundsContainer';
 import HistoryContainer from '../containers/HistoryContainer';
 import TradeContainer from '../containers/TradeContainer';
-import CoinsTable from './CoinsTable';
-
 import Filter from './Filter';
 // import { fetchProtectedData } from '../actions/protected-data';
 
@@ -71,7 +70,7 @@ export class Dashboard extends React.Component {
               </CardHeader>
               <CardBody>
                 <Filter />
-                <CoinsTable />
+                <CoinsTableContainer />
               </CardBody>
             </Card>
           </Col>

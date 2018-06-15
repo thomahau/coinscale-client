@@ -2,10 +2,6 @@ import { connect } from 'react-redux';
 import DateWidget from '../components/DateWidget';
 import { changeDate, fetchPriceData } from '../actions/coinscale';
 
-const mapStateToProps = state => ({
-  coinList: state.coinList
-});
-
 const mapDispatchToProps = dispatch => ({
   changeDate: (date) => {
     dispatch(changeDate(date));
@@ -16,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const DateWidgetContainer = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(DateWidget);
 

@@ -1,20 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { round } from '../helpers';
 
-export function CoinsTableContainer(props) {
-  // const coinRows = props.data.map(coin => (
-  //   <tr>
-  //     <td>{coin.currency}</td>
-  //     <td>${coin.close}</td>
-  //     <td>${round(coin.close - coin.open)}</td>
-  //     <td>
-  //       <Link to="/dashboard/trade">Trade</Link>
-  //     </td>
-  //   </tr>
-  // ));
+export default function CoinsTable(props) {
+  const coinRows = props.priceData.map(coin => (
+    <tr>
+      <td>{coin.currency}</td>
+      <td>${coin.current}</td>
+      <td>${coin.sevenDaysAgo === 'N/A' ? 'N/A' : round(coin.current - coin.sevenDaysAgo)}</td>
+      <td>
+        <Link to="/dashboard/trade">Trade</Link>
+      </td>
+    </tr>
+  ));
 
   return (
     <Table responsive bordered className="mt-3">
@@ -26,14 +25,8 @@ export function CoinsTableContainer(props) {
           <th />
         </tr>
       </thead>
-      {/* {coinRows} */}
+      {coinRows}
       <tbody />
     </Table>
   );
 }
-
-const mapStateToProps = state => ({
-  data: state.data
-});
-
-export default connect(mapStateToProps)(CoinsTableContainer);

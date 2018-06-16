@@ -7,7 +7,7 @@ import DateWidgetContainer from '../containers/DateWidgetContainer';
 import CoinsTableContainer from '../containers/CoinsTableContainer';
 import FundsContainer from '../containers/FundsContainer';
 import HistoryContainer from '../containers/HistoryContainer';
-import TradeContainer from '../containers/TradeContainer';
+import TradeFormContainer from '../containers/TradeFormContainer';
 import Filter from './Filter';
 // import { fetchProtectedData } from '../actions/protected-data';
 
@@ -56,7 +56,7 @@ export class Dashboard extends React.Component {
                   <Switch>
                     <Route exact path="/dashboard/funds" component={FundsContainer} />
                     <Route exact path="/dashboard/history" component={HistoryContainer} />
-                    <Route exact path="/dashboard/trade" component={TradeContainer} />
+                    <Route exact path="/dashboard/trade" component={TradeFormContainer} />
                     <Route exact path="/dashboard" component={FundsContainer} />
                   </Switch>
                 </CardBody>

@@ -21,7 +21,9 @@ export default class FormInput extends React.Component {
           type={this.props.type}
           bsSize="sm"
           invalid={error || warning}
-        />
+        >
+          {this.props.children}
+        </Input>
         {error}
         {warning}
       </div>

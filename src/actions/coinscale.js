@@ -26,6 +26,12 @@ export const priceDataError = error => ({
   error
 });
 
+export const SET_TRADE_COIN = 'SET_TRADE_COIN';
+export const setTradeCoin = coin => ({
+  type: SET_TRADE_COIN,
+  coin
+});
+
 export const fetchPriceData = date => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(priceDataRequest());

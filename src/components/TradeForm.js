@@ -1,14 +1,19 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label } from 'reactstrap';
 import FormInput from './FormInput';
+import FormInputPlaintext from './FormInputPlaintext';
 // import { [TRADEFUNCTION] } from '../actions/coinscale';
-import { required, nonEmpty } from '../validators';
+import { required, nonEmpty, validAmount } from '../validators';
 
 export class TradeForm extends React.Component {
-  // onSubmit(values) {
-  //     return this.props.dispatch(login(values.username, values.password));
-  // }
+  onSubmit(values) {
+    // values.symbol = this.props.symbol;
+    // values.date = this.props.date;
+    // values.price = this.props.price;
+    // values.total = this.props.total;
+    // return this.props.dispatch(login(values.username, values.password));
+  }
 
   render() {
     // let error;
@@ -19,58 +24,87 @@ export class TradeForm extends React.Component {
     //     </FormGroup>
     //   );
     // }
-
+    const coinName =
+      this.props.coinToTrade.symbol !== ''
+        ? `${this.props.coinToTrade.name} (${this.props.coinToTrade.symbol})`
+        : '';
+    const coinPrice = this.props.coinToTrade.price !== '' ? this.props.coinToTrade.price : '0';
     return (
-      <Form className="mx-3 my-3">
-        <Row>
-          <Col sm={2}>Cryptocurrency</Col>
-          <Col sm={4}>
-            <p>Bitcoin (BTC)</p>
-          </Col>
-        </Row>
+      <Form
+        className="trade-form mx-2 my-3"
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+      >
         <FormGroup row>
-          <Label for="type" sm={2}>
-            Buy / Sell
+          <Label for="symbol" sm={2}>
+            Cryptocurrency:
           </Label>
           <Col sm={4}>
-            <Input type="select" name="type" id="type" bsSize="sm">
+            <Field component={FormInputPlaintext} type="text" name="symbol" val={coinName} />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="type" sm={2}>
+            Buy / Sell:
+          </Label>
+          <Col sm={4}>
+            <Field component={FormInput} type="select" name="type">
+              <option disabled />
               <option>BUY</option>
               <option>SELL</option>
-            </Input>
+            </Field>
           </Col>
         </FormGroup>
         <FormGroup row>
           <Label for="amount" sm={2}>
-            Amount
+            Amount:
           </Label>
           <Col sm={4}>
-            <Input type="number" name="amount" id="amount" bsSize="sm" min={0} />
+            <Field
+              component={FormInput}
+              type="number"
+              name="amount"
+              validate={[required, nonEmpty]}
+              normalize={validAmount}
+            />
           </Col>
         </FormGroup>
-        <Row>
-          <Col sm={2}>Date</Col>
+        <FormGroup row>
+          <Label for="date" sm={2}>
+            Date:
+          </Label>
           <Col sm={4}>
-            <p>{this.props.date}</p>
+            <Field component={FormInputPlaintext} type="text" name="date" val={this.props.date} />
           </Col>
-        </Row>
-        <Row>
-          <Col sm={2}>Price</Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="price" sm={2}>
+            Price:
+          </Label>
           <Col sm={4}>
-            <p>$0</p>
+            <Field component={FormInputPlaintext} type="text" name="price" val={coinPrice} />
           </Col>
-        </Row>
-        <Row>
-          <Col sm={2}>Total cost</Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="total" sm={2}>
+            Total cost:
+          </Label>
           <Col sm={4}>
-            <p>$0</p>
+            <Field component={FormInputPlaintext} type="text" name="total" val="$0" />
           </Col>
-        </Row>
-        <Row>
-          <Col sm={2}>Your balance</Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="balance" sm={2}>
+            Your balance:
+          </Label>
           <Col sm={4}>
-            <p>${this.props.balance}</p>
+            <Field
+              component={FormInputPlaintext}
+              type="text"
+              name="balance"
+              val={this.props.balance}
+            />
           </Col>
-        </Row>
+        </FormGroup>
         <FormGroup row>
           <Col sm={{ size: 4, offset: 2 }}>
             <Button color="success" size="sm" block>
@@ -78,6 +112,7 @@ export class TradeForm extends React.Component {
             </Button>
           </Col>
         </FormGroup>
+        <FormGroup style={{ display: 'none' }} />
       </Form>
     );
   }
@@ -85,70 +120,5 @@ export class TradeForm extends React.Component {
 
 export default reduxForm({
   form: 'trade',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  onSubmitFail: (errors, dispatch) => dispatch(focus('trade', 'amount'))
 })(TradeForm);
-
-// export default function TradeForm(props) {
-//   return (
-//     <Form className="mx-3 my-3">
-//       <FormGroup row>
-//         <Label for="symbol" sm={2}>
-//           Symbol
-//         </Label>
-//         <Col sm={5}>
-//           <Input type="text" name="symbol" id="symbol" bsSize="sm" />
-//         </Col>
-//       </FormGroup>
-//       <FormGroup row>
-//         <Label for="type" sm={2}>
-//           Buy / Sell
-//         </Label>
-//         <Col sm={5}>
-//           <Input type="select" name="type" id="type" bsSize="sm">
-//             <option>BUY</option>
-//             <option>SELL</option>
-//           </Input>
-//         </Col>
-//       </FormGroup>
-//       <FormGroup row>
-//         <Label for="amount" sm={2}>
-//           Amount
-//         </Label>
-//         <Col sm={5}>
-//           <Input type="number" name="amount" id="amount" bsSize="sm" min={0} />
-//         </Col>
-//       </FormGroup>
-//       <Row>
-//         <Col sm={2}>Date</Col>
-//         <Col sm={5}>
-//           <p>{props.date}</p>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col sm={2}>Price</Col>
-//         <Col sm={5}>
-//           <p>$0</p>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col sm={2}>Total cost</Col>
-//         <Col sm={5}>
-//           <p>$0</p>
-//         </Col>
-//       </Row>
-//       <Row>
-//         <Col sm={2}>Your balance</Col>
-//         <Col sm={5}>
-//           <p>${props.balance}</p>
-//         </Col>
-//       </Row>
-//       <FormGroup row>
-//         <Col sm={{ size: 5, offset: 2 }}>
-//           <Button color="success" size="sm" block>
-//             Place trade
-//           </Button>
-//         </Col>
-//       </FormGroup>
-//     </Form>
-//   );
-// }

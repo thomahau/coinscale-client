@@ -12,3 +12,11 @@ export const length = length => (value) => {
 };
 export const matches = field => (value, allValues) =>
   (field in allValues && value.trim() === allValues[field].trim() ? undefined : 'Does not match');
+export const validAmount = (value) => {
+  if (value < 0) {
+    return 0;
+    // } else if (value > available) {
+    //   return available;
+  }
+  return value;
+};

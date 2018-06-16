@@ -15,6 +15,7 @@ export class TradeFormContainer extends React.Component {
 
 const mapStateToProps = state => ({
   date: state.protectedData.date,
+  coinToTrade: state.protectedData.coinToTrade,
   balance: state.protectedData.balance
 });
 

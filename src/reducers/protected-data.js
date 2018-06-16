@@ -2,13 +2,19 @@ import {
   CHANGE_DATE,
   PRICE_DATA_REQUEST,
   PRICE_DATA_SUCCESS,
-  PRICE_DATA_ERROR
+  PRICE_DATA_ERROR,
+  SET_TRADE_COIN
 } from '../actions/coinscale';
 
 const initialState = {
   date: '2017-01-01',
   balance: 20000,
   // coinList,
+  coinToTrade: {
+    symbol: '',
+    name: '',
+    price: ''
+  },
   transactions: [],
   portfolio: {},
   priceData: [],
@@ -36,6 +42,10 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       fetching: false,
       error: action.error
+    });
+  } else if (action.type === SET_TRADE_COIN) {
+    return Object.assign({}, state, {
+      coinToTrade: action.coin
     });
   }
 

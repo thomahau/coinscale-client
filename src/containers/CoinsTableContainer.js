@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CoinsTable from '../components/CoinsTable';
-import { fetchPriceData } from '../actions/coinscale';
+import { fetchPriceData, setTradeCoin } from '../actions/coinscale';
 
 export class CoinsTableContainer extends React.Component {
   componentDidMount() {
@@ -21,8 +21,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchPriceData: (date) => {
     dispatch(fetchPriceData(date));
+  },
+  tradeCoin: (symbol) => {
+    dispatch(setTradeCoin(symbol));
   }
-  // tradeCoin:
 });
 
 export default connect(

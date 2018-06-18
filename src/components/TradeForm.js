@@ -8,10 +8,11 @@ import { required, nonEmpty, validAmount } from '../validators';
 
 export class TradeForm extends React.Component {
   onSubmit(values) {
-    // values.symbol = this.props.symbol;
-    // values.date = this.props.date;
-    // values.price = this.props.price;
-    // values.total = this.props.total;
+    values.currency = this.props.coinData.currency || '';
+    values.date = this.props.date;
+    values.price = this.props.coinData.current || '';
+    values.total = this.props.total;
+    console.log(values);
     // return this.props.dispatch(login(values.username, values.password));
   }
 
@@ -24,11 +25,11 @@ export class TradeForm extends React.Component {
     //     </FormGroup>
     //   );
     // }
-    const coinName =
-      this.props.coinToTrade.symbol !== ''
-        ? `${this.props.coinToTrade.name} (${this.props.coinToTrade.symbol})`
-        : '';
-    const coinPrice = this.props.coinToTrade.price !== '' ? this.props.coinToTrade.price : '0';
+    const coinName = this.props.coinData
+      ? `${this.props.coinData.name} (${this.props.coinData.currency})`
+      : 'No coin selected';
+    const coinPrice = this.props.coinData ? this.props.coinData.current : '0';
+
     return (
       <Form
         className="trade-form mx-2 my-3"
@@ -47,7 +48,7 @@ export class TradeForm extends React.Component {
             Buy / Sell:
           </Label>
           <Col sm={4}>
-            <Field component={FormInput} type="select" name="type">
+            <Field component={FormInput} type="select" name="type" validate={[required]}>
               <option disabled />
               <option>BUY</option>
               <option>SELL</option>
@@ -63,6 +64,7 @@ export class TradeForm extends React.Component {
               component={FormInput}
               type="number"
               name="amount"
+              onChange={event => this.props.onChange(event.target.value)}
               validate={[required, nonEmpty]}
               normalize={validAmount}
             />
@@ -81,15 +83,20 @@ export class TradeForm extends React.Component {
             Price:
           </Label>
           <Col sm={4}>
-            <Field component={FormInputPlaintext} type="text" name="price" val={coinPrice} />
+            <Field component={FormInputPlaintext} type="text" name="price" val={`$${coinPrice}`} />
           </Col>
         </FormGroup>
         <FormGroup row>
           <Label for="total" sm={2}>
-            Total cost:
+            Total:
           </Label>
           <Col sm={4}>
-            <Field component={FormInputPlaintext} type="text" name="total" val="$0" />
+            <Field
+              component={FormInputPlaintext}
+              type="text"
+              name="total"
+              val={`$${this.props.total}`}
+            />
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -101,7 +108,7 @@ export class TradeForm extends React.Component {
               component={FormInputPlaintext}
               type="text"
               name="balance"
-              val={this.props.balance}
+              val={`$${this.props.balance}`}
             />
           </Col>
         </FormGroup>

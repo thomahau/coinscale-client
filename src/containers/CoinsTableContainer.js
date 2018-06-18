@@ -22,8 +22,8 @@ const mapDispatchToProps = dispatch => ({
   fetchPriceData: (date) => {
     dispatch(fetchPriceData(date));
   },
-  tradeCoin: (symbol) => {
-    dispatch(setTradeCoin(symbol));
+  tradeCoin: (coin) => {
+    dispatch(setTradeCoin(coin));
   }
 });
 

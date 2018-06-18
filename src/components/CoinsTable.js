@@ -7,13 +7,7 @@ export default function CoinsTable(props) {
   const coinRows = props.priceData.map(coin => (
     <tr key={coin.currency}>
       <td>
-        <Link
-          to="/dashboard/trade"
-          id={coin.currency}
-          onClick={e =>
-            props.tradeCoin({ symbol: coin.currency, name: coin.name, price: coin.current })
-          }
-        >
+        <Link to="/dashboard/trade" id={coin.currency} onClick={e => props.tradeCoin(coin)}>
           {coin.currency}
         </Link>
         <UncontrolledTooltip delay={{ show: 0, hide: 0 }} target={coin.currency}>
@@ -23,12 +17,7 @@ export default function CoinsTable(props) {
       <td>${coin.current}</td>
       <td>${coin.sevenDaysAgo === 'N/A' ? 'N/A' : round(coin.current - coin.sevenDaysAgo)}</td>
       <td>
-        <Link
-          to="/dashboard/trade"
-          onClick={e =>
-            props.tradeCoin({ symbol: coin.currency, name: coin.name, price: coin.current })
-          }
-        >
+        <Link to="/dashboard/trade" onClick={e => props.tradeCoin(coin)}>
           Trade
         </Link>
       </td>

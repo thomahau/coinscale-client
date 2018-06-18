@@ -10,11 +10,7 @@ const initialState = {
   date: '2017-01-01',
   balance: 20000,
   // coinList,
-  coinToTrade: {
-    symbol: '',
-    name: '',
-    price: ''
-  },
+  coinToTrade: null,
   transactions: [],
   portfolio: {},
   priceData: [],

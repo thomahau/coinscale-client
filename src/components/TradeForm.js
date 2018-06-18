@@ -12,6 +12,7 @@ export class TradeForm extends React.Component {
     values.date = this.props.date;
     values.price = this.props.coinData.current || '';
     values.total = this.props.total;
+    values.balance = this.props.balance;
     console.log(values);
     // return this.props.dispatch(login(values.username, values.password));
   }
@@ -119,7 +120,6 @@ export class TradeForm extends React.Component {
             </Button>
           </Col>
         </FormGroup>
-        <FormGroup style={{ display: 'none' }} />
       </Form>
     );
   }

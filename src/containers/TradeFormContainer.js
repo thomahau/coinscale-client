@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 import TradeForm from '../components/TradeForm';
 
 export class TradeFormContainer extends React.Component {
@@ -10,17 +11,19 @@ export class TradeFormContainer extends React.Component {
     };
   }
 
+  componentWillReceiveProps() {
+    this.props.reset('trade');
+  }
+
   onChangeAmount = (value) => {
     const amount = parseFloat(value.amount || 0);
-    const price = parseFloat(this.props.coinToTrade.current);
+    const price = this.props.coinToTrade ? parseFloat(this.props.coinToTrade.current) : 0;
     this.setState({
       total: (amount * price).toString()
     });
   };
 
   render() {
-    // const coinData = this.props.priceData.filter(priceDatum => priceDatum.currency === this.props.coinToTrade)[0];
-
     return (
       <div>
         <h4 className="mb-3">Trade</h4>
@@ -36,6 +39,10 @@ export class TradeFormContainer extends React.Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  reset: formName => dispatch(reset(formName))
+});
+
 const mapStateToProps = state => ({
   date: state.protectedData.date,
   priceData: state.protectedData.priceData,
@@ -43,4 +50,7 @@ const mapStateToProps = state => ({
   balance: state.protectedData.balance
 });
 
-export default connect(mapStateToProps)(TradeFormContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TradeFormContainer);

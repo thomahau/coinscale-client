@@ -34,6 +34,7 @@ export const setTradeCoin = coin => ({
 
 export const fetchPriceData = date => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
+  let _priceData;
   dispatch(priceDataRequest());
   return fetch(`${API_BASE_URL}/prices?date=${date}`, {
     method: 'GET',
@@ -43,7 +44,17 @@ export const fetchPriceData = date => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ priceData }) => dispatch(priceDataSuccess(priceData)))
+    .then(({ priceData }) => {
+      _priceData = priceData;
+      dispatch(priceDataSuccess(priceData));
+    })
+    .then(() => {
+      const coinToTrade = getState().protectedData.coinToTrade;
+      if (coinToTrade) {
+        const updatedCoinToTrade = _priceData.filter(priceDatum => priceDatum.currency === coinToTrade.currency)[0];
+        dispatch(setTradeCoin(updatedCoinToTrade));
+      }
+    })
     .catch((err) => {
       dispatch(priceDataError(err));
     });

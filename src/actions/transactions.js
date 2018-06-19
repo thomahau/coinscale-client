@@ -6,9 +6,15 @@ export const transactionsRequest = () => ({
   type: TRANSACTIONS_REQUEST
 });
 
-export const TRANSACTIONS_SUCCESS = 'TRANSACTIONS_SUCCESS';
-export const transactionsSuccess = data => ({
-  type: TRANSACTIONS_SUCCESS,
+export const FETCH_TRANSACTIONS_SUCCESS = 'FETCH_TRANSACTIONS_SUCCESS';
+export const fetchTransactionsSuccess = data => ({
+  type: FETCH_TRANSACTIONS_SUCCESS,
+  data
+});
+
+export const ADD_TRANSACTION_SUCCESS = 'ADD_TRANSACTION_SUCCESS';
+export const addTransactionSuccess = data => ({
+  type: ADD_TRANSACTION_SUCCESS,
   data
 });
 
@@ -48,7 +54,7 @@ export const addTransaction = newTransaction => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ transaction }) => dispatch(transactionsSuccess(transaction)))
+    .then(({ transaction }) => dispatch(addTransactionSuccess(true)))
     .catch((err) => {
       dispatch(transactionsError(err));
     });

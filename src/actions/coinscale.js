@@ -1,7 +1,7 @@
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors, parseTransaction, parsePurchase } from './utils';
-import { updatePortfolio } from './portfolio';
+import { updatePortfolio, fetchPortfolio } from './portfolio';
 import { addTransaction } from './transactions';
 
 export const CHANGE_DATE = 'CHANGE_DATE';
@@ -72,8 +72,9 @@ export const submitTrade = values => (dispatch) => {
       return Promise.reject(new SubmissionError({ _error: 'Transaction total exceeds your available balance.' }));
     }
     const updatedPortfolio = parsePurchase(values);
-    console.log(transaction, updatedPortfolio);
-    // dispatch(addTransaction(transaction));
-    // dispatch(updatePortfolio(updatedPortfolio));
+
+    dispatch(addTransaction(transaction));
+    dispatch(updatePortfolio(updatedPortfolio));
+    dispatch(fetchPortfolio());
   }
 };

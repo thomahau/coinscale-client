@@ -1,6 +1,13 @@
 import { PORTFOLIO_REQUEST, PORTFOLIO_SUCCESS, PORTFOLIO_ERROR } from '../actions/portfolio';
 
 import {
+  TRANSACTIONS_REQUEST,
+  FETCH_TRANSACTIONS_SUCCESS,
+  ADD_TRANSACTION_SUCCESS,
+  TRANSACTIONS_ERROR
+} from '../actions/transactions';
+
+import {
   CHANGE_DATE,
   PRICE_DATA_REQUEST,
   PRICE_DATA_SUCCESS,
@@ -13,6 +20,7 @@ const initialState = {
   // coinList,
   coinToTrade: null,
   transactions: [],
+  transactionSuccess: null,
   portfolio: {},
   priceData: [],
   fetching: false,
@@ -56,6 +64,28 @@ export default function reducer(state = initialState, action) {
       fetching: false,
       error: action.error
     });
+  } else if (action.type === TRANSACTIONS_REQUEST) {
+    return Object.assign({}, state, {
+      fetching: true,
+      error: null
+    });
+  } else if (action.type === FETCH_TRANSACTIONS_SUCCESS) {
+    return Object.assign({}, state, {
+      transactions: action.data,
+      fetching: false,
+      error: null
+    });
+  } else if (action.type === ADD_TRANSACTION_SUCCESS) {
+    return Object.assign({}, state, {
+      transactionSuccess: action.data,
+      fetching: false,
+      error: null
+    });
+  } else if (action.type === TRANSACTIONS_ERROR) {
+    return Object.assign({}, state, {
+      fetching: false,
+      error: action.error
+    });
   } else if (action.type === SET_TRADE_COIN) {
     return Object.assign({}, state, {
       coinToTrade: action.coin
@@ -63,57 +93,3 @@ export default function reducer(state = initialState, action) {
   }
   return state;
 }
-
-// const coinList = ['BTC', 'ETH', 'LTC'];
-
-// const MOCK_DATA = [
-//   {
-//     currency: 'BTC',
-//     open: 4359.11808,
-//     open_timestamp: '2017-09-09T00:00:00Z',
-//     close: 3687.24081,
-//     close_timestamp: '2017-09-16T00:00:00Z'
-//   },
-//   {
-//     currency: 'ETH',
-//     open: 307.09695,
-//     open_timestamp: '2017-09-09T00:00:00Z',
-//     close: 253.24776,
-//     close_timestamp: '2017-09-16T00:00:00Z'
-//   },
-//   {
-//     currency: 'LTC',
-//     open: 73.5457,
-//     open_timestamp: '2017-09-09T00:00:00Z',
-//     close: 51.5843,
-//     close_timestamp: '2017-09-16T00:00:00Z'
-//   }
-// ];
-
-// const MOCK_TRANSACTIONS = [
-//   {
-//     timestamp: '2017-01-01',
-//     type: 'Buy',
-//     currency: 'BTC',
-//     price: 1017.20065,
-//     amount: 1
-//   },
-//   {
-//     timestamp: '2017-01-01',
-//     type: 'Buy',
-//     currency: 'ETH',
-//     price: 8.2694,
-//     amount: 50
-//   }
-// ];
-
-// const MOCK_PORTFOLIO = [
-//   {
-//     currency: 'BTC',
-//     amount: 1.0
-//   },
-//   {
-//     currency: 'ETH',
-//     amount: 50
-//   }
-// ];

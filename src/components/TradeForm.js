@@ -1,6 +1,6 @@
 import React from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
-import { Col, Button, Form, FormGroup, Label } from 'reactstrap';
+import { reduxForm, Field, focus, reset } from 'redux-form';
+import { Col, Button, Form, FormGroup, Label, UncontrolledAlert } from 'reactstrap';
 import FormInput from './FormInput';
 import FormInputPlaintext from './FormInputPlaintext';
 import { submitTrade } from '../actions/coinscale';
@@ -13,18 +13,19 @@ export class TradeForm extends React.Component {
     values.price = this.props.coinData.current || '';
     values.total = this.props.total;
     values.portfolio = this.props.portfolio;
-    // values.balance = this.props.portfolio.balance;
-    // values.holdings = this.props.portfolio.holdings;
+
     return this.props.dispatch(submitTrade(values));
   }
 
   render() {
     let error;
     if (this.props.error) {
-      error = (
-        <FormGroup row aria-live="polite">
-          <p className="text-danger">{this.props.error}</p>
-        </FormGroup>
+      error = <UncontrolledAlert color="danger">{this.props.error}</UncontrolledAlert>;
+    }
+    let success;
+    if (this.props.transactionSuccess) {
+      success = (
+        <UncontrolledAlert color="success">Your transaction was successful</UncontrolledAlert>
       );
     }
     const coinName = this.props.coinData
@@ -115,6 +116,7 @@ export class TradeForm extends React.Component {
           </Col>
         </FormGroup>
         {error}
+        {success}
         <FormGroup row>
           <Col sm={{ size: 4, offset: 2 }}>
             <Button
@@ -134,5 +136,6 @@ export class TradeForm extends React.Component {
 
 export default reduxForm({
   form: 'trade',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('trade', 'amount'))
+  onSubmitFail: (errors, dispatch) => dispatch(focus('trade', 'amount')),
+  onSubmitSuccess: (result, dispatch) => dispatch(reset('trade'))
 })(TradeForm);

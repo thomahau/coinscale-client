@@ -1,3 +1,5 @@
+import { PORTFOLIO_REQUEST, PORTFOLIO_SUCCESS, PORTFOLIO_ERROR } from '../actions/portfolio';
+
 import {
   CHANGE_DATE,
   PRICE_DATA_REQUEST,
@@ -8,7 +10,6 @@ import {
 
 const initialState = {
   date: '2017-01-01',
-  balance: 20000,
   // coinList,
   coinToTrade: null,
   transactions: [],
@@ -19,7 +20,23 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === CHANGE_DATE) {
+  if (action.type === PORTFOLIO_REQUEST) {
+    return Object.assign({}, state, {
+      fetching: true,
+      error: null
+    });
+  } else if (action.type === PORTFOLIO_SUCCESS) {
+    return Object.assign({}, state, {
+      portfolio: action.data,
+      fetching: false,
+      error: null
+    });
+  } else if (action.type === PORTFOLIO_ERROR) {
+    return Object.assign({}, state, {
+      fetching: false,
+      error: action.error
+    });
+  } else if (action.type === CHANGE_DATE) {
     return Object.assign({}, state, {
       date: action.date
     });
@@ -44,7 +61,6 @@ export default function reducer(state = initialState, action) {
       coinToTrade: action.coin
     });
   }
-
   return state;
 }
 

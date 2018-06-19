@@ -32,7 +32,7 @@ export class TradeFormContainer extends React.Component {
           coinData={this.props.coinToTrade}
           total={this.state.total}
           onChange={this.onChangeAmount}
-          balance={this.props.balance}
+          portfolio={this.props.portfolio}
         />
       </div>
     );
@@ -47,7 +47,7 @@ const mapStateToProps = state => ({
   date: state.protectedData.date,
   priceData: state.protectedData.priceData,
   coinToTrade: state.protectedData.coinToTrade,
-  balance: state.protectedData.balance
+  portfolio: state.protectedData.portfolio
 });
 
 export default connect(

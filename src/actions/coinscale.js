@@ -1,7 +1,6 @@
+import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
-
-// TODO: CRUD operations action.type === ADD etc ?
 
 export const CHANGE_DATE = 'CHANGE_DATE';
 export const changeDate = date => ({
@@ -59,3 +58,13 @@ export const fetchPriceData = date => (dispatch, getState) => {
       dispatch(priceDataError(err));
     });
 };
+
+export const submitTrade = values => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  console.log(values);
+};
+
+// const { code } = err;
+// const message = code === 400 ? 'Missing date in request query' : 'Internal server error';
+// dispatch(tradeError(err));
+// return Promise.reject(new SubmissionError({ _error: message }));

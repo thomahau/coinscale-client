@@ -9,12 +9,12 @@ import FundsContainer from '../containers/FundsContainer';
 import HistoryContainer from '../containers/HistoryContainer';
 import TradeFormContainer from '../containers/TradeFormContainer';
 import Filter from './Filter';
-// import { fetchProtectedData } from '../actions/protected-data';
+import { fetchPortfolio } from '../actions/portfolio';
 
 export class Dashboard extends React.Component {
-  // componentDidMount() {
-  //   this.props.dispatch(fetchProtectedData());
-  // }
+  componentDidMount() {
+    this.props.dispatch(fetchPortfolio());
+  }
 
   render() {
     return (

@@ -3,7 +3,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col, Button, Form, FormGroup, Label } from 'reactstrap';
 import FormInput from './FormInput';
 import FormInputPlaintext from './FormInputPlaintext';
-// import { [TRADEFUNCTION] } from '../actions/coinscale';
+import { submitTrade } from '../actions/coinscale';
 import { required, nonEmpty, validAmount } from '../validators';
 
 export class TradeForm extends React.Component {
@@ -12,9 +12,9 @@ export class TradeForm extends React.Component {
     values.date = this.props.date;
     values.price = this.props.coinData.current || '';
     values.total = this.props.total;
-    values.balance = this.props.balance;
-    console.log(values);
-    // return this.props.dispatch(login(values.username, values.password));
+    values.balance = this.props.portfolio.balance;
+    values.holdings = this.props.portfolio.holdings;
+    return this.props.dispatch(submitTrade(values));
   }
 
   render() {
@@ -51,8 +51,8 @@ export class TradeForm extends React.Component {
           <Col sm={4}>
             <Field component={FormInput} type="select" name="type" validate={[required]}>
               <option disabled />
-              <option>BUY</option>
-              <option>SELL</option>
+              <option value="Buy">BUY</option>
+              <option value="Sell">SELL</option>
             </Field>
           </Col>
         </FormGroup>
@@ -109,13 +109,18 @@ export class TradeForm extends React.Component {
               component={FormInputPlaintext}
               type="text"
               name="balance"
-              val={`$${this.props.balance}`}
+              val={`$${this.props.portfolio.balance}`}
             />
           </Col>
         </FormGroup>
         <FormGroup row>
           <Col sm={{ size: 4, offset: 2 }}>
-            <Button color="success" size="sm" block>
+            <Button
+              color="success"
+              size="sm"
+              disabled={this.props.pristine || this.props.submitting}
+              block
+            >
               Place trade
             </Button>
           </Col>

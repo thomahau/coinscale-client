@@ -20,3 +20,27 @@ export const normalizeResponseErrors = (res) => {
   }
   return res;
 };
+
+export const parseTransaction = values => ({
+  date: values.date,
+  type: values.type,
+  symbol: values.symbol,
+  price: parseFloat(values.price),
+  amount: parseFloat(values.amount)
+});
+
+export const parsePurchase = (values) => {
+  const portfolio = { ...values.portfolio };
+  const balance = portfolio.balance - parseFloat(values.total);
+  const { holdings } = portfolio;
+
+  if (holdings.hasOwnProperty(values.symbol)) {
+    holdings[values.symbol] += parseFloat(values.amount);
+  } else {
+    holdings[values.symbol] = parseFloat(values.amount);
+  }
+  portfolio.balance = balance;
+  portfolio.holdings = holdings;
+
+  return portfolio;
+};

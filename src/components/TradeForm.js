@@ -8,24 +8,25 @@ import { required, nonEmpty, validAmount } from '../validators';
 
 export class TradeForm extends React.Component {
   onSubmit(values) {
-    values.currency = this.props.coinData.currency || '';
+    values.symbol = this.props.coinData.currency || '';
     values.date = this.props.date;
     values.price = this.props.coinData.current || '';
     values.total = this.props.total;
-    values.balance = this.props.portfolio.balance;
-    values.holdings = this.props.portfolio.holdings;
+    values.portfolio = this.props.portfolio;
+    // values.balance = this.props.portfolio.balance;
+    // values.holdings = this.props.portfolio.holdings;
     return this.props.dispatch(submitTrade(values));
   }
 
   render() {
-    // let error;
-    // if (this.props.error) {
-    //   error = (
-    //     <FormGroup aria-live="polite">
-    //       <p className="text-danger">{this.props.error}</p>
-    //     </FormGroup>
-    //   );
-    // }
+    let error;
+    if (this.props.error) {
+      error = (
+        <FormGroup row aria-live="polite">
+          <p className="text-danger">{this.props.error}</p>
+        </FormGroup>
+      );
+    }
     const coinName = this.props.coinData
       ? `${this.props.coinData.name} (${this.props.coinData.currency})`
       : 'No coin selected';
@@ -113,6 +114,7 @@ export class TradeForm extends React.Component {
             />
           </Col>
         </FormGroup>
+        {error}
         <FormGroup row>
           <Col sm={{ size: 4, offset: 2 }}>
             <Button

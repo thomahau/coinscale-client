@@ -1,6 +1,8 @@
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
-import { normalizeResponseErrors } from './utils';
+import { normalizeResponseErrors, parseTransaction, parsePurchase } from './utils';
+import { updatePortfolio } from './portfolio';
+import { addTransaction } from './transactions';
 
 export const CHANGE_DATE = 'CHANGE_DATE';
 export const changeDate = date => ({
@@ -59,12 +61,19 @@ export const fetchPriceData = date => (dispatch, getState) => {
     });
 };
 
-export const submitTrade = values => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
-  console.log(values);
-};
+export const submitTrade = values => (dispatch) => {
+  const totalExceedsBalance = +values.total > values.portfolio.balance;
+  // const portfolioHasCoin = values.portfolio.holdings.hasOwnProperty(values.symbol);
+  // const portfolioHasEnoughCoins = +values.portfolio.holdings[values.symbol] > +values.amount;
+  const transaction = parseTransaction(values);
 
-// const { code } = err;
-// const message = code === 400 ? 'Missing date in request query' : 'Internal server error';
-// dispatch(tradeError(err));
-// return Promise.reject(new SubmissionError({ _error: message }));
+  if (values.type === 'Buy') {
+    if (totalExceedsBalance) {
+      return Promise.reject(new SubmissionError({ _error: 'Transaction total exceeds your available balance.' }));
+    }
+    const updatedPortfolio = parsePurchase(values);
+    console.log(transaction, updatedPortfolio);
+    // dispatch(addTransaction(transaction));
+    // dispatch(updatePortfolio(updatedPortfolio));
+  }
+};

@@ -29,10 +29,25 @@ export const fetchPortfolio = () => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ portfolio }) => {
-      console.log(portfolio);
-      dispatch(portfolioSuccess(portfolio));
-    })
+    .then(({ portfolio }) => dispatch(portfolioSuccess(portfolio)))
+    .catch((err) => {
+      dispatch(portfolioError(err));
+    });
+};
+
+export const updatePortfolio = portfolio => (dispatch, getState) => {
+  dispatch(portfolioRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/portfolio/${portfolio.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(portfolio)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
     .catch((err) => {
       dispatch(portfolioError(err));
     });

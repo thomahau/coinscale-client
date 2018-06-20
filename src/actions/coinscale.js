@@ -61,6 +61,12 @@ export const fetchPriceData = date => (dispatch, getState) => {
     });
 };
 
+export const tradeCoin = symbol => (dispatch, getState) => {
+  const priceData = getState().protectedData.priceData;
+  const coin = priceData.filter(priceDatum => priceDatum.currency === symbol)[0];
+  dispatch(setTradeCoin(coin));
+};
+
 export const submitTrade = values => (dispatch) => {
   const transaction = parseTransaction(values);
   const { symbol, amount, total } = values;

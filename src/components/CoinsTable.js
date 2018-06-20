@@ -1,40 +1,37 @@
 import React from 'react';
-import { Table, UncontrolledTooltip } from 'reactstrap';
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
 import { Link } from 'react-router-dom';
-import { round } from '../helpers';
+// import { round } from '../helpers';
 
 export default function CoinsTable(props) {
-  const coinRows = props.priceData.map(coin => (
-    <tr key={coin.currency}>
-      <td>
-        <Link to="/dashboard/trade" id={coin.currency} onClick={e => props.tradeCoin(coin)}>
-          {coin.currency}
+  const data = props.priceData.map(coin => ({
+    symbol: coin.currency,
+    name: coin.name,
+    price: parseFloat(coin.current),
+    sevenDaysPerformance:
+      coin.sevenDaysAgo === 'N/A'
+        ? 'N/A'
+        : (((coin.current - coin.sevenDaysAgo) / coin.sevenDaysAgo) * 100).toPrecision(2)
+  }));
+  const columns = [
+    { Header: 'Name', accessor: 'name' },
+    {
+      Header: 'Symbol',
+      accessor: 'symbol',
+      Cell: row => (
+        <Link to="/dashboard/trade" id={row.value} onClick={e => props.tradeCoin(row.value)}>
+          {row.value}
         </Link>
-        <UncontrolledTooltip delay={{ show: 0, hide: 0 }} target={coin.currency}>
-          {coin.name}
-        </UncontrolledTooltip>
-      </td>
-      <td>${coin.current}</td>
-      <td>${coin.sevenDaysAgo === 'N/A' ? 'N/A' : round(coin.current - coin.sevenDaysAgo)}</td>
-      <td>
-        <Link to="/dashboard/trade" onClick={event => props.tradeCoin(coin)}>
-          Trade
-        </Link>
-      </td>
-    </tr>
-  ));
+      )
+    },
+    { Header: 'Price', accessor: 'price', Cell: props => `$${props.value}` },
+    {
+      Header: '% 7d',
+      accessor: 'sevenDaysPerformance',
+      Cell: row => <span style={{ color: row.value > 0 ? 'green' : 'red' }}>{row.value}%</span>
+    }
+  ];
 
-  return (
-    <Table responsive bordered className="mt-3">
-      <thead className="thead-light">
-        <tr>
-          <th>Symbol</th>
-          <th>Price</th>
-          <th>7d</th>
-          <th />
-        </tr>
-      </thead>
-      <tbody>{coinRows}</tbody>
-    </Table>
-  );
+  return <ReactTable data={data} columns={columns} defaultPageSize={10} filterable />;
 }

@@ -8,7 +8,6 @@ import CoinsTableContainer from '../containers/CoinsTableContainer';
 import FundsContainer from '../containers/FundsContainer';
 import TradeHistoryContainer from '../containers/TradeHistoryContainer';
 import TradeFormContainer from '../containers/TradeFormContainer';
-import Filter from './Filter';
 import { fetchPortfolio } from '../actions/portfolio';
 
 export class Dashboard extends React.Component {
@@ -18,7 +17,7 @@ export class Dashboard extends React.Component {
 
   render() {
     return (
-      <Container fluid className="px-4 pt-4">
+      <Container fluid className="px-4 pt-4 mb-1">
         <Row>
           <Col>
             <Row className="mr-lg-1 mb-lg-3">
@@ -69,7 +68,6 @@ export class Dashboard extends React.Component {
                 <h6>Cryptocurrencies</h6>
               </CardHeader>
               <CardBody>
-                <Filter />
                 <CoinsTableContainer />
               </CardBody>
             </Card>

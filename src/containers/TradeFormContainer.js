@@ -28,15 +28,7 @@ export class TradeFormContainer extends React.Component {
     return (
       <div>
         <h4 className="mb-3">Trade</h4>
-        <TradeForm
-          date={this.props.date}
-          coinData={this.props.coinToTrade}
-          total={this.state.total}
-          onChange={this.onChangeAmount}
-          portfolio={this.props.portfolio}
-          transactionSuccess={this.props.transactionSuccess}
-          closeAlert={this.props.closeAlert}
-        />
+        <TradeForm total={this.state.total} onChange={this.onChangeAmount} {...this.props} />
       </div>
     );
   }
@@ -50,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   date: state.protectedData.date,
   priceData: state.protectedData.priceData,
-  coinToTrade: state.protectedData.coinToTrade,
+  coinData: state.protectedData.coinToTrade,
   portfolio: state.protectedData.portfolio,
   transactionSuccess: state.protectedData.transactionSuccess
 });

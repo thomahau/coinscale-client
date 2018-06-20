@@ -96,5 +96,6 @@ export default function reducer(state = initialState, action) {
       coinToTrade: action.coin
     });
   }
+
   return state;
 }

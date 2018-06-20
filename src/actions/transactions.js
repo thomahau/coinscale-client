@@ -30,22 +30,22 @@ export const transactionsError = error => ({
   error
 });
 
-// export const fetchTransactions = () => (dispatch, getState) => {
-//   dispatch(transactionsRequest());
-//   const authToken = getState().auth.authToken;
-//   return fetch(`${API_BASE_URL}/transactions`, {
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${authToken}`
-//     }
-//   })
-//     .then(res => normalizeResponseErrors(res))
-//     .then(res => res.json())
-//     .then(({ transactions }) => dispatch(transactionsSuccess(transactions)))
-//     .catch((err) => {
-//       dispatch(transactionsError(err));
-//     });
-// };
+export const fetchTransactions = () => (dispatch, getState) => {
+  dispatch(transactionsRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/transactions`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ transactions }) => dispatch(fetchTransactionsSuccess(transactions)))
+    .catch((err) => {
+      dispatch(transactionsError(err));
+    });
+};
 
 export const addTransaction = newTransaction => (dispatch, getState) => {
   dispatch(transactionsRequest());

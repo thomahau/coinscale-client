@@ -6,7 +6,7 @@ import RequiresLogin from '../containers/RequiresLogin';
 import DateWidgetContainer from '../containers/DateWidgetContainer';
 import CoinsTableContainer from '../containers/CoinsTableContainer';
 import FundsContainer from '../containers/FundsContainer';
-import HistoryContainer from '../containers/HistoryContainer';
+import TradeHistoryContainer from '../containers/TradeHistoryContainer';
 import TradeFormContainer from '../containers/TradeFormContainer';
 import Filter from './Filter';
 import { fetchPortfolio } from '../actions/portfolio';
@@ -55,7 +55,7 @@ export class Dashboard extends React.Component {
                 <CardBody>
                   <Switch>
                     <Route exact path="/dashboard/funds" component={FundsContainer} />
-                    <Route exact path="/dashboard/history" component={HistoryContainer} />
+                    <Route exact path="/dashboard/history" component={TradeHistoryContainer} />
                     <Route exact path="/dashboard/trade" component={TradeFormContainer} />
                     <Route exact path="/dashboard" component={FundsContainer} />
                   </Switch>

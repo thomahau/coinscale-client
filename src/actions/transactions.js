@@ -18,6 +18,12 @@ export const addTransactionSuccess = data => ({
   data
 });
 
+export const RESET_TRANSACTION_SUCCESS = 'RESET_TRANSACTION_SUCCESS';
+export const resetTransactionSuccess = data => ({
+  type: RESET_TRANSACTION_SUCCESS,
+  data
+});
+
 export const TRANSACTIONS_ERROR = 'TRANSACTIONS_ERROR';
 export const transactionsError = error => ({
   type: TRANSACTIONS_ERROR,

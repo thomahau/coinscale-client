@@ -17,7 +17,7 @@ export default function CoinsTable(props) {
       <td>${coin.current}</td>
       <td>${coin.sevenDaysAgo === 'N/A' ? 'N/A' : round(coin.current - coin.sevenDaysAgo)}</td>
       <td>
-        <Link to="/dashboard/trade" onClick={e => props.tradeCoin(coin)}>
+        <Link to="/dashboard/trade" onClick={event => props.tradeCoin(coin)}>
           Trade
         </Link>
       </td>

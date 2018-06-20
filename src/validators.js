@@ -15,8 +15,6 @@ export const matches = field => (value, allValues) =>
 export const validAmount = (value) => {
   if (value < 0) {
     return 0;
-    // } else if (value > available) {
-    //   return available;
   }
   return value;
 };

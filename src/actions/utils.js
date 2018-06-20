@@ -29,18 +29,21 @@ export const parseTransaction = values => ({
   amount: parseFloat(values.amount)
 });
 
-export const parsePurchase = (values) => {
-  const portfolio = { ...values.portfolio };
-  const balance = portfolio.balance - parseFloat(values.total);
-  const { holdings } = portfolio;
+export const parsePurchase = (portfolio, symbol, amount, total) => {
+  portfolio.balance -= parseFloat(total);
 
-  if (holdings.hasOwnProperty(values.symbol)) {
-    holdings[values.symbol] += parseFloat(values.amount);
+  if (portfolio.holdings.hasOwnProperty(symbol)) {
+    portfolio.holdings[symbol] += parseFloat(amount);
   } else {
-    holdings[values.symbol] = parseFloat(values.amount);
+    portfolio.holdings[symbol] = parseFloat(amount);
   }
-  portfolio.balance = balance;
-  portfolio.holdings = holdings;
+
+  return portfolio;
+};
+
+export const parseSale = (portfolio, symbol, amount, total) => {
+  portfolio.balance += parseFloat(total);
+  portfolio.holdings[symbol] -= parseFloat(amount);
 
   return portfolio;
 };

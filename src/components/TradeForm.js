@@ -8,9 +8,9 @@ import { required, nonEmpty, validAmount } from '../validators';
 
 export class TradeForm extends React.Component {
   onSubmit(values) {
-    values.symbol = this.props.coinData.currency || '';
+    values.symbol = this.props.coinData.currency;
     values.date = this.props.date;
-    values.price = this.props.coinData.current || '';
+    values.price = this.props.coinData.current;
     values.total = this.props.total;
     values.portfolio = this.props.portfolio;
 
@@ -19,13 +19,15 @@ export class TradeForm extends React.Component {
 
   render() {
     let error;
+    let success;
     if (this.props.error) {
       error = <UncontrolledAlert color="danger">{this.props.error}</UncontrolledAlert>;
     }
-    let success;
     if (this.props.transactionSuccess) {
       success = (
-        <UncontrolledAlert color="success">Your transaction was successful</UncontrolledAlert>
+        <UncontrolledAlert color="success" onClick={event => this.props.closeAlert(null)}>
+          Your transaction was successful!
+        </UncontrolledAlert>
       );
     }
     const coinName = this.props.coinData
@@ -122,7 +124,7 @@ export class TradeForm extends React.Component {
             <Button
               color="success"
               size="sm"
-              disabled={this.props.pristine || this.props.submitting}
+              disabled={!this.props.coinData || this.props.pristine || this.props.submitting}
               block
             >
               Place trade

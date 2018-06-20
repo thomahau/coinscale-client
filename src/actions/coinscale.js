@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
-import { normalizeResponseErrors, parseTransaction, parsePurchase } from './utils';
+import { normalizeResponseErrors, parseTransaction, parsePurchase, parseSale } from './utils';
 import { updatePortfolio, fetchPortfolio } from './portfolio';
 import { addTransaction } from './transactions';
 
@@ -62,19 +62,37 @@ export const fetchPriceData = date => (dispatch, getState) => {
 };
 
 export const submitTrade = values => (dispatch) => {
-  const totalExceedsBalance = +values.total > values.portfolio.balance;
-  // const portfolioHasCoin = values.portfolio.holdings.hasOwnProperty(values.symbol);
-  // const portfolioHasEnoughCoins = +values.portfolio.holdings[values.symbol] > +values.amount;
   const transaction = parseTransaction(values);
+  const { symbol, amount, total } = values;
+  const { portfolio } = values;
+  let updatedPortfolio;
 
-  if (values.type === 'Buy') {
-    if (totalExceedsBalance) {
-      return Promise.reject(new SubmissionError({ _error: 'Transaction total exceeds your available balance.' }));
+  if (transaction.type === 'Buy') {
+    // Transaction total exceeds portfolio cash balance
+    if (+values.total > portfolio.balance) {
+      return Promise.reject(new SubmissionError({
+        _error: 'Total cost exceeds your available balance.'
+      }));
     }
-    const updatedPortfolio = parsePurchase(values);
 
-    dispatch(addTransaction(transaction));
-    dispatch(updatePortfolio(updatedPortfolio));
-    dispatch(fetchPortfolio());
+    updatedPortfolio = parsePurchase(portfolio, symbol, amount, total);
+  } else if (transaction.type === 'Sell') {
+    // Portfolio does not have the coin user is trying to sell
+    if (!portfolio.holdings.hasOwnProperty(values.symbol)) {
+      return Promise.reject(new SubmissionError({
+        _error: 'Sell transaction failed because this coin is not in your portfolio.'
+      }));
+      // User is trying to sell more of the coin than portfolio holds
+    } else if (+values.amount > +portfolio.holdings[values.symbol]) {
+      return Promise.reject(new SubmissionError({
+        _error: 'Amount exceeds the coins available in your portfolio.'
+      }));
+    }
+
+    updatedPortfolio = parseSale(portfolio, symbol, amount, total);
   }
+
+  dispatch(addTransaction(transaction));
+  dispatch(updatePortfolio(updatedPortfolio));
+  dispatch(fetchPortfolio());
 };

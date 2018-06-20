@@ -4,6 +4,7 @@ import {
   TRANSACTIONS_REQUEST,
   FETCH_TRANSACTIONS_SUCCESS,
   ADD_TRANSACTION_SUCCESS,
+  RESET_TRANSACTION_SUCCESS,
   TRANSACTIONS_ERROR
 } from '../actions/transactions';
 
@@ -80,6 +81,10 @@ export default function reducer(state = initialState, action) {
       transactionSuccess: action.data,
       fetching: false,
       error: null
+    });
+  } else if (action.type === RESET_TRANSACTION_SUCCESS) {
+    return Object.assign({}, state, {
+      transactionSuccess: action.data
     });
   } else if (action.type === TRANSACTIONS_ERROR) {
     return Object.assign({}, state, {

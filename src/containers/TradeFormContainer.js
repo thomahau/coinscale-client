@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
 import TradeForm from '../components/TradeForm';
+import { resetTransactionSuccess } from '../actions/transactions';
 
 export class TradeFormContainer extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export class TradeFormContainer extends React.Component {
           onChange={this.onChangeAmount}
           portfolio={this.props.portfolio}
           transactionSuccess={this.props.transactionSuccess}
+          closeAlert={this.props.closeAlert}
         />
       </div>
     );
@@ -41,7 +43,8 @@ export class TradeFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  reset: formName => dispatch(reset(formName))
+  reset: formName => dispatch(reset(formName)),
+  closeAlert: value => dispatch(resetTransactionSuccess(value))
 });
 
 const mapStateToProps = state => ({

@@ -18,7 +18,7 @@ export class TradeFormContainer extends React.Component {
 
   onChangeAmount = (value) => {
     const amount = parseFloat(value.amount || 0);
-    const price = this.props.coinToTrade ? parseFloat(this.props.coinToTrade.current) : 0;
+    const price = this.props.coinData ? parseFloat(this.props.coinData.current) : 0;
     this.setState({
       total: (amount * price).toString()
     });

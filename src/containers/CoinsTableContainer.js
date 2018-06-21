@@ -5,7 +5,7 @@ import { fetchPriceData, tradeCoin } from '../actions/coinscale';
 
 export class CoinsTableContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchPriceData(this.props.date);
+    // this.props.fetchPriceData(this.props.date);
   }
 
   render() {

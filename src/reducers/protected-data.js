@@ -16,14 +16,72 @@ import {
   SET_TRADE_COIN
 } from '../actions/coinscale';
 
+const initialPriceData = [
+  {
+    currency: 'BTC',
+    current: '1017.20065',
+    name: 'Bitcoin',
+    sevenDaysAgo: '914.19659'
+  },
+  {
+    currency: 'DASH',
+    current: '11.66870',
+    name: 'Dash',
+    sevenDaysAgo: '9.96277'
+  },
+  {
+    currency: 'DOGE',
+    current: '0.00022',
+    name: 'Dogecoin',
+    sevenDaysAgo: '0.00024'
+  },
+  {
+    currency: 'ETH',
+    current: '8.26940',
+    name: 'Ethereum',
+    sevenDaysAgo: '7.32209'
+  },
+  {
+    currency: 'LTC',
+    current: '4.52392',
+    name: 'Litecoin',
+    sevenDaysAgo: '4.45150'
+  },
+  {
+    currency: 'XEM',
+    current: '0.00348',
+    name: 'NEM',
+    sevenDaysAgo: '0.00361'
+  },
+  {
+    currency: 'XLM',
+    current: '0.00250',
+    name: 'Stellar',
+    sevenDaysAgo: '0.00262'
+  },
+  {
+    currency: 'XMR',
+    current: '14.27937',
+    name: 'Monero',
+    sevenDaysAgo: '9.76703'
+  },
+  {
+    currency: 'XRP',
+    current: '0.00642',
+    name: 'Ripple',
+    sevenDaysAgo: '0.00656'
+  }
+];
+
 const initialState = {
   date: '2017-01-01',
   // coinList,
+  // priceData: [],
+  priceData: initialPriceData,
   coinToTrade: null,
   transactions: [],
   transactionSuccess: null,
   portfolio: {},
-  priceData: [],
   fetching: false,
   error: null
 };

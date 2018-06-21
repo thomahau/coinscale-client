@@ -28,7 +28,13 @@ export default function TradeHistory(props) {
   return (
     <div>
       <h4 className="mb-4">Trade History</h4>
-      <ReactTable data={data} columns={columns} defaultPageSize={10} filterable />
+      <ReactTable
+        data={data}
+        columns={columns}
+        defaultSorted={[{ id: 'date', desc: true }]}
+        defaultPageSize={10}
+        filterable
+      />
     </div>
   );
 }

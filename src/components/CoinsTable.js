@@ -1,8 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { Link } from 'react-router-dom';
-// import { round } from '../helpers';
 
 export default function CoinsTable(props) {
   const data = props.priceData.map(coin => ({
@@ -12,7 +11,7 @@ export default function CoinsTable(props) {
     sevenDaysPerformance:
       coin.sevenDaysAgo === 'N/A'
         ? 'N/A'
-        : (((coin.current - coin.sevenDaysAgo) / coin.sevenDaysAgo) * 100).toPrecision(2)
+        : (((coin.current - coin.sevenDaysAgo) / coin.sevenDaysAgo) * 100).toFixed(2)
   }));
   const columns = [
     { Header: 'Name', accessor: 'name' },
@@ -25,7 +24,17 @@ export default function CoinsTable(props) {
         </Link>
       )
     },
-    { Header: 'Price', accessor: 'price', Cell: props => `$${props.value}` },
+    {
+      Header: 'Price',
+      accessor: 'price',
+      Cell: props =>
+        new Intl.NumberFormat('en-EN', {
+          style: 'currency',
+          currency: 'USD',
+          minimumSignificantDigits: 1,
+          maximumSignificantDigits: 3
+        }).format(props.value)
+    },
     {
       Header: '% 7d',
       accessor: 'sevenDaysPerformance',
@@ -33,5 +42,13 @@ export default function CoinsTable(props) {
     }
   ];
 
-  return <ReactTable data={data} columns={columns} defaultPageSize={10} filterable />;
+  return (
+    <ReactTable
+      data={data}
+      columns={columns}
+      defaultPageSize={15}
+      showPagination={false}
+      filterable
+    />
+  );
 }

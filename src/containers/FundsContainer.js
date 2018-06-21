@@ -1,70 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'reactstrap';
-import { getHoldingsData, getAggregateData } from '../helpers';
+import Funds from '../components/Funds';
+import { tradeCoin } from '../actions/coinscale';
+// import { fetchPortfolio } from '../actions/portfolio';
 
-export function FundsContainer(props) {
-  const { data, portfolio, transactions } = props;
-  // const holdingsData = getHoldingsData(data, portfolio, transactions);
-  // const aggregateData = getAggregateData(holdingsData);
-  // const holdingsDataRows = holdingsData.map(holding => (
-  //   <tr>
-  //     <td>{holding.currency}</td>
-  //     <td>{holding.amount}</td>
-  //     <td>${holding.costBasis}</td>
-  //     <td>${holding.currentValue}</td>
-  //     <td>${holding.currentValue - holding.costBasis}</td>
-  //     <td>${holding.currentPrice}</td>
-  //     <td>${holding.wPerformance}</td>
-  //   </tr>
-  // ));
+export class FundsContainer extends React.Component {
+  componentDidMount() {
+    // this.props.dispatch(fetchPortfolio());
+  }
 
-  return (
-    <div>
-      <h4 className="mb-4">Funds</h4>
-      <Table responsive bordered className="mt-3">
-        <thead className="thead-light">
-          <tr>
-            <th>Cost basis</th>
-            <th>Current value</th>
-            <th>Profit/Loss</th>
-            <th>7d</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {/* <td>${aggregateData.costBasis}</td>
-            <td>${aggregateData.currentValue}</td>
-            <td>${aggregateData.currentValue - aggregateData.costBasis}</td>
-            <td>${aggregateData.wPerformance}</td> */}
-          </tr>
-        </tbody>
-      </Table>
-
-      <Table responsive bordered className="mt-3">
-        <thead className="thead-light">
-          <tr>
-            <th>Symbol</th>
-            <th>Amount</th>
-            <th>Cost basis</th>
-            <th>Current value</th>
-            <th>Profit/Loss</th>
-            <th>Current price</th>
-            <th>7d</th>
-          </tr>
-        </thead>
-        {/* {holdingsDataRows} */}
-        <tbody />
-      </Table>
-    </div>
-  );
+  render() {
+    return <Funds {...this.props} />;
+  }
 }
 
 const mapStateToProps = state => ({
-  data: state.data,
-  balance: state.balance,
-  portfolio: state.portfolio,
-  transactions: state.transactions
+  date: state.protectedData.date,
+  priceData: state.protectedData.priceData,
+  transactions: state.protectedData.transactions,
+  portfolio: state.protectedData.portfolio,
+  fetching: state.protectedData.fetching
 });
 
-export default connect(mapStateToProps)(FundsContainer);
+const mapDispatchToProps = dispatch => ({
+  tradeCoin: (symbol) => {
+    dispatch(tradeCoin(symbol));
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FundsContainer);

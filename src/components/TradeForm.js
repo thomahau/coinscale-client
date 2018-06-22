@@ -96,7 +96,7 @@ export class TradeForm extends React.Component {
                 style: 'currency',
                 currency: 'USD',
                 minimumSignificantDigits: 1,
-                maximumSignificantDigits: 3
+                maximumSignificantDigits: 5
               }).format(coinPrice)}
             />
           </Col>
@@ -114,7 +114,7 @@ export class TradeForm extends React.Component {
                 style: 'currency',
                 currency: 'USD',
                 minimumSignificantDigits: 1,
-                maximumSignificantDigits: 7
+                maximumSignificantDigits: 5
               }).format(this.props.total)}
             />
           </Col>

@@ -1,10 +1,10 @@
 import React from 'react';
 
+const RANGE_STEP = 86400; // 1 day in seconds
 const MIN_TIMESTAMP = 1483228800;
 const MIN_DATE = '2017-01-01';
-const MAX_TIMESTAMP = 1527811200;
-const MAX_DATE = '2018-06-01';
-const RANGE_STEP = 86400; // 1 day in seconds
+const MAX_TIMESTAMP = Math.round(new Date().getTime() / 1000) - RANGE_STEP;
+const MAX_DATE = new Date(MAX_TIMESTAMP * 1000).toISOString().slice(0, 10);
 
 export default class DateWidget extends React.Component {
   constructor() {

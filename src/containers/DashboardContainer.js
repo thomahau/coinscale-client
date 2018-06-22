@@ -14,10 +14,6 @@ export class DashboardContainer extends React.Component {
   }
 
   render() {
-    // if (this.props.fetching) {
-    //   return <div>Loading data...</div>;
-    // }
-
     return <Dashboard />;
   }
 }

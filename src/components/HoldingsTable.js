@@ -7,7 +7,7 @@ export default function HoldingsTable(props) {
   const { data, tradeCoin } = props;
   const columns = [
     {
-      Header: 'All Cryptocurrency Holdings',
+      Header: 'Cryptocurrency Holdings',
       columns: [
         {
           Header: 'Symbol',
@@ -23,8 +23,8 @@ export default function HoldingsTable(props) {
           Header: 'Cost Basis',
           accessor: 'costBasis',
           Cell: props =>
-            (props.value < 1
-              ? '~$0'
+            (props.value < 0.1
+              ? '$0'
               : new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
@@ -36,8 +36,8 @@ export default function HoldingsTable(props) {
           Header: 'Current Value',
           accessor: 'currentValue',
           Cell: props =>
-            (props.value < 1
-              ? '~$0'
+            (props.value < 0.1
+              ? '$0'
               : new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
@@ -49,7 +49,7 @@ export default function HoldingsTable(props) {
           Header: 'Profit/Loss',
           accessor: 'profit',
           Cell: props =>
-            (props.value < 1
+            (props.value < 0.1
               ? '$0'
               : new Intl.NumberFormat('en-EN', {
                 style: 'currency',

@@ -4,22 +4,18 @@ import AggregateDataTable from '../components/AggregateDataTable';
 import HoldingsTable from '../components/HoldingsTable';
 import { tradeCoin } from '../actions/coinscale';
 import { getHoldingsData, getAggregateData } from '../actions/utils';
-// import { fetchPortfolio } from '../actions/portfolio';
-// componentDidMount() {
-//   this.props.dispatch(fetchPortfolio());
-// }
 
 export class FundsContainer extends React.Component {
   render() {
+    if (this.props.fetching) {
+      return <p>Loading data...</p>;
+    }
+
     const {
       date, priceData, transactions, balance
     } = this.props;
     const holdingsData = getHoldingsData(date, priceData, transactions);
     const aggregateData = getAggregateData(holdingsData, balance);
-
-    if (this.props.fetching) {
-      return <p>Loading data...</p>;
-    }
 
     return (
       <div>
@@ -32,11 +28,11 @@ export class FundsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  fetching: state.protectedData.fetching,
   date: state.protectedData.date,
   priceData: state.protectedData.priceData,
   transactions: state.protectedData.transactions,
-  balance: state.protectedData.portfolio.balance,
-  fetching: state.protectedData.fetching
+  balance: state.protectedData.portfolio.balance
 });
 
 const mapDispatchToProps = dispatch => ({

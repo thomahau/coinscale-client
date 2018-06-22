@@ -60,7 +60,10 @@ export const addTransaction = newTransaction => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ transaction }) => dispatch(addTransactionSuccess(true)))
+    .then(({ transaction }) => {
+      dispatch(addTransactionSuccess(true));
+      dispatch(fetchTransactions());
+    })
     .catch((err) => {
       dispatch(transactionsError(err));
     });

@@ -56,61 +56,61 @@ export function round(value, decimals = 2) {
     .toString();
 }
 
-export function getHoldingsData(date, priceData, portfolio, allTransactions) {
-  console.log('date: ', date);
-  console.log('priceData: ', priceData);
-  const { holdings } = portfolio; // const {balance, holdings} = portfolio;
+export function getHoldingsData(date, priceData, allTransactions) {
   const transactions = allTransactions.filter(transaction =>
     moment(transaction.date).isSameOrBefore(moment(date)));
+  const symbols = new Set(transactions.map(transaction => transaction.symbol));
   const holdingsData = [];
 
-  for (const symbol in holdings) {
-    if (holdings[symbol] > 0) {
-      const holding = {
-        symbol,
-        amount: holdings[symbol]
-      };
+  symbols.forEach((symbol) => {
+    const holding = {
+      symbol
+    };
+    let amount = 0;
+    let costBasis = 0;
 
-      let costBasis = 0;
-
-      // Cost basis
-      transactions.forEach((transaction) => {
-        if (holding.symbol === transaction.symbol) {
-          if (transaction.type === 'Buy') {
-            costBasis += transaction.price * transaction.amount;
-          } else if (transaction.type === 'Sell') {
-            costBasis -= transaction.price * transaction.amount;
-          }
+    // Amount and cost basis
+    transactions.forEach((transaction) => {
+      if (holding.symbol === transaction.symbol) {
+        if (transaction.type === 'Buy') {
+          amount += transaction.amount;
+          costBasis += transaction.price * transaction.amount;
+        } else if (transaction.type === 'Sell') {
+          amount -= transaction.amount;
+          costBasis -= transaction.price * transaction.amount;
         }
-      });
-      holding.costBasis = costBasis;
+      }
+    });
+    holding.amount = amount;
+    holding.costBasis = costBasis;
 
-      // Price data
-      const priceDatum = priceData.filter(p => p.currency === holding.symbol)[0];
-      holding.currentPrice = priceDatum.current;
-      holding.sevenDaysPerformance = (
-        ((priceDatum.current - priceDatum.sevenDaysAgo) / priceDatum.sevenDaysAgo) *
-        100
-      ).toFixed(2);
+    // Price data
+    const priceDatum = priceData.filter(p => p.currency === holding.symbol)[0];
+    holding.currentPrice = priceDatum.current;
+    holding.sevenDaysPerformance = (
+      ((priceDatum.current - priceDatum.sevenDaysAgo) / priceDatum.sevenDaysAgo) *
+      100
+    ).toFixed(2);
 
-      // Profit/Loss
-      holding.currentValue = holding.currentPrice * holding.amount;
-      holding.profit = holding.currentValue - holding.costBasis;
+    // Profit/Loss
+    holding.currentValue = holding.currentPrice * holding.amount;
+    holding.profit = holding.currentValue - holding.costBasis;
 
-      holdingsData.push(holding);
-    }
-  }
+    holdingsData.push(holding);
+  });
 
-  return holdingsData;
+  return holdingsData.filter(holding => holding.amount > 0);
 }
 
-export function getAggregateData(holdingsData) {
+export function getAggregateData(holdingsData, balance) {
   let costBasis = 0;
   let currentValue = 0;
+  let profit = 0;
 
   holdingsData.forEach((holding) => {
     costBasis += +holding.costBasis;
     currentValue += +holding.currentValue;
+    profit += holding.profit;
   });
 
   const total7DaysAgo = holdingsData.reduce(
@@ -119,11 +119,15 @@ export function getAggregateData(holdingsData) {
   );
   const sevenDaysPerformance = (100 * (currentValue / total7DaysAgo - 1)).toFixed(2);
 
-  return {
-    costBasis,
-    currentValue,
-    sevenDaysPerformance
-  };
+  return [
+    {
+      balance,
+      costBasis,
+      currentValue,
+      profit,
+      sevenDaysPerformance
+    }
+  ];
 }
 
 function getPastValue(value, pctChange) {

@@ -1,16 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Funds from '../components/Funds';
+import AggregateDataTable from '../components/AggregateDataTable';
+import HoldingsTable from '../components/HoldingsTable';
 import { tradeCoin } from '../actions/coinscale';
+import { getHoldingsData, getAggregateData } from '../actions/utils';
 // import { fetchPortfolio } from '../actions/portfolio';
+// componentDidMount() {
+//   this.props.dispatch(fetchPortfolio());
+// }
 
 export class FundsContainer extends React.Component {
-  componentDidMount() {
-    // this.props.dispatch(fetchPortfolio());
-  }
-
   render() {
-    return <Funds {...this.props} />;
+    const {
+      date, priceData, transactions, balance
+    } = this.props;
+    const holdingsData = getHoldingsData(date, priceData, transactions);
+    const aggregateData = getAggregateData(holdingsData, balance);
+
+    if (this.props.fetching) {
+      return <p>Loading data...</p>;
+    }
+
+    return (
+      <div>
+        <h4 className="mb-4">Funds</h4>
+        <AggregateDataTable data={aggregateData} />
+        <HoldingsTable data={holdingsData} tradeCoin={this.props.tradeCoin} />
+      </div>
+    );
   }
 }
 
@@ -18,7 +35,7 @@ const mapStateToProps = state => ({
   date: state.protectedData.date,
   priceData: state.protectedData.priceData,
   transactions: state.protectedData.transactions,
-  portfolio: state.protectedData.portfolio,
+  balance: state.protectedData.portfolio.balance,
   fetching: state.protectedData.fetching
 });
 

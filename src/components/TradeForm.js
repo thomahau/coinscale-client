@@ -88,7 +88,17 @@ export class TradeForm extends React.Component {
             Price:
           </Label>
           <Col sm={4}>
-            <Field component={FormInputPlaintext} type="text" name="price" val={`$${coinPrice}`} />
+            <Field
+              component={FormInputPlaintext}
+              type="text"
+              name="price"
+              val={new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'USD',
+                minimumSignificantDigits: 1,
+                maximumSignificantDigits: 3
+              }).format(coinPrice)}
+            />
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -100,7 +110,12 @@ export class TradeForm extends React.Component {
               component={FormInputPlaintext}
               type="text"
               name="total"
-              val={`$${this.props.total}`}
+              val={new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'USD',
+                minimumSignificantDigits: 1,
+                maximumSignificantDigits: 7
+              }).format(this.props.total)}
             />
           </Col>
         </FormGroup>
@@ -113,7 +128,12 @@ export class TradeForm extends React.Component {
               component={FormInputPlaintext}
               type="text"
               name="balance"
-              val={`$${this.props.portfolio.balance}`}
+              val={new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'USD',
+                minimumSignificantDigits: 1,
+                maximumSignificantDigits: 7
+              }).format(this.props.portfolio.balance)}
             />
           </Col>
         </FormGroup>

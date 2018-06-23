@@ -25,7 +25,7 @@ export default function CoinsTable(props) {
       )
     },
     {
-      Header: 'Price',
+      Header: 'Current Price',
       accessor: 'price',
       Cell: props =>
         new Intl.NumberFormat('en-EN', {
@@ -46,7 +46,7 @@ export default function CoinsTable(props) {
     <ReactTable
       data={data}
       columns={columns}
-      defaultPageSize={15}
+      defaultPageSize={20}
       showPagination={false}
       filterable
     />

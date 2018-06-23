@@ -78,7 +78,7 @@ export class LandingPage extends React.Component {
         </Container>
         <Container className="pt-lg-3">
           <Row className="my-4">
-            <Col sm="12" className="text-center">
+            <Col sm="12" className="text-center mb-3">
               <h3>Create your account</h3>
             </Col>
             <Col sm="12" md={{ size: 4, offset: 4 }}>

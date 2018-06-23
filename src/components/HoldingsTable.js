@@ -55,7 +55,7 @@ export default function HoldingsTable(props) {
                 style: 'currency',
                 currency: 'USD',
                 minimumSignificantDigits: 1,
-                maximumSignificantDigits: 3
+                maximumSignificantDigits: 4
               }).format(props.value))
         },
         {
@@ -66,7 +66,7 @@ export default function HoldingsTable(props) {
               style: 'currency',
               currency: 'USD',
               minimumSignificantDigits: 1,
-              maximumSignificantDigits: 3
+              maximumSignificantDigits: 4
             }).format(props.value)
         },
         {

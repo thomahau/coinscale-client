@@ -19,8 +19,7 @@ export class DashboardContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  date: state.protectedData.date,
-  fetching: state.protectedData.fetching
+  date: state.protectedData.date
 });
 
 const mapDispatchToProps = dispatch => ({

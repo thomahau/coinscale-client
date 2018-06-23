@@ -29,7 +29,7 @@ export default function AggregateDataTable(props) {
           accessor: 'costBasis',
           Cell: props =>
             (props.value < 1
-              ? '~$0'
+              ? '$0'
               : new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
@@ -66,7 +66,12 @@ export default function AggregateDataTable(props) {
         {
           Header: '% 7d',
           accessor: 'sevenDaysPerformance',
-          Cell: row => <span style={{ color: row.value > 0 ? 'green' : 'red' }}>{row.value}%</span>
+          Cell: row =>
+            (row.value === 'NaN' ? (
+              'N/A'
+            ) : (
+              <span style={{ color: row.value > 0 ? 'green' : 'red' }}>{row.value}%</span>
+            ))
         }
       ]
     }

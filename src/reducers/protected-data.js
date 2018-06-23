@@ -75,7 +75,6 @@ const initialPriceData = [
 
 const initialState = {
   date: '2017-01-01',
-  // coinList,
   // priceData: [],
   priceData: initialPriceData,
   coinToTrade: null,

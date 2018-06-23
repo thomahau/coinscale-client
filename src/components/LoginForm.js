@@ -1,20 +1,58 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { reduxForm, Field, focus } from 'redux-form';
+import { Button, Form, FormGroup } from 'reactstrap';
+import FormInput from './FormInput';
+import { login } from '../actions/auth';
+import { required, nonEmpty } from '../validators';
 
-const LoginForm = () => (
-  <Form className="login-form px-3 py-3">
-    <FormGroup>
-      <Label for="username">Username</Label>
-      <Input type="text" name="username" id="username" bsSize="sm" />
-    </FormGroup>
-    <FormGroup>
-      <Label for="password">Password</Label>
-      <Input type="password" name="password" id="password" bsSize="sm" />
-    </FormGroup>
-    <Button color="success" block>
-      Log in
-    </Button>
-  </Form>
-);
+export class LoginForm extends React.Component {
+  onSubmit(values) {
+    return this.props.dispatch(login(values.username, values.password));
+  }
 
-export default LoginForm;
+  render() {
+    let error;
+    if (this.props.error) {
+      error = (
+        <FormGroup aria-live="polite">
+          <p className="text-danger">{this.props.error}</p>
+        </FormGroup>
+      );
+    }
+
+    return (
+      <Form
+        className="login-form px-3 py-3"
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+      >
+        <FormGroup>
+          <label htmlFor="username">Username</label>
+          <Field
+            component={FormInput}
+            type="text"
+            name="username"
+            validate={[required, nonEmpty]}
+          />
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="password">Password</label>
+          <Field
+            component={FormInput}
+            type="password"
+            name="password"
+            validate={[required, nonEmpty]}
+          />
+        </FormGroup>
+        {error}
+        <Button color="success" disabled={this.props.submitting} block>
+          Log in
+        </Button>
+      </Form>
+    );
+  }
+}
+
+export default reduxForm({
+  form: 'login',
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+})(LoginForm);

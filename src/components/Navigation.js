@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   Navbar,
   NavbarBrand,
@@ -10,17 +11,23 @@ import {
   DropdownMenu
 } from 'reactstrap';
 import LoginForm from './LoginForm';
+import { clearAuth } from '../actions/auth';
+import { clearAuthToken } from '../local-storage';
 
-export default class Navigation extends React.Component {
+export class Navigation extends React.Component {
+  logOut() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
+
   render() {
-    // TODO: Conditional (ternary) operator?
     let navElements;
     if (this.props.loggedIn) {
       navElements = (
         <Nav className="ml-auto" navbar>
-          <NavItem className="navbar-text mt-1">{this.props.currentUser}</NavItem>
+          <NavItem className="navbar-text mt-1">{this.props.username}</NavItem>
           <NavItem>
-            <NavLink href="#" className="active">
+            <NavLink href="#" className="active" onClick={() => this.logOut()}>
               Log out
             </NavLink>
           </NavItem>
@@ -49,3 +56,15 @@ export default class Navigation extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  if (state.auth.currentUser !== null) {
+    return {
+      loggedIn: true,
+      username: state.auth.currentUser.username
+    };
+  }
+  return { loggedIn: false };
+};
+
+export default connect(mapStateToProps)(Navigation);

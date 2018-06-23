@@ -12,7 +12,7 @@ export class TradeFormContainer extends React.Component {
     };
   }
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     this.props.reset('trade');
   }
 

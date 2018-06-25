@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import Navigation from './Navigation';
 import LandingPage from './LandingPage';
-// import Dashboard from './Dashboard';
 import DashboardContainer from '../containers/DashboardContainer';
 import { refreshAuthToken } from '../actions/auth';
 

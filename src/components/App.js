@@ -41,7 +41,6 @@ export class App extends React.Component {
       <div>
         <Navigation loggedIn={this.props.loggedIn} currentUser={this.props.currentUser} />
         <Route exact path="/" component={LandingPage} />
-        {/* <Route path="/dashboard" component={Dashboard} /> */}
         <Route path="/dashboard" component={DashboardContainer} />
       </div>
     );

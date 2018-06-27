@@ -1,6 +1,3 @@
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
 import {
   SET_AUTH_TOKEN,
   setAuthToken,
@@ -11,13 +8,8 @@ import {
   AUTH_SUCCESS,
   authSuccess,
   AUTH_ERROR,
-  authError,
-  login
+  authError
 } from './auth';
-import { API_BASE_URL } from '../config';
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 describe('setAuthToken', () => {
   it('Should return the action', () => {
@@ -57,33 +49,5 @@ describe('authError', () => {
     const action = authError(error);
     expect(action.type).toEqual(AUTH_ERROR);
     expect(action.error).toEqual(error);
-  });
-});
-
-describe('Async actions', () => {
-  afterEach(() => {
-    fetchMock.reset();
-    fetchMock.restore();
-  });
-
-  it('Stores auth info and dispatches AUTH_SUCCESS on successful login', () => {
-    const username = 'demo';
-    const password = 'password';
-    fetchMock.postOnce(`${API_BASE_URL}/auth/login`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
-    });
-
-    const expectedActions = [{ type: AUTH_REQUEST }, { type: AUTH_SUCCESS, currentUser: username }];
-    const store = mockStore({ currentUser: null });
-
-    return store.dispatch(login(username, password)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
   });
 });

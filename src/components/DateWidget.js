@@ -4,7 +4,7 @@ const RANGE_STEP = 86400; // 1 day in seconds
 const MIN_TIMESTAMP = 1483228800;
 const MIN_DATE = '2017-01-01';
 const MAX_TIMESTAMP = Math.round(new Date().getTime() / 1000) - RANGE_STEP;
-const MAX_DATE = new Date(MAX_TIMESTAMP * 1000).toISOString().slice(0, 10);
+const MAX_DATE = new Date(MAX_TIMESTAMP * 1000).toISOString().slice(0, 10); // Yesterday
 
 export default class DateWidget extends React.Component {
   constructor() {
@@ -15,8 +15,7 @@ export default class DateWidget extends React.Component {
     };
   }
 
-  onChange = (event) => {
-    const timestamp = event.target.value;
+  onChange = (timestamp) => {
     const date = new Date(timestamp * 1000).toISOString().slice(0, 10);
     this.setState({
       timestamp,
@@ -24,8 +23,7 @@ export default class DateWidget extends React.Component {
     });
   };
 
-  handleDateChange = (event) => {
-    const timestamp = event.target.value;
+  handleDateChange = (timestamp) => {
     const date = new Date(timestamp * 1000).toISOString().slice(0, 10);
     this.props.changeDate(date);
     this.props.fetchPriceData(date);
@@ -44,8 +42,8 @@ export default class DateWidget extends React.Component {
           max={MAX_TIMESTAMP}
           step={RANGE_STEP}
           value={this.state.timestamp}
-          onChange={this.onChange}
-          onMouseUp={this.handleDateChange}
+          onChange={event => this.onChange(event.target.value)}
+          onMouseUp={event => this.handleDateChange(event.target.value)}
         />
       </div>
     );

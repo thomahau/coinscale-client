@@ -39,7 +39,7 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <Navigation loggedIn={this.props.loggedIn} currentUser={this.props.currentUser} />
+        <Navigation />
         <Route exact path="/" component={LandingPage} />
         <Route path="/dashboard" component={DashboardContainer} />
       </div>

@@ -4,6 +4,11 @@ import AggregateDataTable from './AggregateDataTable';
 
 describe('<AggregateDataTable />', () => {
   it('Renders without crashing', () => {
-    shallow(<AggregateDataTable data={[]} />);
+    shallow(<AggregateDataTable />);
+  });
+
+  it('Renders the table', () => {
+    const wrapper = shallow(<AggregateDataTable data={[]} />);
+    expect(wrapper.find('ReactTable').length).toBe(1);
   });
 });

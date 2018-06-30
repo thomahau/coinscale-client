@@ -10,16 +10,17 @@ import {
   CardText,
   CardBody,
   Container,
-  Jumbotron,
   Col,
   Row
 } from 'reactstrap';
-import RegistrationForm from './RegistrationForm';
+import Jumbotron from './Jumbotron';
+import RegistrationForm from '../RegistrationForm';
 // import Footer from './Footer';
+import './LandingPage.css';
 
 export class LandingPage extends React.Component {
-  scrollToSignup(formClassName) {
-    const form = document.getElementsByClassName(formClassName)[0];
+  scrollToSignup() {
+    const form = document.getElementsByClassName('register-form')[0];
     form.scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -30,23 +31,12 @@ export class LandingPage extends React.Component {
     }
 
     return (
-      <div>
-        <Jumbotron className="text-center">
-          <Container>
-            <h1>Your stepping stone to the cryptocurrency markets</h1>
-            <Button
-              color="success"
-              className="my-4"
-              onClick={() => this.scrollToSignup('register-form')}
-            >
-              Sign up to get started
-            </Button>
-          </Container>
-        </Jumbotron>
+      <div className="landing-page-wrapper">
+        <Jumbotron onClick={this.scrollToSignup} />
         <Container className="text-center">
           <CardGroup className="my-6">
             <Card className="py-lg-5 feature-card">
-              <CardImg top src={require('../images/money-g.png')} alt="Money icon" />
+              <CardImg top src={require('../../images/money-g.png')} alt="Money icon" />
               <CardBody>
                 <CardTitle>Risk free investing with virtual cash</CardTitle>
                 <CardText>
@@ -56,7 +46,7 @@ export class LandingPage extends React.Component {
               </CardBody>
             </Card>
             <Card className="py-lg-5 feature-card">
-              <CardImg top src={require('../images/trade-g.png')} alt="Trade icon" />
+              <CardImg top src={require('../../images/trade-g.png')} alt="Trade icon" />
               <CardBody>
                 <CardTitle>Go back in time and place trades</CardTitle>
                 <CardText>
@@ -66,7 +56,7 @@ export class LandingPage extends React.Component {
               </CardBody>
             </Card>
             <Card className="py-lg-5 feature-card">
-              <CardImg top src={require('../images/line-chart-g.png')} alt="Chart icon" />
+              <CardImg top src={require('../../images/line-chart-g.png')} alt="Chart icon" />
               <CardBody>
                 <CardTitle>Test your portfolio ideas</CardTitle>
                 <CardText>

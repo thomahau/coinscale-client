@@ -1,0 +1,19 @@
+.landing-page-wrapper {
+  margin-top: 70px;
+}
+
+.jumbotron {
+  height: 260px;
+  background-color: #f7f7f9;
+  padding-top: 70px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 3.6rem;
+  line-height: 1.2;
+  /* letter-spacing: -0.1rem; */
+  text-transform: uppercase;
+}

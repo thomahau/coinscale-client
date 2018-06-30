@@ -1,0 +1,19 @@
+nav {
+  height: 70px;
+  position: absolute;
+  top: 0;
+  background-color: #1a1a1a;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px 50px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  color: white;
+}

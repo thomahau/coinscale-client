@@ -1,11 +1,16 @@
-nav {
+header {
   height: 70px;
+  line-height: 70px;
   position: absolute;
   top: 0;
   background-color: #1a1a1a;
   color: white;
   text-transform: uppercase;
-  padding: 20px 50px;
+}
+
+.header-container {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 a {
@@ -13,7 +18,23 @@ a {
   text-decoration: none;
 }
 
-button {
+.login-button {
   border: none;
   color: white;
+}
+
+.login-button:hover {
+  color: white;
+}
+
+.login-button::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: '';
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Button, Form, FormGroup } from 'reactstrap';
-import FormInput from './FormInput';
-import { registerUser } from '../actions/users';
-import { login } from '../actions/auth';
-import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
+import FormInput from '../FormInput';
+import { registerUser } from '../../actions/users';
+import { login } from '../../actions/auth';
+import { required, nonEmpty, matches, length, isTrimmed } from '../../validators';
 
 const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('registerPassword');
@@ -20,7 +20,7 @@ export class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <Form
+      <form
         className="register-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
@@ -54,7 +54,7 @@ export class RegistrationForm extends React.Component {
         <Button type="submit" color="success" disabled={this.props.submitting} block>
           Create account
         </Button>
-      </Form>
+      </form>
     );
   }
 }

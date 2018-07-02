@@ -30,7 +30,9 @@ export default class Dropdown extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.showMenu}>Log in</button>
+        <button className="login-button" onClick={this.showMenu}>
+          Log in
+        </button>
 
         {this.state.showMenu ? (
           <div

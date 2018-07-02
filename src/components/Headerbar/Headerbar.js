@@ -5,11 +5,13 @@ import './Headerbar.css';
 
 export default function Headerbar() {
   return (
-    <nav className="u-full-width" role="banner">
-      <Link className="u-pull-left" to="/">
-        coinscale
-      </Link>
-      <NavbarElements />
-    </nav>
+    <header className="u-full-width" role="banner">
+      <nav className="header-container">
+        <Link className="u-pull-left" to="/">
+          coinscale
+        </Link>
+        <NavbarElements />
+      </nav>
+    </header>
   );
 }

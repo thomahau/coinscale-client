@@ -73,6 +73,7 @@ body {
   line-height: 1.6;
   font-weight: 300;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
 }
 
 .container,
@@ -81,6 +82,15 @@ body {
 }
 
 /* Typography + colors */
+h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
@@ -154,8 +164,8 @@ input[type='submit'].button-primary:hover,
 button.button-primary:focus,
 input[type='submit'].button-primary:focus {
   color: #fff;
-  background-color: #50be75;
-  border-color: #50be75;
+  background-color: #16a847;
+  border-color: #16a847;
 }
 
 /* ============================================= */

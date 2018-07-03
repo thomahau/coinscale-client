@@ -1,29 +1,28 @@
 import React from 'react';
-import { Input, FormFeedback } from 'reactstrap';
 
-export default class FormInput extends React.Component {
+export default class Input extends React.Component {
   render() {
     let error;
     if (this.props.meta.touched && this.props.meta.error) {
-      error = <FormFeedback invalid>{this.props.meta.error}</FormFeedback>;
+      error = <p className="form-help">{this.props.meta.error}</p>;
     }
 
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
-      warning = <FormFeedback invalid>{this.props.meta.warning}</FormFeedback>;
+      warning = <p className="form-help">{this.props.meta.warning}</p>;
     }
 
     return (
       <div className="form-input">
-        <Input
+        <input
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}
-          bsSize="sm"
           invalid={error || warning}
+          className={this.props.className}
         >
           {this.props.children}
-        </Input>
+        </input>
         {error}
         {warning}
       </div>

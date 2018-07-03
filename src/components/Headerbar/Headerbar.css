@@ -5,36 +5,15 @@ header {
   top: 0;
   background-color: #1a1a1a;
   color: white;
-  text-transform: uppercase;
 }
 
 .header-container {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
-a {
+.header-container a {
   color: white;
   text-decoration: none;
-}
-
-.login-button {
-  border: none;
-  color: white;
-}
-
-.login-button:hover {
-  color: white;
-}
-
-.login-button::after {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: '';
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-left: 0.3em solid transparent;
+  text-transform: uppercase;
 }

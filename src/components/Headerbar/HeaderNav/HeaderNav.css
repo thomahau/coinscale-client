@@ -1,0 +1,26 @@
+.nav-button {
+  position: relative;
+  display: inline-block;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+.nav-button:hover,
+.nav-button:active,
+.nav-button:focus {
+  color: white;
+  outline: none;
+}
+
+.login-button::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: '';
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+}

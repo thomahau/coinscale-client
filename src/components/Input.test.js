@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FormInput from './FormInput';
+import Input from './Input';
 
 describe('<FormInput />', () => {
   it('Renders without crashing', () => {
-    shallow(<FormInput type="text" input={{ name: 'username' }} meta={{ touched: false, error: null }} />);
+    shallow(<Input type="text" input={{ name: 'username' }} meta={{ touched: false, error: null }} />);
   });
 
   it('Renders error feedback when there is an error', () => {
-    const wrapper = shallow(<FormInput
+    const wrapper = shallow(<Input
       type="text"
       input={{ name: 'username' }}
       meta={{ touched: true, error: 'dummyError' }}

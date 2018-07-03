@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavbarElements from './NavbarElements';
+import HeaderNav from './HeaderNav/HeaderNav';
 import './Headerbar.css';
 
 export default function Headerbar() {
@@ -10,7 +10,7 @@ export default function Headerbar() {
         <Link className="u-pull-left" to="/">
           coinscale
         </Link>
-        <NavbarElements />
+        <HeaderNav />
       </nav>
     </header>
   );

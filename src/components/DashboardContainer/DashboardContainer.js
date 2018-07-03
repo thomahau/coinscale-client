@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RequiresLogin from './/RequiresLogin';
-import Dashboard from '../components/Dashboard';
-import { fetchPriceData } from '../actions/coinscale';
-import { fetchPortfolio } from '../actions/portfolio';
-import { fetchTransactions } from '../actions/transactions';
+import RequiresLogin from './RequiresLogin';
+import Dashboard from './Dashboard/Dashboard';
+import { fetchPriceData } from '../../actions/coinscale';
+import { fetchPortfolio } from '../../actions/portfolio';
+import { fetchTransactions } from '../../actions/transactions';
 
 export class DashboardContainer extends React.Component {
   componentDidMount() {

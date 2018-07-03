@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Dropdown from './Dropdown';
-import { clearAuth } from '../../actions/auth';
-import { clearAuthToken } from '../../local-storage';
+import Dropdown from './Dropdown/Dropdown';
+import { clearAuth } from '../../../actions/auth';
+import { clearAuthToken } from '../../../local-storage';
+import './HeaderNav.css';
 
-export class NavbarElements extends React.Component {
+export class HeaderNav extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
@@ -15,7 +16,9 @@ export class NavbarElements extends React.Component {
       return (
         <div className="u-pull-right">
           <span>{this.props.username}</span>
-          <button onClick={() => this.logOut()}>Log out</button>
+          <button className="nav-button" onClick={() => this.logOut()}>
+            Log out
+          </button>
         </div>
       );
     }
@@ -37,4 +40,4 @@ const mapStateToProps = (state) => {
   return { loggedIn: false };
 };
 
-export default connect(mapStateToProps)(NavbarElements);
+export default connect(mapStateToProps)(HeaderNav);

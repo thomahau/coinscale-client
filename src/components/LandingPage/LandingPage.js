@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Jumbotron from './Jumbotron';
-import FeatureCards from './FeatureCards';
-import RegistrationForm from './RegistrationForm';
+import Jumbotron from './Jumbotron/Jumbotron';
+import FeatureCards from './FeatureCards/FeatureCards';
+import RegistrationForm from './RegistrationForm/RegistrationForm';
 // import Footer from './Footer';
 import './LandingPage.css';
 
@@ -23,12 +23,7 @@ export class LandingPage extends React.Component {
       <div className="landing-page-wrapper">
         <Jumbotron onClick={this.scrollToSignup} />
         <FeatureCards />
-        <div className="container">
-          <div className="row">
-            <h2>Create your account</h2>
-            <RegistrationForm />
-          </div>
-        </div>
+        <RegistrationForm />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
 import { Col, Button, Form, FormGroup, Label, UncontrolledAlert } from 'reactstrap';
-import FormInput from './FormInput';
+import Input from './Input';
 import FormInputPlaintext from './FormInputPlaintext';
 import { submitTrade } from '../actions/coinscale';
 import { required, nonEmpty, validAmount } from '../validators';
@@ -53,7 +53,7 @@ export class TradeForm extends React.Component {
             Buy / Sell:
           </Label>
           <Col sm={4}>
-            <Field component={FormInput} type="select" name="type" validate={[required]}>
+            <Field component={Input} type="select" name="type" validate={[required]}>
               <option disabled />
               <option value="Buy">BUY</option>
               <option value="Sell">SELL</option>
@@ -66,7 +66,7 @@ export class TradeForm extends React.Component {
           </Label>
           <Col sm={4}>
             <Field
-              component={FormInput}
+              component={Input}
               type="number"
               name="amount"
               onChange={event => this.props.onChange(event.target.value)}

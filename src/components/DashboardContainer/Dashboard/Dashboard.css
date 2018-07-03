@@ -1,0 +1,35 @@
+.dashboard-wrapper {
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  border: 1px solid black;
+}
+
+.main-dashboard-card {
+  min-height: 80vh;
+}
+
+.card-header {
+  height: 40px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid darkgrey;
+}
+
+h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+  .date-widget-card {
+    margin-bottom: 20px;
+  }
+}

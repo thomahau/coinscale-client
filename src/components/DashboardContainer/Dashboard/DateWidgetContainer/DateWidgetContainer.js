@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import DateWidget from '../components/DateWidget';
-import { changeDate, fetchPriceData } from '../actions/coinscale';
+import DateWidget from './DateWidget/DateWidget';
+import { changeDate, fetchPriceData } from '../../../../actions/coinscale';
 
 const mapDispatchToProps = dispatch => ({
   changeDate: (date) => {

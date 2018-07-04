@@ -19,6 +19,13 @@
   border-bottom: 1px solid darkgrey;
 }
 
+.dashboard-nav-header {
+  height: 40px;
+  padding-top: 6px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid darkgrey;
+}
+
 h4 {
   margin-bottom: 1.5rem;
   font-size: 1.4rem;

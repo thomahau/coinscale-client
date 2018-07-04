@@ -1,4 +1,5 @@
 import React from 'react';
+import './DateWidget.css';
 
 const RANGE_STEP = 86400; // 1 day in seconds
 const MIN_TIMESTAMP = 1483228800;
@@ -31,13 +32,13 @@ export default class DateWidget extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="float-left">{MIN_DATE}</div>
-        <div className="float-right">{MAX_DATE}</div>
-        <h4 className="text-center">{this.state.date}</h4>
+      <div className="date-widget-wrapper">
+        <div className="date-range u-pull-left">{MIN_DATE}</div>
+        <div className="date-range u-pull-right">{MAX_DATE}</div>
+        <h3 className="selected-date">{this.state.date}</h3>
         <input
           type="range"
-          className="w-100"
+          className="u-full-width"
           min={MIN_TIMESTAMP}
           max={MAX_TIMESTAMP}
           step={RANGE_STEP}

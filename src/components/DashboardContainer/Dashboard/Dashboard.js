@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import DateWidgetContainer from '../../../containers/DateWidgetContainer';
+import DateWidgetContainer from './DateWidgetContainer/DateWidgetContainer';
 import CoinsTableContainer from '../../../containers/CoinsTableContainer';
 import FundsContainer from '../../../containers/FundsContainer';
 import TradeHistoryContainer from '../../../containers/TradeHistoryContainer';
@@ -20,7 +20,7 @@ export default function Dashboard() {
             <DateWidgetContainer />
           </div>
           <div className="row dashboard-card main-dashboard-card">
-            <div className="card-header">
+            <div className="dashboard-nav-header">
               <DashboardNav />
             </div>
             <Switch>

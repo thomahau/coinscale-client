@@ -26,6 +26,10 @@
   border-bottom: 1px solid darkgrey;
 }
 
+.card-body {
+  padding: 20px;
+}
+
 h4 {
   margin-bottom: 1.5rem;
   font-size: 1.4rem;

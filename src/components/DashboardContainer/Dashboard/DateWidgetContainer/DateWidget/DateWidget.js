@@ -32,7 +32,7 @@ export default class DateWidget extends React.Component {
 
   render() {
     return (
-      <div className="date-widget-wrapper">
+      <div>
         <div className="date-range u-pull-left">{MIN_DATE}</div>
         <div className="date-range u-pull-right">{MAX_DATE}</div>
         <h3 className="selected-date">{this.state.date}</h3>

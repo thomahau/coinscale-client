@@ -46,16 +46,16 @@
     width: 22%;
   }
   .four.columns {
-    width: 30.6666666667%;
+    width: 30.6666666667%; /* 30.6666666667 */
   }
   .five.columns {
-    width: 36%; /* 39.3333333333 */
+    width: 38%; /* 39.3333333333 */
   }
   .six.columns {
     width: 48%;
   }
   .seven.columns {
-    width: 62%; /* 56 */
+    width: 60%; /* 56 */
   }
   .nine.columns {
     width: 74%;
@@ -101,6 +101,10 @@ h3 {
 a {
   cursor: pointer;
   text-decoration: none;
+}
+
+.monospace {
+  font-family: 'Roboto Mono', monospace;
 }
 
 /* Utilities */
@@ -234,6 +238,21 @@ select {
   line-height: 1.5rem;
 }
 
+/* Tables */
+.rt-td .monospace {
+  font-size: 15px;
+}
+
+.rt-td a {
+  color: #1a1a1a;
+}
+
+.rt-td a:hover,
+.rt-td a:focus {
+  color: #50be75;
+  text-decoration: underline;
+}
+
 /* ============================================= */
 /* ============================================= */
 /* ============================================= */
@@ -243,7 +262,6 @@ select {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-right: 4px;
-  /* padding: 6px 6px; */
 }
 
 .trade-form .form-group {

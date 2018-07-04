@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AggregateDataTable from '../components/AggregateDataTable';
-import HoldingsTable from '../components/HoldingsTable';
-import { tradeCoin } from '../actions/coinscale';
-import { getHoldingsData, getAggregateData } from '../actions/utils';
+import AggregateDataTable from './AggregateDataTable/AggregateDataTable';
+import HoldingsTable from './HoldingsTable/HoldingsTable';
+import { tradeCoin } from '../../../../actions/coinscale';
+import { getHoldingsData, getAggregateData } from '../../../../actions/utils';
 
 export class FundsContainer extends React.Component {
   render() {
@@ -19,7 +19,7 @@ export class FundsContainer extends React.Component {
 
     return (
       <div>
-        <h4 className="mb-4">Funds</h4>
+        <h3>Funds</h3>
         <AggregateDataTable data={aggregateData} />
         <HoldingsTable data={holdingsData} tradeCoin={this.props.tradeCoin} />
       </div>

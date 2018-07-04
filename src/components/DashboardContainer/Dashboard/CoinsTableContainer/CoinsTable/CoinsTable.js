@@ -27,18 +27,25 @@ export default function CoinsTable(props) {
     {
       Header: 'Current Price',
       accessor: 'price',
-      Cell: props =>
-        new Intl.NumberFormat('en-EN', {
-          style: 'currency',
-          currency: 'USD',
-          minimumSignificantDigits: 1,
-          maximumSignificantDigits: 4
-        }).format(props.value)
+      Cell: row => (
+        <span className="monospace">
+          {new Intl.NumberFormat('en-EN', {
+            style: 'currency',
+            currency: 'USD',
+            minimumSignificantDigits: 1,
+            maximumSignificantDigits: 4
+          }).format(row.value)}
+        </span>
+      )
     },
     {
       Header: '% 7d',
       accessor: 'sevenDaysPerformance',
-      Cell: row => <span style={{ color: row.value > 0 ? 'green' : 'red' }}>{row.value}%</span>
+      Cell: row => (
+        <span className="monospace" style={{ color: row.value > 0 ? 'green' : 'red' }}>
+          {row.value}%
+        </span>
+      )
     }
   ];
 

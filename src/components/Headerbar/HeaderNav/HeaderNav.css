@@ -9,8 +9,7 @@
 .nav-button:hover,
 .nav-button:active,
 .nav-button:focus {
-  color: white;
-  outline: none;
+  color: #50be75;
 }
 
 .login-button::after {

@@ -17,3 +17,8 @@ header {
   text-decoration: none;
   text-transform: uppercase;
 }
+
+.header-container a:hover,
+.header-container a:focus {
+  color: #50be75;
+}

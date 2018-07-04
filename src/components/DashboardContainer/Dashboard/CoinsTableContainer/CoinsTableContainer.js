@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CoinsTable from '../components/CoinsTable';
-import { fetchPriceData, tradeCoin } from '../actions/coinscale';
+import CoinsTable from './CoinsTable/CoinsTable';
+import { fetchPriceData, tradeCoin } from '../../../../actions/coinscale';
 
 export class CoinsTableContainer extends React.Component {
   render() {

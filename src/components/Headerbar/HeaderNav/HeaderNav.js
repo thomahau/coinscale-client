@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Button from '../../Button/Button';
 import Dropdown from './Dropdown/Dropdown';
 import { clearAuth } from '../../../actions/auth';
 import { clearAuthToken } from '../../../local-storage';
-import './HeaderNav.css';
 
 export class HeaderNav extends React.Component {
   logOut() {
@@ -16,9 +16,9 @@ export class HeaderNav extends React.Component {
       return (
         <div className="u-pull-right">
           <span>{this.props.username}</span>
-          <button className="nav-button" onClick={() => this.logOut()}>
+          <Button nav onClick={() => this.logOut()}>
             Log out
-          </button>
+          </Button>
         </div>
       );
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Input.css';
 
 export default class Input extends React.Component {
   render() {
@@ -13,16 +14,16 @@ export default class Input extends React.Component {
     }
 
     return (
-      <div className="form-input">
+      <div>
         <input
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}
+          readOnly={this.props.readOnly}
+          value={this.props.val}
           invalid={error || warning}
           className={this.props.className}
-        >
-          {this.props.children}
-        </input>
+        />
         {error}
         {warning}
       </div>

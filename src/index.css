@@ -42,11 +42,14 @@
   .columns:first-child {
     margin-left: 0;
   }
+  .two.columns {
+    width: 15%;
+  }
   .three.columns {
     width: 22%;
   }
   .four.columns {
-    width: 30.6666666667%; /* 30.6666666667 */
+    width: 30.6666666667%;
   }
   .five.columns {
     width: 38%; /* 39.3333333333 */
@@ -120,97 +123,7 @@ a {
   float: left;
 }
 
-/* Buttons */
-.button,
-button,
-input[type='submit'] {
-  display: inline-block;
-  height: 38px;
-  padding: 0 30px;
-  color: #555;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 38px;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #bbb;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.button:hover,
-button:hover,
-input[type='submit']:hover,
-.button:focus,
-button:focus,
-input[type='submit']:focus {
-  color: #333;
-  border-color: #888;
-}
-
-.button:hover,
-button:hover,
-input[type='submit']:hover,
-a[role='button']:hover {
-  outline: 0;
-}
-
-.button.button-primary,
-button.button-primary,
-input[type='submit'].button-primary {
-  color: #fff;
-  background-color: #50be75;
-  border-color: #50be75;
-}
-
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type='submit'].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type='submit'].button-primary:focus {
-  color: #fff;
-  background-color: #16a847;
-  border-color: #16a847;
-}
-
-/* Forms */
-input[type='number'],
-input[type='text'],
-input[type='password'],
-select {
-  height: 35px;
-  padding: 6px 10px;
-  background-color: #fff;
-  border: 1px solid #d1d1d1;
-  border-radius: 4px;
-  box-shadow: none;
-  box-sizing: border-box;
-}
-
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type='number']:focus,
-input[type='text']:focus,
-input[type='password']:focus,
-select:focus {
-  border: 1px solid #33c3f0;
-  outline: 0;
-}
-
+/* Where? */
 label {
   display: block;
   margin-bottom: -5px;
@@ -218,24 +131,6 @@ label {
   color: #919aa1;
   font-size: 1.4rem;
   text-transform: capitalize;
-}
-
-input,
-select {
-  margin-bottom: 1.5rem;
-}
-
-.form-help {
-  line-height: 1.2rem;
-  margin-top: -9px;
-  margin-bottom: 7px;
-  font-size: 1.3rem;
-  color: red;
-}
-
-.form-error {
-  color: red;
-  line-height: 1.5rem;
 }
 
 /* Tables */
@@ -251,20 +146,4 @@ select {
 .rt-td a:focus {
   color: #50be75;
   text-decoration: underline;
-}
-
-/* ============================================= */
-/* ============================================= */
-/* ============================================= */
-
-.table td,
-.table th {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-right: 4px;
-}
-
-.trade-form .form-group {
-  padding-bottom: 0;
-  margin-bottom: 0;
 }

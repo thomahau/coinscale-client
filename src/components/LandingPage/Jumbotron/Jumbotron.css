@@ -7,14 +7,10 @@
 
 h1 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   font-weight: 300;
   font-size: 3.2rem;
   line-height: 1.2;
   letter-spacing: 3px;
   text-transform: uppercase;
-}
-
-.button-cta {
-  margin-top: 30px;
 }

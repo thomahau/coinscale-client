@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import Input from '../../../../Input';
+import Input from '../../../../Input/Input';
+import Button from '../../../../Button/Button';
 import { login } from '../../../../../actions/auth';
 import { required, nonEmpty } from '../../../../../validators';
 import './LoginForm.css';
@@ -42,9 +43,9 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         {error}
-        <button className="button-primary u-full-width" disabled={this.props.submitting}>
+        <Button primary block>
           Log in
-        </button>
+        </Button>
       </form>
     );
   }

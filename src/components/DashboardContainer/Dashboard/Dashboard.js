@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import DateWidgetContainer from './DateWidgetContainer/DateWidgetContainer';
 import FundsContainer from './FundsContainer/FundsContainer';
 import TradeHistoryContainer from './TradeHistoryContainer/TradeHistoryContainer';
-import TradeFormContainer from '../../../containers/TradeFormContainer';
+import TradeFormContainer from './TradeFormContainer/TradeFormContainer';
 import CoinsTableContainer from './CoinsTableContainer/CoinsTableContainer';
 import DashboardNav from './DashboardNav/DashboardNav';
 import './Dashboard.css';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import Input from '../../Input';
+import Input from '../../Input/Input';
+import Button from '../../Button/Button';
 import { registerUser } from '../../../actions/users';
 import { login } from '../../../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed } from '../../../validators';
@@ -52,9 +53,9 @@ export class RegistrationForm extends React.Component {
                 className="u-full-width"
                 validate={[required, nonEmpty, matchesPassword]}
               />
-              <button className="button-primary u-full-width" disabled={this.props.submitting}>
+              <Button primary block>
                 Create account
-              </button>
+              </Button>
             </form>
           </div>
         </div>

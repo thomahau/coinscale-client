@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
-import TradeForm from '../components/TradeForm';
-import { resetTransactionSuccess } from '../actions/transactions';
+import TradeForm from './TradeForm/TradeForm';
+import { resetTransactionSuccess } from '../../../../actions/transactions';
 
 export class TradeFormContainer extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export class TradeFormContainer extends React.Component {
   render() {
     return (
       <div>
-        <h4 className="mb-3">Trade</h4>
+        <h3>Trade</h3>
         <TradeForm total={this.state.total} onChange={this.onChangeAmount} {...this.props} />
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../../Button/Button';
 import LoginForm from './LoginForm/LoginForm';
 import './Dropdown.css';
 
@@ -31,9 +32,9 @@ export default class Dropdown extends React.Component {
   render() {
     return (
       <div>
-        <button className="nav-button login-button" onClick={this.showMenu}>
+        <Button nav login onClick={this.showMenu}>
           Log in
-        </button>
+        </Button>
 
         {this.state.showMenu ? (
           <div

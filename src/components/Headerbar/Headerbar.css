@@ -8,8 +8,7 @@ header {
 }
 
 .header-container {
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 25px;
 }
 
 .header-container a {
@@ -21,4 +20,11 @@ header {
 .header-container a:hover,
 .header-container a:focus {
   color: #50be75;
+}
+
+@media only screen and (min-width: 600px) {
+  .header-container {
+    padding-left: 40px;
+    padding-right: 30px;
+  }
 }

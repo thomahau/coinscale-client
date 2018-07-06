@@ -37,7 +37,7 @@ export default function Dashboard() {
         </div>
         <div className="five columns dashboard-card">
           <div className="card-header">
-            <h4>Cryptocurrencies</h4>
+            <h4>Cryptocurrency Prices</h4>
           </div>
           <div className="card-body">
             <CoinsTableContainer />

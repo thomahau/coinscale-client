@@ -27,6 +27,14 @@ input[readonly] {
   font-size: 14px;
 }
 
+label {
+  display: block;
+  margin-bottom: -5px;
+  line-height: 1.2rem;
+  color: #919aa1;
+  font-size: 1.4rem;
+}
+
 .form-help {
   line-height: 1.2rem;
   margin-top: -9px;

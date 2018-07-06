@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
+import Alert from './Alert/Alert';
 import Input from '../../../../Input/Input';
 import Select from './Select/Select';
 import Button from '../../../../Button/Button';
@@ -24,17 +25,16 @@ export class TradeForm extends React.Component {
     let error;
     let success;
     if (this.props.error) {
-      // error = <UncontrolledAlert color="danger">{this.props.error}</UncontrolledAlert>;
-      error = <div>{this.props.error}</div>;
+      error = <Alert type="error">{this.props.error}</Alert>;
     }
     if (this.props.transactionSuccess) {
-      // success = (
-      //   <UncontrolledAlert color="success" onClick={event => this.props.closeAlert(null)}>
-      //     Your transaction was successful!
-      //   </UncontrolledAlert>
-      // );
-      success = <div>success</div>;
+      success = (
+        <Alert type="success" onClick={event => this.props.closeAlert(null)}>
+          Your transaction was successful!
+        </Alert>
+      );
     }
+    const coinSymbol = this.props.coinData ? this.props.coinData.currency : '';
     const coinName = this.props.coinData
       ? `${this.props.coinData.name} (${this.props.coinData.currency})`
       : 'No coin selected';
@@ -50,14 +50,17 @@ export class TradeForm extends React.Component {
         <label htmlFor="type">Buy / Sell:</label>
         <Field component={Select} name="type" options={tradeTypeOptions} validate={[required]} />
         <label htmlFor="amount">Amount:</label>
-        <Field
-          component={Input}
-          type="number"
-          name="amount"
-          onChange={event => this.props.onChange(event.target.value)}
-          validate={[required, nonEmpty]}
-          normalize={validAmount}
-        />
+        <div className="amount-box">
+          <Field
+            component={Input}
+            type="number"
+            name="amount"
+            onChange={event => this.props.onChange(event.target.value)}
+            validate={[required, nonEmpty]}
+            normalize={validAmount}
+          />
+          <span className="amount-symbol">{coinSymbol}</span>
+        </div>
         <label htmlFor="date">Current date:</label>
         <Field
           component={Input}

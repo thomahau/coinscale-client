@@ -91,7 +91,6 @@ body {
   text-align: center;
 }
 
-/* Typography + colors */
 h3 {
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
@@ -110,29 +109,6 @@ a {
   font-family: 'Roboto Mono', monospace;
 }
 
-/* Utilities */
-.u-full-width {
-  width: 100%;
-}
-
-.u-pull-right {
-  float: right;
-}
-
-.u-pull-left {
-  float: left;
-}
-
-/* Where? */
-label {
-  display: block;
-  margin-bottom: -5px;
-  line-height: 1.2rem;
-  color: #919aa1;
-  font-size: 1.4rem;
-  text-transform: capitalize;
-}
-
 /* Tables */
 .rt-td .monospace {
   font-size: 15px;
@@ -146,4 +122,17 @@ label {
 .rt-td a:focus {
   color: #50be75;
   text-decoration: underline;
+}
+
+/* Utilities */
+.u-full-width {
+  width: 100%;
+}
+
+.u-pull-right {
+  float: right;
+}
+
+.u-pull-left {
+  float: left;
 }

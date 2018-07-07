@@ -3,9 +3,9 @@ import './FeatureCards.css';
 
 export default function FeatureCards() {
   return (
-    <div className="feature-cards">
-      <div className="row card-container">
-        <div className="card">
+    <div className="container">
+      <div className="row feature-cards">
+        <div className="four columns card">
           <img className="card-img" src={require('../../../images/money-g.png')} alt="Money icon" />
           <div>
             <h3>Risk free investing with virtual cash</h3>
@@ -15,7 +15,7 @@ export default function FeatureCards() {
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="four columns card">
           <img className="card-img" src={require('../../../images/trade-g.png')} alt="Trade icon" />
           <div>
             <h3>Go back in time and place trades</h3>
@@ -25,7 +25,7 @@ export default function FeatureCards() {
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="four columns card">
           <img
             className="card-img"
             src={require('../../../images/line-chart-g.png')}

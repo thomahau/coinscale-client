@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { LandingPage } from './LandingPage';
+import Jumbotron from './Jumbotron/Jumbotron';
+import FeatureCards from './FeatureCards/FeatureCards';
+import RegistrationForm from './RegistrationForm/RegistrationForm';
+import Footer from './Footer/Footer';
 
 describe('<LandingPage />', () => {
   it('Renders without crashing', () => {
@@ -14,7 +18,9 @@ describe('<LandingPage />', () => {
 
   it('Renders the landing page when user is not logged in', () => {
     const wrapper = shallow(<LandingPage loggedIn={false} />);
-    expect(wrapper.find('h1').text()).toBe('Your stepping stone to the cryptocurrency markets');
-    expect(wrapper.find('CardImg').length).toBe(3);
+    expect(wrapper.find(Jumbotron).length).toBe(1);
+    expect(wrapper.find(FeatureCards).length).toBe(1);
+    expect(wrapper.find(RegistrationForm).length).toBe(1);
+    expect(wrapper.find(Footer).length).toBe(1);
   });
 });

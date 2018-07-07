@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Jumbotron from './Jumbotron/Jumbotron';
 import FeatureCards from './FeatureCards/FeatureCards';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
-// import Footer from './Footer';
+import Footer from './Footer/Footer';
 import './LandingPage.css';
 
 export class LandingPage extends React.Component {
@@ -24,6 +24,7 @@ export class LandingPage extends React.Component {
         <Jumbotron onClick={this.scrollToSignup} />
         <FeatureCards />
         <RegistrationForm />
+        <Footer />
       </div>
     );
   }

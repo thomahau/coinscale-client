@@ -10,8 +10,8 @@ import './Dashboard.css';
 
 export default function Dashboard() {
   return (
-    <div className="container-fluid dashboard-wrapper">
-      <div className="row">
+    <div className="container-fluid">
+      <div className="row dashboard-wrapper">
         <div className="seven columns">
           <div className="row dashboard-card date-widget-card">
             <div className="card-header">

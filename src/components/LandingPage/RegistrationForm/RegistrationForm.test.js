@@ -11,7 +11,6 @@ describe('<RegistrationForm />', () => {
   it('Renders the register-form', () => {
     const handleSubmit = jest.fn();
     const wrapper = shallow(<RegistrationForm handleSubmit={handleSubmit} />);
-
-    expect(wrapper.find('Form').hasClass('register-form')).toBe(true);
+    expect(wrapper.find('form').hasClass('register-form')).toBe(true);
   });
 });

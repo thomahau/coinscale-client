@@ -12,7 +12,7 @@ describe('<DateWidget />', () => {
     const date = '06-01-2017';
 
     wrapper.setState({ date });
-    expect(wrapper.contains(<h4 className="text-center">{date}</h4>)).toEqual(true);
+    expect(wrapper.contains(<h3 className="selected-date">{date}</h3>)).toEqual(true);
     expect(wrapper.find('input[type="range"]').length).toBe(1);
   });
 

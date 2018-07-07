@@ -2,8 +2,18 @@
   background-color: white;
   color: #1a1a1a;
   position: absolute;
-  right: 80px;
+  right: 40px;
   top: 60px;
   width: 200px;
   border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.button-login {
+  outline: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .dropdown-menu {
+    right: 60px;
+  }
 }

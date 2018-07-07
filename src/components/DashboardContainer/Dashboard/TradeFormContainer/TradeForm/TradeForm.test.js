@@ -19,7 +19,7 @@ describe('<TradeForm />', () => {
       portfolio={{ balance: 20000, portfolio: {} }}
       handleSubmit={handleSubmit}
     />);
-    expect(wrapper.find('Form').hasClass('trade-form')).toBe(true);
+    expect(wrapper.find('form').hasClass('trade-form')).toBe(true);
   });
 
   it('Renders a success message on successful trade', () => {
@@ -31,7 +31,7 @@ describe('<TradeForm />', () => {
       handleSubmit={handleSubmit}
       transactionSuccess={success}
     />);
-    expect(wrapper.find('UncontrolledAlert').length).toBe(1);
+    expect(wrapper.find('Alert').length).toBe(1);
   });
 
   it('Dispatches submitTrade action when form is submitted', () => {

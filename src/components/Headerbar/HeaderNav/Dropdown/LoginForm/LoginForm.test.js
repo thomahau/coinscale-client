@@ -11,16 +11,16 @@ describe('<LoginForm />', () => {
   it('Renders the login-form', () => {
     const handleSubmit = jest.fn();
     const wrapper = shallow(<LoginForm handleSubmit={handleSubmit} />);
-
-    expect(wrapper.find('Form').hasClass('login-form')).toBe(true);
+    expect(wrapper.find('form').hasClass('login-form')).toBe(true);
   });
 
   it('Renders error feedback when there is an error', () => {
     const handleSubmit = jest.fn();
     const error = 'mockError';
     const wrapper = shallow(<LoginForm handleSubmit={handleSubmit} error={error} />);
-
-    expect(wrapper.contains(<p className="text-danger">{error}</p>)).toEqual(true);
+    expect(wrapper.contains(<div className="form-error" aria-live="polite">
+      {error}
+                            </div>)).toEqual(true);
   });
 
   it('Dispatches login action when form is submitted', () => {
@@ -29,7 +29,6 @@ describe('<LoginForm />', () => {
     const wrapper = shallow(<LoginForm handleSubmit={handleSubmit} dispatch={dispatch} />);
     const instance = wrapper.instance();
     const values = { username: 'foo', password: 'bar' };
-
     instance.onSubmit(values);
     expect(dispatch).toHaveBeenCalled();
   });

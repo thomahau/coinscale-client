@@ -101,5 +101,5 @@ export default function HoldingsTable(props) {
     }
   ];
 
-  return <ReactTable data={data} columns={columns} defaultPageSize={10} showPagination={false} />;
+  return <ReactTable data={data} columns={columns} defaultPageSize={10} />;
 }

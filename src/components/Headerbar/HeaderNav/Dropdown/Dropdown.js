@@ -17,7 +17,7 @@ export default class Dropdown extends React.Component {
   showMenu(event) {
     event.preventDefault();
     this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
+      document.addEventListener('click', this.closeMenu); // Causing potential problems? http://www.justincarmony.com/blog/2015/04/02/webpack-react-multiple-versions-issues/
     });
   }
 

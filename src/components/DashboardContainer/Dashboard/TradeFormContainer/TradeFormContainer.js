@@ -5,7 +5,7 @@ import TradeForm from './TradeForm/TradeForm';
 import { resetTransactionSuccess } from '../../../../actions/transactions';
 
 export class TradeFormContainer extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       total: 0

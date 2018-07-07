@@ -9,7 +9,7 @@ describe('<TradeHistory />', () => {
 
   it('Renders the header and table', () => {
     const wrapper = shallow(<TradeHistory transactions={[]} />);
-    expect(wrapper.contains(<h4 className="mb-4">Trade History</h4>));
+    expect(wrapper.contains(<h3>Trade History</h3>)).toEqual(true);
     expect(wrapper.find('ReactTable').length).toBe(1);
   });
 });

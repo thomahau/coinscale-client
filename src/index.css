@@ -110,8 +110,14 @@ a {
 }
 
 /* Tables */
-.rt-td .monospace {
+.rt-th,
+.rt-td,
+.-pagination {
   font-size: 15px;
+}
+
+.rt-td .monospace {
+  font-size: 14px;
 }
 
 .rt-td a {
@@ -122,6 +128,23 @@ a {
 .rt-td a:focus {
   color: #50be75;
   text-decoration: underline;
+}
+
+.-pagination input,
+.-pagination select {
+  margin-bottom: 0.5rem;
+  height: 30px;
+}
+
+.-pagination select {
+  width: 80px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .-pagination {
+    height: 50px;
+    line-height: 50px;
+  }
 }
 
 /* Utilities */

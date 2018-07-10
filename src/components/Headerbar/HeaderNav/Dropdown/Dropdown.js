@@ -14,6 +14,10 @@ export default class Dropdown extends React.Component {
     this.closeMenu = this.closeMenu.bind(this);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.closeMenu);
+  }
+
   showMenu(event) {
     event.preventDefault();
     this.setState({ showMenu: true }, () => {

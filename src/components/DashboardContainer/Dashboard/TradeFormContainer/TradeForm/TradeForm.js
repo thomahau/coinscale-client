@@ -29,7 +29,7 @@ export class TradeForm extends React.Component {
     }
     if (this.props.transactionSuccess) {
       success = (
-        <Alert type="success" onClick={event => this.props.closeAlert(null)}>
+        <Alert type="success" onClick={() => this.props.closeAlert(null)}>
           Your transaction was successful!
         </Alert>
       );

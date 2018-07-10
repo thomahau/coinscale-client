@@ -61,7 +61,13 @@ export default function TradeHistory(props) {
   return (
     <div>
       <h3>Trade History</h3>
-      <ReactTable data={data} columns={columns} defaultPageSize={10} filterable />
+      <ReactTable
+        data={data}
+        columns={columns}
+        defaultPageSize={10}
+        filterable
+        className="-striped"
+      />
     </div>
   );
 }

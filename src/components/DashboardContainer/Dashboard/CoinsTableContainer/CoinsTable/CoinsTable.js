@@ -55,7 +55,7 @@ export default function CoinsTable(props) {
       columns={columns}
       defaultPageSize={20}
       showPagination={false}
-      filterable
+      className="-striped"
     />
   );
 }

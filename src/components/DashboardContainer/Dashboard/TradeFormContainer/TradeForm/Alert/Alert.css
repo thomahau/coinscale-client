@@ -1,0 +1,27 @@
+.alert {
+  line-height: 21px;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+}
+
+.alert-success {
+  background-color: #dbf2e3;
+  border-color: #cdedd8;
+}
+
+.alert-error {
+  background-color: #f7dddc;
+  border-color: #f7dddc;
+}
+
+.close {
+  float: right;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  background-color: #dbf2e3;
+  border: none;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}

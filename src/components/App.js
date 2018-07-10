@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-import Navigation from './Navigation';
-import LandingPage from './LandingPage';
-import DashboardContainer from '../containers/DashboardContainer';
+import Headerbar from './Headerbar/Headerbar';
+import LandingPage from './LandingPage/LandingPage';
+import DashboardContainer from './DashboardContainer/DashboardContainer';
 import { refreshAuthToken } from '../actions/auth';
 
 export class App extends React.Component {
@@ -39,9 +39,8 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <Navigation loggedIn={this.props.loggedIn} currentUser={this.props.currentUser} />
+        <Headerbar />
         <Route exact path="/" component={LandingPage} />
-        {/* <Route path="/dashboard" component={Dashboard} /> */}
         <Route path="/dashboard" component={DashboardContainer} />
       </div>
     );

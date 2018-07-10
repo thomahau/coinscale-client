@@ -36,16 +36,52 @@ const initialPriceData = [
     sevenDaysAgo: '0.00024'
   },
   {
+    currency: 'ETC',
+    current: '1.41402',
+    name: 'Ethereum Classic',
+    sevenDaysAgo: '1.11943'
+  },
+  {
     currency: 'ETH',
-    current: '8.26940',
+    current: '8.26942',
     name: 'Ethereum',
     sevenDaysAgo: '7.32209'
+  },
+  {
+    currency: 'LSK',
+    current: '0.14936',
+    name: 'Lisk',
+    sevenDaysAgo: '0.13625'
   },
   {
     currency: 'LTC',
     current: '4.52392',
     name: 'Litecoin',
     sevenDaysAgo: '4.45150'
+  },
+  {
+    currency: 'NEO',
+    current: '0.14650',
+    name: 'NEO',
+    sevenDaysAgo: '0.13187'
+  },
+  {
+    currency: 'REP',
+    current: '4.04691',
+    name: 'Augur',
+    sevenDaysAgo: '2.78303'
+  },
+  {
+    currency: 'STEEM',
+    current: '0.16296',
+    name: 'Steem',
+    sevenDaysAgo: '0.13730'
+  },
+  {
+    currency: 'WAVES',
+    current: '0.21998',
+    name: 'Waves',
+    sevenDaysAgo: '0.18947'
   },
   {
     currency: 'XEM',
@@ -70,12 +106,17 @@ const initialPriceData = [
     current: '0.00642',
     name: 'Ripple',
     sevenDaysAgo: '0.00656'
+  },
+  {
+    currency: 'ZEC',
+    current: '48.88683',
+    name: 'ZCash',
+    sevenDaysAgo: '48.20183'
   }
 ];
 
 const initialState = {
   date: '2017-01-01',
-  // priceData: [],
   priceData: initialPriceData,
   coinToTrade: null,
   transactions: [],

@@ -1,0 +1,30 @@
+header {
+  height: 70px;
+  line-height: 70px;
+  position: absolute;
+  top: 0;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.header-container {
+  padding-left: 25px;
+}
+
+.header-container a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header-container a:hover,
+.header-container a:focus {
+  color: #50be75;
+}
+
+@media only screen and (min-width: 600px) {
+  .header-container {
+    padding-left: 40px;
+    padding-right: 30px;
+  }
+}

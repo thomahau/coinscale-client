@@ -27,10 +27,10 @@ export default function Dashboard() {
             </div>
             <div className="card-body">
               <Switch>
-                <Route exact path="/dashboard/funds" component={FundsContainer} />
-                <Route exact path="/dashboard/history" component={TradeHistoryContainer} />
                 <Route exact path="/dashboard/trade" component={TradeFormContainer} />
-                <Route path="/dashboard" component={FundsContainer} />
+                <Route exact path="/dashboard/history" component={TradeHistoryContainer} />
+                <Route exact path="/dashboard/funds" component={FundsContainer} />
+                <Route path="/dashboard" component={TradeFormContainer} />
               </Switch>
             </div>
           </div>

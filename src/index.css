@@ -91,6 +91,18 @@ body {
   text-align: center;
 }
 
+.dashboard-header {
+  display: flex;
+}
+
+.dashboard-h3::after {
+  content: '';
+  width: 65px;
+  height: 1px;
+  display: block;
+  background: #50be75;
+}
+
 h3 {
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
@@ -118,6 +130,8 @@ a {
 
 .rt-td .monospace {
   font-size: 14px;
+  /* float: right;
+  margin-right: 15px; */
 }
 
 .rt-td a {
@@ -137,7 +151,7 @@ a {
 }
 
 .-pagination select {
-  width: 80px;
+  width: 90px;
 }
 
 @media only screen and (min-width: 1000px) {

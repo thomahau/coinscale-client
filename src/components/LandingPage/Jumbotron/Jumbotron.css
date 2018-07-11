@@ -32,7 +32,5 @@ h1 {
 @media only screen and (min-width: 1000px) {
   .jumbotron {
     min-height: 360px;
-    border-bottom: 2px solid #f7f7f9;
-    background: none;
   }
 }

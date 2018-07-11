@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import FundsHeader from './FundsHeader/FundsHeader';
 import AggregateDataTable from './AggregateDataTable/AggregateDataTable';
 import HoldingsTable from './HoldingsTable/HoldingsTable';
 import { tradeCoin } from '../../../../actions/coinscale';
@@ -19,7 +20,7 @@ export class FundsContainer extends React.Component {
 
     return (
       <div>
-        <h3>Funds</h3>
+        <FundsHeader />
         <AggregateDataTable data={aggregateData} />
         <HoldingsTable data={holdingsData} tradeCoin={this.props.tradeCoin} />
       </div>

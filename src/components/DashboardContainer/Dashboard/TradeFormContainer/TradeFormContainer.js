@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reset } from 'redux-form';
+import TradeFormHeader from './TradeFormHeader/TradeFormHeader';
 import TradeForm from './TradeForm/TradeForm';
 import { resetTransactionSuccess } from '../../../../actions/transactions';
 
@@ -27,7 +28,7 @@ export class TradeFormContainer extends React.Component {
   render() {
     return (
       <div>
-        <h3>Trade</h3>
+        <TradeFormHeader />
         <TradeForm total={this.state.total} onChange={this.onChangeAmount} {...this.props} />
       </div>
     );

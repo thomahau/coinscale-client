@@ -1,10 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import TradeHistoryHeader from './TradeHistoryHeader/TradeHistoryHeader';
 import TradeHistory from './TradeHistory/TradeHistory';
 
 export class TradeHistoryContainer extends React.Component {
   render() {
-    return <TradeHistory {...this.props} />;
+    return (
+      <div>
+        <TradeHistoryHeader />
+        <TradeHistory {...this.props} />
+      </div>
+    );
   }
 }
 

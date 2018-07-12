@@ -122,7 +122,7 @@ a {
 }
 
 /* Tables */
-.rt-th,
+/* .rt-th,
 .rt-td,
 .-pagination {
   font-size: 15px;
@@ -130,8 +130,6 @@ a {
 
 .rt-td .monospace {
   font-size: 14px;
-  /* float: right;
-  margin-right: 15px; */
 }
 
 .rt-td a {
@@ -159,7 +157,7 @@ a {
     height: 50px;
     line-height: 50px;
   }
-}
+} */
 
 /* Utilities */
 .u-full-width {

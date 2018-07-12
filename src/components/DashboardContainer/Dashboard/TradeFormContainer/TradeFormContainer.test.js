@@ -9,7 +9,7 @@ describe('<TradeFormContainer />', () => {
 
   it('Renders the header and an initial total of 0', () => {
     const wrapper = shallow(<TradeFormContainer />);
-    expect(wrapper.contains(<h3>Trade</h3>)).toEqual(true);
+    expect(wrapper.find('TradeFormHeader').length).toBe(1);
     expect(wrapper.state('total')).toEqual(0);
   });
 

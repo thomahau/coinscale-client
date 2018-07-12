@@ -24,7 +24,7 @@ describe('<FundsContainer />', () => {
       transactions={transactions}
       balance={balance}
     />);
-    expect(wrapper.contains(<h3>Funds</h3>)).toEqual(true);
+    expect(wrapper.find('FundsHeader').length).toBe(1);
     expect(wrapper.find('AggregateDataTable').length).toBe(1);
     expect(wrapper.find('HoldingsTable').length).toBe(1);
   });

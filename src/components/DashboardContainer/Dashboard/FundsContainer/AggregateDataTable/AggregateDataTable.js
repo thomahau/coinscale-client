@@ -7,13 +7,13 @@ export default function AggregateDataTable(props) {
   const { data } = props;
   const columns = [
     {
-      Header: 'Cash Balance',
+      Header: <span className="u-pull-right">Cash Balance</span>,
       columns: [
         {
           Header: '',
           accessor: 'balance',
           Cell: row => (
-            <span className="monospace">
+            <span className="monospace u-pull-right">
               {new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
@@ -29,13 +29,13 @@ export default function AggregateDataTable(props) {
       Header: 'Cryptocurrency Totals',
       columns: [
         {
-          Header: 'Cost Basis',
+          Header: <span className="u-pull-right">Cost Basis</span>,
           accessor: 'costBasis',
           Cell: row =>
             (row.value < 1 ? (
-              <span className="monospace">$0</span>
+              <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -46,13 +46,13 @@ export default function AggregateDataTable(props) {
             ))
         },
         {
-          Header: 'Current Value',
+          Header: <span className="u-pull-right">Current Value</span>,
           accessor: 'currentValue',
           Cell: row =>
             (row.value < 1 ? (
               <span className="monospace">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -63,11 +63,11 @@ export default function AggregateDataTable(props) {
             ))
         },
         {
-          Header: 'Profit/Loss',
+          Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
           Cell: row =>
             (row.value < 1 ? (
-              <span className="monospace">$0</span>
+              <span className="monospace u-pull-right">$0</span>
             ) : (
               <span className="monospace">
                 {new Intl.NumberFormat('en-EN', {
@@ -80,13 +80,16 @@ export default function AggregateDataTable(props) {
             ))
         },
         {
-          Header: '% 7d',
+          Header: <span className="u-pull-right">% 7d</span>,
           accessor: 'sevenDaysPerformance',
           Cell: row =>
             (row.value === 'NaN' ? (
-              <span className="monospace">N/A</span>
+              <span className="monospace u-pull-right">N/A</span>
             ) : (
-              <span className="monospace" style={{ color: row.value > 0 ? 'green' : 'red' }}>
+              <span
+                className="monospace u-pull-right"
+                style={{ color: row.value > 0 ? 'green' : 'red' }}
+              >
                 {row.value}%
               </span>
             ))

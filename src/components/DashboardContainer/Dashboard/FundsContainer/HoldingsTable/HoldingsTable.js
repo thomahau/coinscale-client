@@ -10,7 +10,7 @@ export default function HoldingsTable(props) {
       Header: 'Cryptocurrency Holdings',
       columns: [
         {
-          Header: 'Symbol',
+          Header: <span className="u-pull-left">Symbol</span>,
           accessor: 'symbol',
           Cell: row => (
             <Link to="/dashboard/trade" id={row.value} onClick={e => tradeCoin(row.value)}>
@@ -19,18 +19,18 @@ export default function HoldingsTable(props) {
           )
         },
         {
-          Header: 'Amount',
+          Header: <span className="u-pull-right">Amount</span>,
           accessor: 'amount',
-          Cell: props => <span className="monospace">{props.value}</span>
+          Cell: props => <span className="monospace u-pull-right">{props.value}</span>
         },
         {
-          Header: 'Cost Basis',
+          Header: <span className="u-pull-right">Cost Basis</span>,
           accessor: 'costBasis',
           Cell: row =>
             (row.value < 0.1 ? (
-              <span className="monospace">$0</span>
+              <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -41,13 +41,13 @@ export default function HoldingsTable(props) {
             ))
         },
         {
-          Header: 'Current Value',
+          Header: <span className="u-pull-right">Current Value</span>,
           accessor: 'currentValue',
           Cell: row =>
             (row.value < 0.1 ? (
-              <span className="monospace">$0</span>
+              <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -58,13 +58,13 @@ export default function HoldingsTable(props) {
             ))
         },
         {
-          Header: 'Profit/Loss',
+          Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
           Cell: row =>
             (row.value < 0.1 ? (
-              <span className="monospace">$0</span>
+              <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -75,10 +75,10 @@ export default function HoldingsTable(props) {
             ))
         },
         {
-          Header: 'Current Price',
+          Header: <span className="u-pull-right">Current Price</span>,
           accessor: 'currentPrice',
           Cell: row => (
-            <span className="monospace">
+            <span className="monospace u-pull-right">
               {new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
@@ -89,10 +89,13 @@ export default function HoldingsTable(props) {
           )
         },
         {
-          Header: '% 7d',
+          Header: <span className="u-pull-right">% 7d</span>,
           accessor: 'sevenDaysPerformance',
           Cell: row => (
-            <span className="monospace" style={{ color: row.value > 0 ? 'green' : 'red' }}>
+            <span
+              className="monospace u-pull-right"
+              style={{ color: row.value > 0 ? 'green' : 'red' }}
+            >
               {row.value}%
             </span>
           )

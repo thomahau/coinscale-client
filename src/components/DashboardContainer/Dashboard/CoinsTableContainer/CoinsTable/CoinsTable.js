@@ -14,9 +14,9 @@ export default function CoinsTable(props) {
         : (((coin.current - coin.sevenDaysAgo) / coin.sevenDaysAgo) * 100).toFixed(2)
   }));
   const columns = [
-    { Header: 'Name', accessor: 'name' },
+    { Header: <span className="u-pull-left">Name</span>, accessor: 'name' },
     {
-      Header: 'Symbol',
+      Header: <span className="u-pull-left">Symbol</span>,
       accessor: 'symbol',
       Cell: row => (
         <Link to="/dashboard/trade" id={row.value} onClick={e => props.tradeCoin(row.value)}>
@@ -25,10 +25,10 @@ export default function CoinsTable(props) {
       )
     },
     {
-      Header: 'Current Price',
+      Header: <span className="u-pull-right">Current Price</span>,
       accessor: 'price',
       Cell: row => (
-        <span className="monospace">
+        <span className="monospace u-pull-right">
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
@@ -39,10 +39,10 @@ export default function CoinsTable(props) {
       )
     },
     {
-      Header: '% 7d',
+      Header: <span className="u-pull-right">% 7d</span>,
       accessor: 'sevenDaysPerformance',
       Cell: row => (
-        <span className="monospace" style={{ color: row.value > 0 ? 'green' : 'red' }}>
+        <span className="monospace u-pull-right" style={{ color: row.value > 0 ? 'green' : 'red' }}>
           {row.value}%
         </span>
       )

@@ -7,8 +7,9 @@ describe('<TradeHistoryContainer />', () => {
     shallow(<TradeHistoryContainer />);
   });
 
-  it('Renders the TradeHistory component', () => {
+  it('Renders the header and TradeHistory component', () => {
     const wrapper = shallow(<TradeHistoryContainer />);
+    expect(wrapper.find('TradeHistoryHeader').length).toBe(1);
     expect(wrapper.find('TradeHistory').length).toBe(1);
   });
 });

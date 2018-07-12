@@ -13,15 +13,24 @@ export default function TradeHistory(props) {
   }));
   const columns = [
     {
-      Header: 'Date',
+      Header: <span className="u-pull-right">Date</span>,
       accessor: 'date',
       Cell: props => <span className="monospace">{props.value}</span>
     },
-    { Header: 'Symbol', accessor: 'symbol' },
+    {
+      Header: 'Symbol',
+      accessor: 'symbol',
+      filterMethod: (filter, row) =>
+        row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
+    },
     {
       Header: 'Type',
       accessor: 'type',
-      Cell: row => <span style={{ color: row.value === 'Buy' ? 'green' : 'red' }}>{row.value}</span>
+      Cell: row => (
+        <span style={{ color: row.value === 'Buy' ? 'green' : 'red' }}>{row.value}</span>
+      ),
+      filterMethod: (filter, row) =>
+        row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
     },
     {
       Header: 'Price',

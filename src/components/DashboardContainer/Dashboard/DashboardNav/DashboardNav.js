@@ -1,29 +1,48 @@
 import React from 'react';
-import ViewOption from './ViewOption/ViewOption';
-import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import FundsContainer from '../FundsContainer/FundsContainer';
+import TradeHistoryContainer from '../TradeHistoryContainer/TradeHistoryContainer';
+import TradeFormContainer from '../TradeFormContainer/TradeFormContainer';
+import { setTabIndex } from '../../../../actions/coinscale';
+import 'react-tabs/style/react-tabs.css';
 import './DashboardNav.css';
 
-export default function DashboardNav() {
-  return (
-    <nav className="dashboard-nav">
-      <ViewOption destination="trade" highlighted />
-      <ViewOption destination="history" />
-      <ViewOption destination="funds" />
-      {/* <div className="view-option">
-        <NavLink to="/dashboard/trade" activeClassName="active">
-          Trade
-        </NavLink>
-      </div>
-      <div className="view-option">
-        <NavLink to="/dashboard/history" activeClassName="active">
-          History
-        </NavLink>
-      </div>
-      <div className="view-option">
-        <NavLink to="/dashboard/funds" activeClassName="active">
-          Funds
-        </NavLink>
-      </div> */}
-    </nav>
-  );
+const mapStateToProps = state => ({
+  tabIndex: state.protectedData.tabIndex
+});
+
+const mapDispatchToProps = dispatch => ({
+  setTabIndex: tabIndex => dispatch(setTabIndex(tabIndex))
+});
+
+export class DashboardNav extends React.Component {
+  render() {
+    const { tabIndex, setTabIndex } = this.props;
+    return (
+      <Tabs selectedIndex={tabIndex} onSelect={tabIndex => setTabIndex(tabIndex)}>
+        <TabList>
+          <Tab>Trade</Tab>
+          <Tab>History</Tab>
+          <Tab>Funds</Tab>
+        </TabList>
+        <div className="card-body">
+          <TabPanel>
+            <TradeFormContainer />
+          </TabPanel>
+          <TabPanel>
+            <TradeHistoryContainer />
+          </TabPanel>
+          <TabPanel>
+            <FundsContainer />
+          </TabPanel>
+        </div>
+      </Tabs>
+    );
+  }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardNav);

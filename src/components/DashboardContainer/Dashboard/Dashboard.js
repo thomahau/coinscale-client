@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
 import DateWidgetContainer from './DateWidgetContainer/DateWidgetContainer';
-import FundsContainer from './FundsContainer/FundsContainer';
-import TradeHistoryContainer from './TradeHistoryContainer/TradeHistoryContainer';
-import TradeFormContainer from './TradeFormContainer/TradeFormContainer';
+// import FundsContainer from './FundsContainer/FundsContainer';
+// import TradeHistoryContainer from './TradeHistoryContainer/TradeHistoryContainer';
+// import TradeFormContainer from './TradeFormContainer/TradeFormContainer';
 import CoinsTableContainer from './CoinsTableContainer/CoinsTableContainer';
 import DashboardNav from './DashboardNav/DashboardNav';
 import './Dashboard.css';
@@ -22,7 +22,8 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="row dashboard-card main-dashboard-card">
-            <div className="dashboard-nav-header">
+            <DashboardNav />
+            {/* <div className="dashboard-nav-header">
               <DashboardNav />
             </div>
             <div className="card-body">
@@ -32,7 +33,7 @@ export default function Dashboard() {
                 <Route exact path="/dashboard/funds" component={FundsContainer} />
                 <Route path="/dashboard" component={TradeFormContainer} />
               </Switch>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="five columns dashboard-card">

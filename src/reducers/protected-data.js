@@ -13,7 +13,8 @@ import {
   PRICE_DATA_REQUEST,
   PRICE_DATA_SUCCESS,
   PRICE_DATA_ERROR,
-  SET_TRADE_COIN
+  SET_TRADE_COIN,
+  SET_TAB_INDEX
 } from '../actions/coinscale';
 
 const initialPriceData = [
@@ -123,7 +124,8 @@ const initialState = {
   transactionSuccess: null,
   portfolio: {},
   fetching: false,
-  error: null
+  error: null,
+  tabIndex: 0
 };
 
 export default function reducer(state = initialState, action) {
@@ -191,7 +193,12 @@ export default function reducer(state = initialState, action) {
     });
   } else if (action.type === SET_TRADE_COIN) {
     return Object.assign({}, state, {
-      coinToTrade: action.coin
+      coinToTrade: action.coin,
+      tabIndex: 0
+    });
+  } else if (action.type === SET_TAB_INDEX) {
+    return Object.assign({}, state, {
+      tabIndex: action.tabIndex
     });
   }
 

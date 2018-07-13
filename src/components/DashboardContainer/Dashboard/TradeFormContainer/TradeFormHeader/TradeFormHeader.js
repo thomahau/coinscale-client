@@ -10,7 +10,7 @@ export default function TradeFormHeader() {
           <li>Use the trade form to place buy or sell orders.</li>
           <li>
             Find the cryptocurrency you would like to trade in the table of cryptocurrency prices
-            and click to select it.
+            and click its symbol to select it.
           </li>
           <li>Select your desired trading date with the range slider.</li>
         </ul>

@@ -12,6 +12,7 @@ export default function AggregateDataTable(props) {
         {
           Header: '',
           accessor: 'balance',
+          maxWidth: 130,
           Cell: row => (
             <span className="monospace u-pull-right">
               {new Intl.NumberFormat('en-EN', {
@@ -69,7 +70,7 @@ export default function AggregateDataTable(props) {
             (row.value < 1 ? (
               <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace">
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -88,7 +89,7 @@ export default function AggregateDataTable(props) {
             ) : (
               <span
                 className="monospace u-pull-right"
-                style={{ color: row.value > 0 ? 'green' : 'red' }}
+                style={{ color: row.value >= 0 ? 'green' : 'red' }}
               >
                 {row.value}%
               </span>

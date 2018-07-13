@@ -22,9 +22,17 @@ header {
   color: #50be75;
 }
 
+.nav-username {
+  display: none;
+}
+
 @media only screen and (min-width: 600px) {
   .header-container {
     padding-left: 40px;
     padding-right: 30px;
+  }
+
+  .nav-username {
+    display: inline;
   }
 }

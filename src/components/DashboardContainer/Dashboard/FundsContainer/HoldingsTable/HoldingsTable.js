@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import { sortFix } from '../../../../../helpers';
 
 export default function HoldingsTable(props) {
   const { data, tradeCoin } = props;
@@ -12,6 +13,7 @@ export default function HoldingsTable(props) {
         {
           Header: <span className="u-pull-left">Symbol</span>,
           accessor: 'symbol',
+          maxWidth: 90,
           Cell: row => (
             <Link to="/dashboard/trade" id={row.value} onClick={e => tradeCoin(row.value)}>
               {row.value}
@@ -61,7 +63,7 @@ export default function HoldingsTable(props) {
           Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
           Cell: row =>
-            (row.value < 0.1 ? (
+            (row.value < 0.01 ? (
               <span className="monospace u-pull-right">$0</span>
             ) : (
               <span className="monospace u-pull-right">
@@ -91,6 +93,7 @@ export default function HoldingsTable(props) {
         {
           Header: <span className="u-pull-right">% 7d</span>,
           accessor: 'sevenDaysPerformance',
+          sortMethod: (a, b, desc) => sortFix(a, b, desc),
           Cell: row => (
             <span
               className="monospace u-pull-right"

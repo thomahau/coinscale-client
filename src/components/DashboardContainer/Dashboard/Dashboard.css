@@ -46,6 +46,10 @@ h4 {
 }
 
 /* Tables */
+.monospace {
+  font-family: 'Roboto Mono', monospace;
+}
+
 .rt-th,
 .rt-td,
 .-pagination {
@@ -57,12 +61,11 @@ h4 {
 }
 
 .rt-td a {
-  color: #1a1a1a;
+  color: #16a847;
 }
 
 .rt-td a:hover,
 .rt-td a:focus {
-  color: #50be75;
   text-decoration: underline;
 }
 
@@ -75,6 +78,10 @@ h4 {
 .-pagination select {
   width: 90px;
 }
+
+/* .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+  background-color: #d7f8e2;
+} */
 
 @media only screen and (min-width: 1000px) {
   .-pagination {

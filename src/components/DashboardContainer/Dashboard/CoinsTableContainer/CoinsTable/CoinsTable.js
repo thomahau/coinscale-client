@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import { sortFix } from '../../../../../helpers';
 
 export default function CoinsTable(props) {
   const data = props.priceData.map(coin => ({
@@ -18,6 +19,7 @@ export default function CoinsTable(props) {
     {
       Header: <span className="u-pull-left">Symbol</span>,
       accessor: 'symbol',
+      maxWidth: 80,
       Cell: row => (
         <Link to="/dashboard/trade" id={row.value} onClick={e => props.tradeCoin(row.value)}>
           {row.value}
@@ -41,8 +43,12 @@ export default function CoinsTable(props) {
     {
       Header: <span className="u-pull-right">% 7d</span>,
       accessor: 'sevenDaysPerformance',
+      sortMethod: (a, b, desc) => sortFix(a, b, desc),
       Cell: row => (
-        <span className="monospace u-pull-right" style={{ color: row.value > 0 ? 'green' : 'red' }}>
+        <span
+          className="monospace u-pull-right"
+          style={{ color: row.value >= 0 ? 'green' : 'red' }}
+        >
           {row.value}%
         </span>
       )
@@ -53,7 +59,7 @@ export default function CoinsTable(props) {
     <ReactTable
       data={data}
       columns={columns}
-      defaultPageSize={20}
+      // defaultPageSize={20}
       showPagination={false}
       className="-striped"
     />

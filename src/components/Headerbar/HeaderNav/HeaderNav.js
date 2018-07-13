@@ -15,8 +15,8 @@ export class HeaderNav extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="u-pull-right">
-          <span>{this.props.username}</span>
-          <Button nav onClick={() => this.logOut()}>
+          <span className="nav-username">{this.props.username}</span>
+          <Button nav logout onClick={() => this.logOut()}>
             Log out
           </Button>
         </div>

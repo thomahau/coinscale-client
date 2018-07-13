@@ -13,19 +13,22 @@ export default function TradeHistory(props) {
   }));
   const columns = [
     {
-      Header: <span className="u-pull-right">Date</span>,
+      Header: <span className="u-pull-left">Date</span>,
       accessor: 'date',
+      maxWidth: 140,
       Cell: props => <span className="monospace">{props.value}</span>
     },
     {
-      Header: 'Symbol',
+      Header: <span className="u-pull-left">Symbol</span>,
       accessor: 'symbol',
+      maxWidth: 100,
       filterMethod: (filter, row) =>
         row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
     },
     {
-      Header: 'Type',
+      Header: <span className="u-pull-left">Type</span>,
       accessor: 'type',
+      maxWidth: 100,
       Cell: row => (
         <span style={{ color: row.value === 'Buy' ? 'green' : 'red' }}>{row.value}</span>
       ),
@@ -33,10 +36,10 @@ export default function TradeHistory(props) {
         row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
     },
     {
-      Header: 'Price',
+      Header: <span className="u-pull-right">Price</span>,
       accessor: 'price',
       Cell: row => (
-        <span className="monospace">
+        <span className="monospace u-pull-right">
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
@@ -47,15 +50,15 @@ export default function TradeHistory(props) {
       )
     },
     {
-      Header: 'Amount',
+      Header: <span className="u-pull-right">Amount</span>,
       accessor: 'amount',
-      Cell: props => <span className="monospace">{props.value}</span>
+      Cell: props => <span className="monospace u-pull-right">{props.value}</span>
     },
     {
-      Header: 'Total',
+      Header: <span className="u-pull-right">Total</span>,
       accessor: 'total',
       Cell: row => (
-        <span className="monospace">
+        <span className="monospace u-pull-right">
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',

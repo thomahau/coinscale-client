@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import { sortFix } from '../../../../../helpers';
+import { sortFix } from '../../../../../../helpers';
 
 export default function HoldingsTable(props) {
   const { data, tradeCoin } = props;
@@ -15,9 +14,9 @@ export default function HoldingsTable(props) {
           accessor: 'symbol',
           maxWidth: 90,
           Cell: row => (
-            <Link to="/dashboard/trade" id={row.value} onClick={e => tradeCoin(row.value)}>
+            <button className="table-btn" onClick={e => tradeCoin(row.value)}>
               {row.value}
-            </Link>
+            </button>
           )
         },
         {

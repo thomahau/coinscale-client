@@ -1,11 +1,11 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
 import Alert from './Alert/Alert';
-import Input from '../../../../Input/Input';
+import Input from '../../../../../Input/Input';
 import Select from './Select/Select';
-import Button from '../../../../Button/Button';
-import { submitTrade } from '../../../../../actions/coinscale';
-import { required, nonEmpty, validAmount } from '../../../../../validators';
+import Button from '../../../../../Button/Button';
+import { submitTrade } from '../../../../../../actions/coinscale';
+import { required, nonEmpty, validAmount } from '../../../../../../validators';
 import './TradeForm.css';
 
 const tradeTypeOptions = ['', 'Buy', 'Sell'];

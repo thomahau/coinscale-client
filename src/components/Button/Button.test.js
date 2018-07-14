@@ -26,4 +26,9 @@ describe('<Button />', () => {
     const wrapper = shallow(<Button login />);
     expect(wrapper.hasClass('button-login')).toEqual(true);
   });
+
+  it('Renders a logout button', () => {
+    const wrapper = shallow(<Button logout />);
+    expect(wrapper.hasClass('button-logout')).toEqual(true);
+  });
 });

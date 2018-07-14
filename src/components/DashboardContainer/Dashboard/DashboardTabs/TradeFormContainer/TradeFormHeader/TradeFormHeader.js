@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalLauncher from '../../ModalLauncher/ModalLauncher';
+import ModalLauncher from '../../../ModalLauncher/ModalLauncher';
 
 export default function TradeFormHeader() {
   return (

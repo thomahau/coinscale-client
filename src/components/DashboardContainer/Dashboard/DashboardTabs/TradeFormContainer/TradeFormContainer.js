@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reset } from 'redux-form';
 import TradeFormHeader from './TradeFormHeader/TradeFormHeader';
 import TradeForm from './TradeForm/TradeForm';
-import { resetTransactionSuccess } from '../../../../actions/transactions';
+import { resetTransactionSuccess } from '../../../../../actions/transactions';
 
 export class TradeFormContainer extends React.Component {
   constructor() {

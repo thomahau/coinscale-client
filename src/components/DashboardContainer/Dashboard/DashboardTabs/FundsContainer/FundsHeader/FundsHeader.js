@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalLauncher from '../../ModalLauncher/ModalLauncher';
+import ModalLauncher from '../../../ModalLauncher/ModalLauncher';
 
 export default function FundsHeader() {
   return (
@@ -8,7 +8,7 @@ export default function FundsHeader() {
       <ModalLauncher title="Funds">
         <ul>
           <li>
-            The two tables here give you an overview of your portfolio, as of the currently selected
+            The two tables give you an overview of your portfolio, as of the currently selected
             date.
           </li>
           <li>

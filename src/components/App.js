@@ -41,7 +41,7 @@ export class App extends React.Component {
       <div>
         <Headerbar />
         <Route exact path="/" component={LandingPage} />
-        <Route path="/dashboard" component={DashboardContainer} />
+        <Route exact path="/dashboard" component={DashboardContainer} />
       </div>
     );
   }

@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CoinsTableHeader from './CoinsTableHeader/CoinsTableHeader';
 import CoinsTable from './CoinsTable/CoinsTable';
 import { fetchPriceData, tradeCoin } from '../../../../actions/coinscale';
 
 export class CoinsTableContainer extends React.Component {
   render() {
-    return <CoinsTable {...this.props} />;
+    return (
+      <div>
+        <CoinsTableHeader />
+        <CoinsTable {...this.props} />
+      </div>
+    );
   }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { sortFix } from '../../../../../helpers';
@@ -21,9 +20,9 @@ export default function CoinsTable(props) {
       accessor: 'symbol',
       maxWidth: 80,
       Cell: row => (
-        <Link to="/dashboard/trade" id={row.value} onClick={e => props.tradeCoin(row.value)}>
+        <button className="table-btn" onClick={e => props.tradeCoin(row.value)}>
           {row.value}
-        </Link>
+        </button>
       )
     },
     {
@@ -56,12 +55,14 @@ export default function CoinsTable(props) {
   ];
 
   return (
-    <ReactTable
-      data={data}
-      columns={columns}
-      // defaultPageSize={20}
-      showPagination={false}
-      className="-striped"
-    />
+    <div className="card-body">
+      <ReactTable
+        data={data}
+        columns={columns}
+        // defaultPageSize={20}
+        showPagination={false}
+        className="-striped"
+      />
+    </div>
   );
 }

@@ -1,20 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import FundsContainer from '../FundsContainer/FundsContainer';
-import TradeHistoryContainer from '../TradeHistoryContainer/TradeHistoryContainer';
-import TradeFormContainer from '../TradeFormContainer/TradeFormContainer';
-import { setTabIndex } from '../../../../actions/coinscale';
+import FundsContainer from './FundsContainer/FundsContainer';
+import TradeHistoryContainer from './TradeHistoryContainer/TradeHistoryContainer';
+import TradeFormContainer from './TradeFormContainer/TradeFormContainer';
 import 'react-tabs/style/react-tabs.css';
-import './DashboardNav.css';
-
-const mapStateToProps = state => ({
-  tabIndex: state.protectedData.tabIndex
-});
-
-const mapDispatchToProps = dispatch => ({
-  setTabIndex: tabIndex => dispatch(setTabIndex(tabIndex))
-});
+import './DashboardTabs.css';
+import { setTabIndex } from '../../../../actions/coinscale';
 
 export class DashboardNav extends React.Component {
   render() {
@@ -41,6 +33,14 @@ export class DashboardNav extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  tabIndex: state.protectedData.tabIndex
+});
+
+const mapDispatchToProps = dispatch => ({
+  setTabIndex: tabIndex => dispatch(setTabIndex(tabIndex))
+});
 
 export default connect(
   mapStateToProps,

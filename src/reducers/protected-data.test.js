@@ -12,7 +12,8 @@ import {
   priceDataRequest,
   priceDataSuccess,
   priceDataError,
-  setTradeCoin
+  setTradeCoin,
+  setTabIndex
 } from '../actions/coinscale';
 
 describe('protectedDataReducer', () => {
@@ -131,11 +132,20 @@ describe('protectedDataReducer', () => {
   });
 
   describe('setTradeCoin', () => {
-    it('Should set fetching false and add error', () => {
+    it('Should set the trading coin', () => {
       const coinToTrade = { symbol: 'BTC', name: 'Bitcoin' };
       let state = { coinToTrade: null };
       state = protectedDataReducer(state, setTradeCoin(coinToTrade));
       expect(state.coinToTrade).toEqual(coinToTrade);
+    });
+  });
+
+  describe('setTabIndex', () => {
+    it('Should set the tabIndex', () => {
+      const tabIndex = 2;
+      let state = { tabIndex: 0 };
+      state = protectedDataReducer(state, setTabIndex(tabIndex));
+      expect(state.tabIndex).toEqual(tabIndex);
     });
   });
 });

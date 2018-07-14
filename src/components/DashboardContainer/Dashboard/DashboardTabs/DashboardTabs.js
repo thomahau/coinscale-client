@@ -8,7 +8,7 @@ import 'react-tabs/style/react-tabs.css';
 import './DashboardTabs.css';
 import { setTabIndex } from '../../../../actions/coinscale';
 
-export class DashboardNav extends React.Component {
+export class DashboardTabs extends React.Component {
   render() {
     const { tabIndex, setTabIndex } = this.props;
     return (
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DashboardNav);
+)(DashboardTabs);

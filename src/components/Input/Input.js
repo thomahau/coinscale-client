@@ -18,6 +18,7 @@ export default function Input(props) {
         {...props.input}
         id={props.input.name}
         type={props.type}
+        placeholder={props.placeholder}
         readOnly={props.readOnly}
         value={props.val}
         className={props.className}

@@ -8,7 +8,9 @@ import {
   PRICE_DATA_ERROR,
   priceDataError,
   SET_TRADE_COIN,
-  setTradeCoin
+  setTradeCoin,
+  SET_TAB_INDEX,
+  setTabIndex
 } from './coinscale';
 
 describe('changeDate', () => {
@@ -51,5 +53,14 @@ describe('setTradeCoin', () => {
     const action = setTradeCoin(coin);
     expect(action.type).toEqual(SET_TRADE_COIN);
     expect(action.coin).toEqual(coin);
+  });
+});
+
+describe('setTabIndex', () => {
+  it('Should return the action', () => {
+    const tabIndex = 2;
+    const action = setTabIndex(tabIndex);
+    expect(action.type).toEqual(SET_TAB_INDEX);
+    expect(action.tabIndex).toEqual(tabIndex);
   });
 });

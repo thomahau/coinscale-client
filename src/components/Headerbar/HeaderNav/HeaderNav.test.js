@@ -16,7 +16,7 @@ describe('<HeaderNav />', () => {
   it('Renders the username and logout nav items if user is logged in', () => {
     const username = 'foo';
     const wrapper = shallow(<HeaderNav loggedIn username={username} />);
-    expect(wrapper.contains(<span>{username}</span>)).toEqual(true);
+    expect(wrapper.contains(<span className="nav-username">{username}</span>)).toEqual(true);
     expect(wrapper.find('Button').length).toBe(1);
   });
 

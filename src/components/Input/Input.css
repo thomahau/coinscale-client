@@ -31,8 +31,11 @@ label {
   display: block;
   margin-bottom: -5px;
   line-height: 1.2rem;
-  color: #919aa1;
   font-size: 1.4rem;
+}
+
+::placeholder {
+  color: #919aa1;
 }
 
 .form-help {

@@ -33,8 +33,10 @@ export default function CoinsTable(props) {
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            minimumSignificantDigits: 1,
-            maximumSignificantDigits: 4
+            // minimumFractionDigits: 2
+            // maximumFractionDigits: 2
+            minimumSignificantDigits: 1
+            // maximumSignificantDigits: 4
           }).format(row.value)}
         </span>
       )

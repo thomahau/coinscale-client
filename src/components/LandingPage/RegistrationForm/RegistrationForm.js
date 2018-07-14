@@ -34,6 +34,7 @@ export class RegistrationForm extends React.Component {
                 component={Input}
                 type="text"
                 name="registerUsername"
+                placeholder="Satoshi Nakamoto"
                 className="u-full-width"
                 validate={[required, nonEmpty, isTrimmed]}
               />
@@ -42,6 +43,7 @@ export class RegistrationForm extends React.Component {
                 component={Input}
                 type="password"
                 name="registerPassword"
+                placeholder="••••••••"
                 className="u-full-width"
                 validate={[required, passwordLength, isTrimmed]}
               />
@@ -50,6 +52,7 @@ export class RegistrationForm extends React.Component {
                 component={Input}
                 type="password"
                 name="passwordConfirm"
+                placeholder="••••••••"
                 className="u-full-width"
                 validate={[required, nonEmpty, matchesPassword]}
               />

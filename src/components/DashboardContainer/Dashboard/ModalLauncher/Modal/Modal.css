@@ -20,7 +20,7 @@
   height: 300px;
   margin-top: 20vh;
   background-color: #fff;
-  box-shadow: 0, 0, 0.625rem, rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .modal-header,

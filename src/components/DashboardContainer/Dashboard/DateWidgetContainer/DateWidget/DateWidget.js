@@ -2,8 +2,8 @@ import React from 'react';
 import './DateWidget.css';
 
 const RANGE_STEP = 86400; // 1 day in seconds
-const MIN_TIMESTAMP = 1483228800;
-const MIN_DATE = '2017-01-01';
+const MIN_TIMESTAMP = 1451606400;
+const MIN_DATE = '2016-01-01';
 const MAX_TIMESTAMP = Math.round(new Date().getTime() / 1000) - RANGE_STEP;
 const MAX_DATE = new Date(MAX_TIMESTAMP * 1000).toISOString().slice(0, 10); // Yesterday
 

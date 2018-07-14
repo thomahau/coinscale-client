@@ -14,7 +14,12 @@ export default function CoinsTable(props) {
         : (((coin.current - coin.sevenDaysAgo) / coin.sevenDaysAgo) * 100).toFixed(2)
   }));
   const columns = [
-    { Header: <span className="u-pull-left">Name</span>, accessor: 'name' },
+    {
+      Header: <span className="u-pull-left">Name</span>,
+      accessor: 'name',
+      filterMethod: (filter, row) =>
+        row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
+    },
     {
       Header: <span className="u-pull-left">Symbol</span>,
       accessor: 'symbol',
@@ -23,7 +28,9 @@ export default function CoinsTable(props) {
         <button className="table-btn" onClick={e => props.tradeCoin(row.value)}>
           {row.value}
         </button>
-      )
+      ),
+      filterMethod: (filter, row) =>
+        row[filter.id].includes(filter.value) || row[filter.id].toLowerCase().includes(filter.value)
     },
     {
       Header: <span className="u-pull-right">Current Price</span>,
@@ -33,10 +40,7 @@ export default function CoinsTable(props) {
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            // minimumFractionDigits: 2
-            // maximumFractionDigits: 2
             minimumSignificantDigits: 1
-            // maximumSignificantDigits: 4
           }).format(row.value)}
         </span>
       )
@@ -45,14 +49,17 @@ export default function CoinsTable(props) {
       Header: <span className="u-pull-right">% 7d</span>,
       accessor: 'sevenDaysPerformance',
       sortMethod: (a, b, desc) => sortFix(a, b, desc),
-      Cell: row => (
-        <span
-          className="monospace u-pull-right"
-          style={{ color: row.value >= 0 ? 'green' : 'red' }}
-        >
-          {row.value}%
-        </span>
-      )
+      Cell: row =>
+        (row.value === 'N/A' ? (
+          <span className="monospace u-pull-right">N/A</span>
+        ) : (
+          <span
+            className="monospace u-pull-right"
+            style={{ color: row.value >= 0 ? 'green' : 'red' }}
+          >
+            {row.value}%
+          </span>
+        ))
     }
   ];
 
@@ -61,8 +68,8 @@ export default function CoinsTable(props) {
       <ReactTable
         data={data}
         columns={columns}
-        // defaultPageSize={20}
-        showPagination={false}
+        defaultPageSize={20}
+        filterable
         className="-striped"
       />
     </div>

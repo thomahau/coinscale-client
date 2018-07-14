@@ -43,8 +43,8 @@ export default function TradeHistory(props) {
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            minimumSignificantDigits: 1,
-            maximumSignificantDigits: 4
+            minimumSignificantDigits: 1
+            // maximumSignificantDigits: 4
           }).format(row.value)}
         </span>
       )

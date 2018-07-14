@@ -50,15 +50,17 @@ export default function AggregateDataTable(props) {
           Header: <span className="u-pull-right">Current Value</span>,
           accessor: 'currentValue',
           Cell: row =>
-            (row.value < 1 ? (
-              <span className="monospace">$0</span>
+            (row.value === 0 ? (
+              <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace u-pull-right">
+              <span
+                className="monospace u-pull-right"
+                style={{ color: row.value >= 0 ? 'green' : 'red' }}
+              >
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 5
+                  minimumFractionDigits: 2
                 }).format(row.value)}
               </span>
             ))

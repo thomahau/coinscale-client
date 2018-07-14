@@ -61,19 +61,18 @@ export default function HoldingsTable(props) {
         {
           Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
-          Cell: row =>
-            (row.value < 0.01 ? (
-              <span className="monospace u-pull-right">$0</span>
-            ) : (
-              <span className="monospace u-pull-right">
-                {new Intl.NumberFormat('en-EN', {
-                  style: 'currency',
-                  currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 4
-                }).format(row.value)}
-              </span>
-            ))
+          Cell: row => (
+            <span
+              className="monospace u-pull-right"
+              style={{ color: row.value >= 0 ? 'green' : 'red' }}
+            >
+              {new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2
+              }).format(row.value)}
+            </span>
+          )
         },
         {
           Header: <span className="u-pull-right">Current Price</span>,
@@ -83,8 +82,7 @@ export default function HoldingsTable(props) {
               {new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
-                minimumSignificantDigits: 1,
-                maximumSignificantDigits: 4
+                minimumSignificantDigits: 1
               }).format(row.value)}
             </span>
           )
@@ -106,5 +104,13 @@ export default function HoldingsTable(props) {
     }
   ];
 
-  return <ReactTable data={data} columns={columns} defaultPageSize={10} className="-striped" />;
+  return (
+    <ReactTable
+      data={data}
+      columns={columns}
+      defaultPageSize={10}
+      className="-striped"
+      noDataText="No holdings found"
+    />
+  );
 }

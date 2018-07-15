@@ -34,6 +34,18 @@ h4 {
   text-transform: uppercase;
 }
 
+.dashboard-header {
+  display: flex;
+}
+
+.dashboard-h3::after {
+  content: '';
+  width: 65px;
+  height: 1px;
+  display: block;
+  background: #50be75;
+}
+
 @media only screen and (min-width: 1000px) {
   .date-widget-card {
     margin-bottom: 30px;
@@ -76,15 +88,4 @@ h4 {
 
 .-pagination select {
   width: 90px;
-}
-
-/* .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
-  background-color: #d7f8e2;
-} */
-
-@media only screen and (min-width: 1000px) {
-  .-pagination {
-    /* height: 50px;
-    line-height: 50px; */
-  }
 }

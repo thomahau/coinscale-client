@@ -45,6 +45,7 @@ export default class DateWidget extends React.Component {
           value={this.state.timestamp}
           onChange={event => this.onChange(event.target.value)}
           onMouseUp={event => this.handleDateChange(event.target.value)}
+          onKeyUp={event => this.handleDateChange(event.target.value)}
         />
       </div>
     );

@@ -30,7 +30,6 @@
 
 .button.button-primary:hover,
 .button.button-primary:focus {
-  color: #fff;
   background-color: #16a847;
   border-color: #16a847;
 }

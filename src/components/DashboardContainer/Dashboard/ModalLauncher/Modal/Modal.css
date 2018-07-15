@@ -16,11 +16,13 @@
 }
 
 .modal {
-  width: 100%;
-  height: 300px;
-  margin-top: 20vh;
+  width: 95%;
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #1a1a1a;
 }
 
 .modal-header,
@@ -29,8 +31,13 @@
   color: white;
 }
 
-.modal-header h3 {
+.modal-header h3,
+.modal-content {
   padding: 1rem;
+}
+
+.modal-content {
+  margin-bottom: 1.5rem;
 }
 
 .closer {
@@ -40,11 +47,6 @@
   border: none;
   font-size: 1.7rem;
   cursor: pointer;
-}
-
-.modal-content {
-  margin-top: 1rem;
-  padding: 1rem;
 }
 
 .modal-content ul {

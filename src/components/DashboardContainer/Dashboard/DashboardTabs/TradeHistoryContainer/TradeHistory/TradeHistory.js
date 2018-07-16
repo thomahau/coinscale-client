@@ -61,8 +61,7 @@ export default function TradeHistory(props) {
           {new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            minimumSignificantDigits: 1,
-            maximumSignificantDigits: 4
+            minimumFractionDigits: 2
           }).format(row.value)}
         </span>
       )
@@ -74,6 +73,7 @@ export default function TradeHistory(props) {
       data={data}
       columns={columns}
       defaultPageSize={10}
+      minRows={3}
       filterable
       className="-striped"
       noDataText="No transactions found"

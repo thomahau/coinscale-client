@@ -14,7 +14,7 @@ export default function HoldingsTable(props) {
           accessor: 'symbol',
           maxWidth: 90,
           Cell: row => (
-            <button className="table-btn" onClick={e => tradeCoin(row.value)}>
+            <button className="table-btn" onClick={() => tradeCoin(row.value)}>
               {row.value}
             </button>
           )
@@ -92,14 +92,17 @@ export default function HoldingsTable(props) {
           Header: <span className="u-pull-right">% 7d</span>,
           accessor: 'sevenDaysPerformance',
           sortMethod: (a, b, desc) => sortFix(a, b, desc),
-          Cell: row => (
-            <span
-              className="monospace u-pull-right"
-              style={{ color: row.value > 0 ? 'green' : 'red' }}
-            >
-              {row.value}%
-            </span>
-          )
+          Cell: row =>
+            (row.value === 'NaN' ? (
+              <span className="monospace u-pull-right">N/A</span>
+            ) : (
+              <span
+                className="monospace u-pull-right"
+                style={{ color: row.value >= 0 ? 'green' : 'red' }}
+              >
+                {row.value}%
+              </span>
+            ))
         }
       ]
     }
@@ -110,6 +113,7 @@ export default function HoldingsTable(props) {
       data={data}
       columns={columns}
       defaultPageSize={10}
+      minRows={3}
       className="-striped"
       noDataText="No holdings found"
     />

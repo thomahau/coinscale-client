@@ -69,6 +69,7 @@ export default function CoinsTable(props) {
         data={data}
         columns={columns}
         defaultPageSize={20}
+        minRows={18}
         filterable
         className="-striped"
       />

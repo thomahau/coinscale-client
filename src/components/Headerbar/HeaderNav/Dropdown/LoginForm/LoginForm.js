@@ -43,7 +43,7 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         {error}
-        <Button primary block>
+        <Button primary block type="submit">
           Log in
         </Button>
       </form>

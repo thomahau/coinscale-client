@@ -25,7 +25,7 @@ export default function CoinsTable(props) {
       accessor: 'symbol',
       maxWidth: 80,
       Cell: row => (
-        <button className="table-btn" onClick={e => props.tradeCoin(row.value)}>
+        <button className="table-btn" onClick={() => props.tradeCoin(row.value)}>
           {row.value}
         </button>
       ),

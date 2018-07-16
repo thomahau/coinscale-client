@@ -1,5 +1,5 @@
 .form-wrapper {
-  width: 320px;
+  width: 300px;
   margin: 10px auto 40px auto;
 }
 
@@ -19,4 +19,8 @@ h2 {
 
 .register-form label {
   margin-bottom: 8px;
+}
+
+.register-form .button-primary {
+  margin-bottom: 15px;
 }

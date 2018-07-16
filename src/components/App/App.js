@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-import Headerbar from './Headerbar/Headerbar';
-import LandingPage from './LandingPage/LandingPage';
-import DashboardContainer from './DashboardContainer/DashboardContainer';
-import { refreshAuthToken } from '../actions/auth';
+import Headerbar from '../Headerbar/Headerbar';
+import LandingPage from '../LandingPage/LandingPage';
+import DashboardContainer from '../DashboardContainer/DashboardContainer';
+import { refreshAuthToken } from '../../actions/auth';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {

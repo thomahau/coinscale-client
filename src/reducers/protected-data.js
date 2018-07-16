@@ -194,8 +194,7 @@ export default function reducer(state = initialState, action) {
     });
   } else if (action.type === SET_TRADE_COIN) {
     return Object.assign({}, state, {
-      coinToTrade: action.coin,
-      tabIndex: 0
+      coinToTrade: action.coin
     });
   } else if (action.type === SET_TAB_INDEX) {
     return Object.assign({}, state, {

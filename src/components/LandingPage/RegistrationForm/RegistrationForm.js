@@ -14,9 +14,15 @@ export class RegistrationForm extends React.Component {
   onSubmit(values) {
     const { registerUsername: username, registerPassword: password } = values;
     const user = { username, password };
+
     return this.props
       .dispatch(registerUser(user))
       .then(() => this.props.dispatch(login(username, password)));
+  }
+
+  handleDemo(event) {
+    event.preventDefault();
+    return this.props.dispatch(login('demo', 'password'));
   }
 
   render() {
@@ -56,8 +62,11 @@ export class RegistrationForm extends React.Component {
                 className="u-full-width"
                 validate={[required, nonEmpty, matchesPassword]}
               />
-              <Button primary block>
+              <Button primary block type="submit">
                 Create account
+              </Button>
+              <Button block className="demo-btn" onClick={event => this.handleDemo(event)}>
+                View demo
               </Button>
             </form>
           </div>

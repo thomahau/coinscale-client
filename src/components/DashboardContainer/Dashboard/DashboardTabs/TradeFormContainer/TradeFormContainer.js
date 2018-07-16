@@ -13,10 +13,6 @@ export class TradeFormContainer extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps() {
-    this.props.reset('trade');
-  }
-
   onChangeAmount = (value) => {
     const amount = parseFloat(value.amount || 0);
     const price = this.props.coinData ? parseFloat(this.props.coinData.current) : 0;

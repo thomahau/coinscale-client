@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CoinsTableHeader from './CoinsTableHeader/CoinsTableHeader';
 import CoinsTable from './CoinsTable/CoinsTable';
-import { fetchPriceData, tradeCoin } from '../../../../actions/coinscale';
+import { fetchPriceData, tradeCoin, setTabIndex } from '../../../../actions/coinscale';
 
 export class CoinsTableContainer extends React.Component {
   render() {
@@ -26,6 +26,7 @@ const mapDispatchToProps = dispatch => ({
   },
   tradeCoin: (symbol) => {
     dispatch(tradeCoin(symbol));
+    dispatch(setTabIndex(0));
   }
 });
 

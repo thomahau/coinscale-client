@@ -18,8 +18,7 @@ export default function AggregateDataTable(props) {
               {new Intl.NumberFormat('en-EN', {
                 style: 'currency',
                 currency: 'USD',
-                minimumSignificantDigits: 1,
-                maximumSignificantDigits: 5
+                minimumFractionDigits: 2
               }).format(row.value)}
             </span>
           )
@@ -40,8 +39,7 @@ export default function AggregateDataTable(props) {
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 5
+                  minimumFractionDigits: 2
                 }).format(row.value)}
               </span>
             ))
@@ -53,10 +51,7 @@ export default function AggregateDataTable(props) {
             (row.value === 0 ? (
               <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span
-                className="monospace u-pull-right"
-                style={{ color: row.value >= 0 ? 'green' : 'red' }}
-              >
+              <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
@@ -69,15 +64,17 @@ export default function AggregateDataTable(props) {
           Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
           Cell: row =>
-            (row.value < 1 ? (
+            (row.value === 0 ? (
               <span className="monospace u-pull-right">$0</span>
             ) : (
-              <span className="monospace u-pull-right">
+              <span
+                className="monospace u-pull-right"
+                style={{ color: row.value >= 0 ? 'green' : 'red' }}
+              >
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 5
+                  minimumFractionDigits: 2
                 }).format(row.value)}
               </span>
             ))

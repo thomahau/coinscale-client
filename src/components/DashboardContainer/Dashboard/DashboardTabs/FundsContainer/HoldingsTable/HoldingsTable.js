@@ -35,8 +35,7 @@ export default function HoldingsTable(props) {
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 3
+                  minimumFractionDigits: 2
                 }).format(row.value)}
               </span>
             ))
@@ -45,15 +44,14 @@ export default function HoldingsTable(props) {
           Header: <span className="u-pull-right">Current Value</span>,
           accessor: 'currentValue',
           Cell: row =>
-            (row.value < 0.1 ? (
+            (row.value === 0 ? (
               <span className="monospace u-pull-right">$0</span>
             ) : (
               <span className="monospace u-pull-right">
                 {new Intl.NumberFormat('en-EN', {
                   style: 'currency',
                   currency: 'USD',
-                  minimumSignificantDigits: 1,
-                  maximumSignificantDigits: 3
+                  minimumFractionDigits: 2
                 }).format(row.value)}
               </span>
             ))
@@ -61,18 +59,21 @@ export default function HoldingsTable(props) {
         {
           Header: <span className="u-pull-right">Profit/Loss</span>,
           accessor: 'profit',
-          Cell: row => (
-            <span
-              className="monospace u-pull-right"
-              style={{ color: row.value >= 0 ? 'green' : 'red' }}
-            >
-              {new Intl.NumberFormat('en-EN', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2
-              }).format(row.value)}
-            </span>
-          )
+          Cell: row =>
+            (row.value === 0 ? (
+              <span className="monospace u-pull-right">$0</span>
+            ) : (
+              <span
+                className="monospace u-pull-right"
+                style={{ color: row.value >= 0 ? 'green' : 'red' }}
+              >
+                {new Intl.NumberFormat('en-EN', {
+                  style: 'currency',
+                  currency: 'USD',
+                  minimumFractionDigits: 2
+                }).format(row.value)}
+              </span>
+            ))
         },
         {
           Header: <span className="u-pull-right">Current Price</span>,

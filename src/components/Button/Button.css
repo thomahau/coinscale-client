@@ -20,6 +20,7 @@
 
 .button:hover {
   outline: 0;
+  border-color: #888;
 }
 
 .button.button-primary {

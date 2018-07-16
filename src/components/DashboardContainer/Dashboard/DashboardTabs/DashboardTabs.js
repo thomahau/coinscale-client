@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import FundsContainer from './FundsContainer/FundsContainer';
 import TradeHistoryContainer from './TradeHistoryContainer/TradeHistoryContainer';
 import TradeFormContainer from './TradeFormContainer/TradeFormContainer';
-import 'react-tabs/style/react-tabs.css';
-import './DashboardTabs.css';
 import { setTabIndex } from '../../../../actions/coinscale';
+import './DashboardTabs.css';
 
 export class DashboardTabs extends React.Component {
   render() {

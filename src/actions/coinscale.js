@@ -56,6 +56,7 @@ export const fetchPriceData = date => (dispatch, getState) => {
       dispatch(priceDataSuccess(priceData));
     })
     .then(() => {
+      // If user has "loaded" a coin for trading, update with new price data
       const coinToTrade = getState().protectedData.coinToTrade;
       if (coinToTrade) {
         const updatedCoinToTrade = _priceData.filter(priceDatum => priceDatum.currency === coinToTrade.currency)[0];

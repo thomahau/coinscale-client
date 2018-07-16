@@ -44,7 +44,6 @@ export default function TradeHistory(props) {
             style: 'currency',
             currency: 'USD',
             minimumSignificantDigits: 1
-            // maximumSignificantDigits: 4
           }).format(row.value)}
         </span>
       )
@@ -77,6 +76,7 @@ export default function TradeHistory(props) {
       defaultPageSize={10}
       filterable
       className="-striped"
+      noDataText="No transactions found"
     />
   );
 }

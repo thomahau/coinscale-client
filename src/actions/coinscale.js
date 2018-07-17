@@ -33,6 +33,12 @@ export const setTradeCoin = coin => ({
   coin
 });
 
+export const SET_TAB_INDEX = 'SET_TAB_INDEX';
+export const setTabIndex = tabIndex => ({
+  type: SET_TAB_INDEX,
+  tabIndex
+});
+
 export const fetchPriceData = date => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   let _priceData;
@@ -50,6 +56,7 @@ export const fetchPriceData = date => (dispatch, getState) => {
       dispatch(priceDataSuccess(priceData));
     })
     .then(() => {
+      // If user has "loaded" a coin for trading, update with new price data
       const coinToTrade = getState().protectedData.coinToTrade;
       if (coinToTrade) {
         const updatedCoinToTrade = _priceData.filter(priceDatum => priceDatum.currency === coinToTrade.currency)[0];
@@ -61,12 +68,14 @@ export const fetchPriceData = date => (dispatch, getState) => {
     });
 };
 
+// Load the relevant price data into trade form
 export const tradeCoin = symbol => (dispatch, getState) => {
   const priceData = getState().protectedData.priceData;
   const coin = priceData.filter(priceDatum => priceDatum.currency === symbol)[0];
   dispatch(setTradeCoin(coin));
 };
 
+// Validate and handle submitted trade
 export const submitTrade = values => (dispatch) => {
   const transaction = parseTransaction(values);
   const { symbol, amount, total } = values;

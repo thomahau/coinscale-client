@@ -6,7 +6,7 @@ export default function FeatureCards() {
     <div className="container">
       <div className="row feature-cards">
         <div className="four columns card">
-          <img className="card-img" src={require('../../../images/money-g.png')} alt="Money icon" />
+          <img className="card-img" src={require('../../../images/money.png')} alt="Money icon" />
           <div>
             <h3>Risk free investing with virtual cash</h3>
             <p>
@@ -16,7 +16,7 @@ export default function FeatureCards() {
           </div>
         </div>
         <div className="four columns card">
-          <img className="card-img" src={require('../../../images/trade-g.png')} alt="Trade icon" />
+          <img className="card-img" src={require('../../../images/trade.png')} alt="Trade icon" />
           <div>
             <h3>Go back in time and place trades</h3>
             <p>
@@ -28,12 +28,15 @@ export default function FeatureCards() {
         <div className="four columns card">
           <img
             className="card-img"
-            src={require('../../../images/line-chart-g.png')}
+            src={require('../../../images/line-chart.png')}
             alt="Chart icon"
           />
           <div>
             <h3>Simulate and test your portfolio ideas</h3>
-            <p>Assemble your dream portfolio and track its performance through time.</p>
+            <p>
+              Build the portfolio of your dreams, then analyze and backtest its performance through
+              time.
+            </p>
           </div>
         </div>
       </div>

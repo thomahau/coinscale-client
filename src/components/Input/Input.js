@@ -1,6 +1,7 @@
 import React from 'react';
 import './Input.css';
 
+// Reusable component for different inputs
 export default function Input(props) {
   let error;
   if (props.meta.touched && props.meta.error) {
@@ -14,14 +15,24 @@ export default function Input(props) {
 
   return (
     <div>
-      <input
-        {...props.input}
-        id={props.input.name}
-        type={props.type}
-        readOnly={props.readOnly}
-        value={props.val}
-        className={props.className}
-      />
+      {props.readOnly ? (
+        <input
+          {...props.input}
+          id={props.input.name}
+          type={props.type}
+          readOnly
+          value={props.val}
+          className={props.className}
+        />
+      ) : (
+        <input
+          {...props.input}
+          id={props.input.name}
+          type={props.type}
+          placeholder={props.placeholder}
+          className={props.className}
+        />
+      )}
       {error}
       {warning}
     </div>

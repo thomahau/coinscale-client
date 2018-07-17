@@ -16,7 +16,7 @@ export class LandingPage extends React.Component {
   render() {
     // If user is logged in, redirect straight to dashboard
     if (this.props.loggedIn) {
-      return <Redirect to="/dashboard/funds" />;
+      return <Redirect to="/dashboard" />;
     }
 
     return (

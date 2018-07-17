@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -11,6 +12,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-table": "^6.8.6",
+    "react-tabs": "^2.2.2",
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.3.0"

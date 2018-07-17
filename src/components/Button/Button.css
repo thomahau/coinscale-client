@@ -18,25 +18,19 @@
   box-sizing: border-box;
 }
 
-.button:hover,
-.button:focus {
-  color: #333;
-  border-color: #888;
-}
-
 .button:hover {
   outline: 0;
+  border-color: #888;
 }
 
 .button.button-primary {
   color: #fff;
-  background-color: #50be75;
-  border-color: #50be75;
+  background-color: #37b160;
+  border-color: #37b160;
 }
 
 .button.button-primary:hover,
 .button.button-primary:focus {
-  color: #fff;
   background-color: #16a847;
   border-color: #16a847;
 }
@@ -65,4 +59,16 @@
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
   border-left: 0.3em solid transparent;
+}
+
+.button.button-logout::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.02em;
+  content: '';
+  border-top: 0.35em solid transparent;
+  border-left: 0.35em solid;
+  border-bottom: 0.35em solid transparent;
 }

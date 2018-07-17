@@ -7,11 +7,8 @@ describe('<Dashboard />', () => {
     shallow(<Dashboard />);
   });
 
-  it('Renders the dashboard with switch and route elements', () => {
+  it('Renders the dashboard', () => {
     const wrapper = shallow(<Dashboard />);
     expect(wrapper.hasClass('container-fluid')).toEqual(true);
-    expect(wrapper.find('DashboardNav').length).toBe(1);
-    expect(wrapper.find('Switch').length).toBe(1);
-    expect(wrapper.find('Route').length).toBe(4);
   });
 });

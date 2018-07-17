@@ -5,6 +5,7 @@
 
 .dashboard-card {
   border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 .main-dashboard-card {
@@ -17,13 +18,8 @@
   padding-left: 10px;
   background-color: #f7f7f7;
   border-bottom: 1px solid darkgrey;
-}
-
-.dashboard-nav-header {
-  height: 40px;
-  padding-top: 6px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid darkgrey;
+  display: flex;
+  vertical-align: center;
 }
 
 .card-body {
@@ -39,8 +35,58 @@ h4 {
   text-transform: uppercase;
 }
 
+.dashboard-header {
+  display: flex;
+}
+
+.dashboard-h3::after {
+  content: '';
+  width: 65px;
+  height: 1px;
+  display: block;
+  background: #50be75;
+}
+
 @media only screen and (min-width: 1000px) {
   .date-widget-card {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
+}
+
+/* Tables */
+.monospace {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.rt-th,
+.rt-td,
+.-pagination {
+  font-size: 15px;
+}
+
+.rt-td .monospace {
+  font-size: 14px;
+}
+
+.table-btn {
+  font-size: 15px;
+  color: #16a847;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.table-btn:hover,
+.table-btn:focus {
+  text-decoration: underline;
+}
+
+.-pagination input,
+.-pagination select {
+  margin-bottom: 0.2rem;
+  height: 30px;
+}
+
+.-pagination select {
+  width: 90px;
 }

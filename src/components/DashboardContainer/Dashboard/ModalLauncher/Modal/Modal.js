@@ -2,6 +2,7 @@ import React from 'react';
 import isNil from 'lodash/fp/isNil';
 import './Modal.css';
 
+// Reusable modal
 export default class Modal extends React.Component {
   constructor(props) {
     super(props);

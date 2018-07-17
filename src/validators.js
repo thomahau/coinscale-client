@@ -13,3 +13,9 @@ export const length = length => (value) => {
 };
 export const matches = field => (value, allValues) =>
   (field in allValues && value.trim() === allValues[field].trim() ? undefined : 'Does not match');
+export const noNegative = (value) => {
+  if (value < 0) {
+    return 0;
+  }
+  return value;
+};

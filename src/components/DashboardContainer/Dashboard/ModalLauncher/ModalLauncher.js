@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from './Modal/Modal';
 import './ModalLauncher.css';
 
+// Reusable modal launcher in the form of a help icon
 export default class ModalLauncher extends React.Component {
   constructor(props) {
     super(props);

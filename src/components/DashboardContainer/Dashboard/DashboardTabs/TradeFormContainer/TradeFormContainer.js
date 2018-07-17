@@ -13,8 +13,11 @@ export class TradeFormContainer extends React.Component {
     };
   }
 
-  UNSAFE__componentWillReceiveProps() {
-    this.props.dispatch(reset('trade'));
+  componentDidUpdate(prevProps) {
+    // Clear form inputs when user selects another coin
+    if (prevProps.coinData !== this.props.coinData) {
+      this.props.reset('trade');
+    }
   }
 
   onChangeAmount = (value) => {

@@ -8,15 +8,15 @@ import { getHoldingsData, getAggregateData } from '../../../../../helpers';
 
 export class FundsContainer extends React.Component {
   render() {
-    if (this.props.fetching) {
-      return <p>Loading data...</p>;
-    }
-
     const {
-      date, priceData, transactions, balance
+      fetching, date, priceData, transactions, balance
     } = this.props;
     const holdingsData = getHoldingsData(date, priceData, transactions);
     const aggregateData = getAggregateData(holdingsData, balance);
+
+    if (fetching) {
+      return <p>Loading data...</p>;
+    }
 
     return (
       <div>

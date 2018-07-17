@@ -12,7 +12,7 @@ export class DashboardTabs extends React.Component {
   render() {
     const { tabIndex, setTabIndex } = this.props;
     return (
-      <Tabs selectedIndex={tabIndex} onSelect={tabIndex => setTabIndex(tabIndex)}>
+      <Tabs selectedIndex={tabIndex} onSelect={newTabIndex => setTabIndex(newTabIndex)}>
         <TabList>
           <Tab>Trade</Tab>
           <Tab>History</Tab>

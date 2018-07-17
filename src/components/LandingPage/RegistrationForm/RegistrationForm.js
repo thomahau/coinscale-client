@@ -22,7 +22,7 @@ export class RegistrationForm extends React.Component {
   // Log in with demo account credentials
   handleDemo(event) {
     event.preventDefault();
-    return this.props.dispatch(login('demo', 'password'));
+    return this.props.dispatch(login('demo', 'password')).then(() => window.scrollTo(0, 0));
   }
 
   render() {

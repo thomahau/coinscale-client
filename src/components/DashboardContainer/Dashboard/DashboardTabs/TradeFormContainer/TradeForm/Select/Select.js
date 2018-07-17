@@ -25,7 +25,7 @@ export default function Select(props) {
 
   return (
     <div>
-      <select {...props.input} id={props.input.name} type={props.type} invalid={error || warning}>
+      <select {...props.input} id={props.input.name} type={props.type}>
         {optionElements}
       </select>
       {error}

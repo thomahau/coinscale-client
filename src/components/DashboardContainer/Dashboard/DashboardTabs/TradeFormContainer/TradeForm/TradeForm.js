@@ -22,7 +22,7 @@ export class TradeForm extends React.Component {
   }
 
   render() {
-    // Render error alert or success alert if applicable
+    // Render error or success alert if applicable
     let error;
     let success;
     if (this.props.error) {

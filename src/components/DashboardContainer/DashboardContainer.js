@@ -14,15 +14,11 @@ export class DashboardContainer extends React.Component {
   }
 
   render() {
-    if (this.props.loading) {
-      return <div>Loading data...</div>;
-    }
     return <Dashboard />;
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.auth.loading,
   date: state.protectedData.date
 });
 

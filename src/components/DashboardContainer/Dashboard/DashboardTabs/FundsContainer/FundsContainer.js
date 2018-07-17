@@ -4,7 +4,7 @@ import FundsHeader from './FundsHeader/FundsHeader';
 import AggregateDataTable from './AggregateDataTable/AggregateDataTable';
 import HoldingsTable from './HoldingsTable/HoldingsTable';
 import { tradeCoin, setTabIndex } from '../../../../../actions/coinscale';
-import { getHoldingsData, getAggregateData } from '../../../../../actions/utils';
+import { getHoldingsData, getAggregateData } from '../../../../../helpers';
 
 export class FundsContainer extends React.Component {
   render() {

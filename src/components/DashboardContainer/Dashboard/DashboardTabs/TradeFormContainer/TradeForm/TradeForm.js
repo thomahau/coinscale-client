@@ -5,7 +5,7 @@ import Input from '../../../../../Input/Input';
 import Select from './Select/Select';
 import Button from '../../../../../Button/Button';
 import { submitTrade } from '../../../../../../actions/coinscale';
-import { required, nonEmpty, validAmount } from '../../../../../../validators';
+import { required, nonZero } from '../../../../../../validators';
 import './TradeForm.css';
 
 const tradeTypeOptions = ['', 'Buy', 'Sell'];
@@ -55,9 +55,9 @@ export class TradeForm extends React.Component {
             component={Input}
             type="number"
             name="amount"
+            min={0}
             onChange={event => this.props.onChange(event.target.value)}
-            validate={[required, nonEmpty]}
-            normalize={validAmount}
+            validate={[required, nonZero]}
           />
           <span className="amount-symbol">{coinSymbol}</span>
         </div>
@@ -80,8 +80,7 @@ export class TradeForm extends React.Component {
           val={new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            minimumSignificantDigits: 1,
-            maximumSignificantDigits: 5
+            minimumSignificantDigits: 1
           }).format(coinPrice)}
         />
         <label htmlFor="total">Transaction total:</label>
@@ -108,8 +107,7 @@ export class TradeForm extends React.Component {
           val={new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',
-            minimumSignificantDigits: 1,
-            maximumSignificantDigits: 7
+            minimumFractionDigits: 2
           }).format(this.props.portfolio.balance)}
         />
         {error}
@@ -124,6 +122,7 @@ export class TradeForm extends React.Component {
 
 export default reduxForm({
   form: 'trade',
+  initialValues: { amount: '0' },
   onSubmitFail: (errors, dispatch) => dispatch(focus('trade', 'amount')),
   onSubmitSuccess: (result, dispatch) => dispatch(reset('trade'))
 })(TradeForm);

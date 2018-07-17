@@ -19,7 +19,7 @@ export class RegistrationForm extends React.Component {
       .dispatch(registerUser(user))
       .then(() => this.props.dispatch(login(username, password)));
   }
-
+  // Log in with demo account credentials
   handleDemo(event) {
     event.preventDefault();
     return this.props.dispatch(login('demo', 'password'));

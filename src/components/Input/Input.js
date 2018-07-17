@@ -1,6 +1,7 @@
 import React from 'react';
 import './Input.css';
 
+// Reusable component for different inputs
 export default function Input(props) {
   let error;
   if (props.meta.touched && props.meta.error) {
@@ -21,6 +22,7 @@ export default function Input(props) {
         placeholder={props.placeholder}
         readOnly={props.readOnly}
         value={props.val}
+        min={props.min}
         className={props.className}
       />
       {error}

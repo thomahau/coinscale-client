@@ -41,27 +41,27 @@
   .columns:first-child {
     margin-left: 0;
   }
-  .two.columns {
+  /* .two.columns {
     width: 15%;
-  }
-  .three.columns {
+  } */
+  /* .three.columns {
     width: 22%;
-  }
+  } */
   .four.columns {
     width: 32%; /* 39.3333333333 */
   }
   .five.columns {
     width: 38%; /* 39.3333333333 */
   }
-  .six.columns {
+  /* .six.columns {
     width: 48%;
-  }
+  } */
   .seven.columns {
     width: 60%; /* 56 */
   }
-  .nine.columns {
+  /* .nine.columns {
     width: 74%;
-  }
+  } */
 }
 
 /* Clearing */

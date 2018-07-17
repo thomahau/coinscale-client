@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 // Boilerplate code for handling errors from the API.  If the error response
 // contains JSON then we return a rejected promise containing the decoded
 // JSON.  If the error doesn't contain JSON then we return a rejected promise
@@ -50,86 +48,8 @@ export const parseSale = (portfolio, symbol, amount, total) => {
   return portfolio;
 };
 
-export function round(value, decimals = 2) {
-  return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`)
-    .toFixed(decimals)
-    .toString();
-}
-
-export function getHoldingsData(date, priceData, allTransactions) {
-  const transactions = allTransactions.filter(transaction =>
-    moment(transaction.date).isSameOrBefore(moment(date)));
-  const symbols = new Set(transactions.map(transaction => transaction.symbol));
-  const holdingsData = [];
-
-  symbols.forEach((symbol) => {
-    const holding = {
-      symbol
-    };
-    let amount = 0;
-    let costBasis = 0;
-
-    // Amount and cost basis
-    transactions.forEach((transaction) => {
-      if (holding.symbol === transaction.symbol) {
-        if (transaction.type === 'Buy') {
-          amount += transaction.amount;
-          costBasis += transaction.price * transaction.amount;
-        } else if (transaction.type === 'Sell') {
-          amount -= transaction.amount;
-          costBasis -= transaction.price * transaction.amount;
-        }
-      }
-    });
-    holding.amount = amount;
-    holding.costBasis = costBasis;
-
-    // Price data
-    const priceDatum = priceData.filter(p => p.currency === holding.symbol)[0];
-    holding.currentPrice = priceDatum.current;
-    holding.sevenDaysPerformance = (
-      ((priceDatum.current - priceDatum.sevenDaysAgo) / priceDatum.sevenDaysAgo) *
-      100
-    ).toFixed(2);
-
-    // Profit/Loss
-    holding.currentValue = holding.currentPrice * holding.amount;
-    holding.profit = holding.currentValue - holding.costBasis;
-
-    holdingsData.push(holding);
-  });
-
-  return holdingsData.filter(holding => holding.amount > 0);
-}
-
-export function getAggregateData(holdingsData, balance) {
-  let costBasis = 0;
-  let currentValue = 0;
-  let profit = 0;
-
-  holdingsData.forEach((holding) => {
-    costBasis += +holding.costBasis;
-    currentValue += +holding.currentValue;
-    profit += holding.profit;
-  });
-
-  const total7DaysAgo = holdingsData.reduce(
-    (sum, holding) => sum + getPastValue(holding.currentValue, holding.sevenDaysPerformance),
-    0
-  );
-  const sevenDaysPerformance = (100 * (currentValue / total7DaysAgo - 1)).toFixed(2);
-
-  return [
-    {
-      balance,
-      costBasis,
-      currentValue,
-      profit,
-      sevenDaysPerformance
-    }
-  ];
-}
-
-function getPastValue(value, pctChange) {
-  return value / (1 + pctChange / 100);
-}
+// export function round(value, decimals = 2) {
+//   return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`)
+//     .toFixed(decimals)
+//     .toString();
+// }

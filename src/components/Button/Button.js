@@ -1,6 +1,7 @@
 import React from 'react';
 import './Button.css';
 
+// Reusable component for different buttons
 export default function Button(props) {
   const {
     primary, block, nav, login, logout, onClick, children

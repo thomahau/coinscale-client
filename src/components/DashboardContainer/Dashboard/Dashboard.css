@@ -1,6 +1,6 @@
 .dashboard-wrapper {
   margin-top: 90px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .dashboard-card {
@@ -50,6 +50,11 @@ h4 {
 @media only screen and (min-width: 1000px) {
   .date-widget-card {
     margin-bottom: 32px;
+  }
+
+  .main-dashboard-card {
+    /* min-height: 792px; */
+    min-height: 678px;
   }
 }
 

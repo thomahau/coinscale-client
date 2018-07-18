@@ -80,7 +80,7 @@ export default function AggregateDataTable(props) {
           Header: <span className="u-pull-right">% 7d</span>,
           accessor: 'sevenDaysPerformance',
           Cell: row =>
-            (row.value === 'NaN' ? (
+            (row.value === 'NaN' || row.value === 'Infinity' ? (
               <span className="monospace u-pull-right">N/A</span>
             ) : (
               <span

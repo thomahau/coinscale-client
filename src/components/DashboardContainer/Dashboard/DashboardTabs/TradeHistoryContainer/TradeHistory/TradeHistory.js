@@ -73,6 +73,7 @@ export default function TradeHistory(props) {
       data={data}
       columns={columns}
       defaultPageSize={10}
+      pageSizeOptions={[5, 10, 20, 50]}
       minRows={3}
       filterable
       className="-striped"

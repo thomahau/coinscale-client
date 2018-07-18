@@ -109,7 +109,8 @@ export default function HoldingsTable(props) {
     <ReactTable
       data={data}
       columns={columns}
-      defaultPageSize={10}
+      defaultPageSize={5}
+      pageSizeOptions={[5, 10, 15, 20]}
       minRows={3}
       className="-striped"
       noDataText="No holdings found"

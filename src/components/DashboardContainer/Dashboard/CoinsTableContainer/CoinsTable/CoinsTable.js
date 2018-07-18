@@ -68,8 +68,9 @@ export default function CoinsTable(props) {
       <ReactTable
         data={data}
         columns={columns}
-        defaultPageSize={20}
-        minRows={18}
+        defaultPageSize={15}
+        pageSizeOptions={[15, 30, 45]}
+        minRows={15}
         filterable
         className="-striped"
       />

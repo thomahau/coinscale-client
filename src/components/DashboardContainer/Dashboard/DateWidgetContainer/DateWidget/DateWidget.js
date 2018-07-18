@@ -32,6 +32,7 @@ export default class DateWidget extends React.Component {
 
   render() {
     return (
+      // Custom range slider with event handlers for mouse, keyboard, and touchscreen use
       <div>
         <div className="date-range u-pull-left">{MIN_DATE}</div>
         <div className="date-range u-pull-right">{MAX_DATE}</div>

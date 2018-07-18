@@ -12,12 +12,11 @@ export default function Dashboard(props) {
     console.log(window.screen.height);
     demoAlert = (
       <Alert type="success" className="dashboard-card">
-        <h4>Welcome to Coinscale!</h4>
+        <h4>Welcome to Coinscale</h4>
         You are logged in as a demo user with sample data generated to show you what things might
         look like.
         <p className="mobile-help">
-          Consider using your device in landscape mode to get a better view of all the available
-          data!
+          Consider using your device in landscape mode for a better experience!
         </p>
       </Alert>
     );

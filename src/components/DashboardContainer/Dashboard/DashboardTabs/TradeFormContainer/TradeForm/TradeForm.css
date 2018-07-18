@@ -15,6 +15,11 @@
   text-transform: none;
 }
 
+.trade-form input:read-only {
+  padding-left: 0;
+  margin-top: -2px;
+}
+
 .amount-box {
   position: relative;
 }
@@ -40,6 +45,10 @@
   .trade-form select {
     grid-column: 2/3;
     width: 60%;
+  }
+
+  .trade-form input:read-only {
+    padding-left: 10px;
   }
 
   .trade-form .alert {

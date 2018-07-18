@@ -58,7 +58,9 @@ export function getAggregateData(holdingsData, balance) {
     profit += holding.profit;
   });
 
-  const total7DaysAgo = holdingsData.reduce(
+  // Calculate aggregate 7d performance only for the holdings which have that data available
+  const holdingsWithPerformanceData = holdingsData.filter(holding => holding.sevenDaysPerformance !== 'NaN');
+  const total7DaysAgo = holdingsWithPerformanceData.reduce(
     (sum, holding) => sum + getPastValue(holding.currentValue, holding.sevenDaysPerformance),
     0
   );

@@ -1,6 +1,10 @@
 .alert {
   line-height: 21px;
   padding: 12px 20px;
+  margin-bottom: 10px;
+}
+
+.trade-form .alert {
   margin-bottom: 16px;
 }
 
@@ -24,4 +28,25 @@
   border: none;
   text-shadow: 0 1px 0 #fff;
   opacity: 0.5;
+}
+
+.alert h4 {
+  font-weight: bold;
+}
+
+.alert .mobile-help {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .alert .mobile-help {
+    margin-top: 1rem;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .alert {
+    margin-bottom: 32px;
+  }
 }

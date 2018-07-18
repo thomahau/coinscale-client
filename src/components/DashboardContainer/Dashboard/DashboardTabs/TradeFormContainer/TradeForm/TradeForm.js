@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, focus, reset } from 'redux-form';
-import Alert from './Alert/Alert';
+import Alert from '../../../Alert/Alert';
 import Input from '../../../../../Input/Input';
 import Select from './Select/Select';
 import Button from '../../../../../Button/Button';

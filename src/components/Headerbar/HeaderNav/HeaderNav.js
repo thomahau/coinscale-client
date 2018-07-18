@@ -12,8 +12,7 @@ export class HeaderNav extends React.Component {
   }
 
   render() {
-    // If user is logged in, render username + logout button
-    // Otherwise, render login-dropdown
+    // If user is logged in, render username + logout button. Otherwise, render login-dropdown
     if (this.props.loggedIn) {
       return (
         <div className="u-pull-right">

@@ -14,12 +14,13 @@ export class DashboardContainer extends React.Component {
   }
 
   render() {
-    return <Dashboard />;
+    return <Dashboard demo={this.props.demo} />;
   }
 }
 
 const mapStateToProps = state => ({
-  date: state.protectedData.date
+  date: state.protectedData.date,
+  demo: state.auth.currentUser.username === 'demo'
 });
 
 const mapDispatchToProps = dispatch => ({

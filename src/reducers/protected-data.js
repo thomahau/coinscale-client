@@ -98,7 +98,8 @@ export default function reducer(state = initialState, action) {
     });
   } else if (action.type === SET_TAB_INDEX) {
     return Object.assign({}, state, {
-      tabIndex: action.tabIndex
+      tabIndex: action.tabIndex,
+      transactionSuccess: null
     });
   }
 

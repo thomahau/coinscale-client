@@ -1,11 +1,14 @@
 const moment = require('moment');
+const _ = require('lodash');
 
 export function getHoldingsData(date, priceData, allTransactions) {
   // Get all of user's transactions up to and including selected date
-  const transactions = allTransactions.filter(transaction =>
+  const filteredTransactions = allTransactions.filter(transaction =>
     moment(transaction.date).isSameOrBefore(moment(date)));
+  const transactions = _.sortBy(filteredTransactions, ['date']);
   const symbols = new Set(transactions.map(transaction => transaction.symbol));
   const holdingsData = [];
+
   // Calculate and return various data on each portfolio holding
   symbols.forEach((symbol) => {
     const holding = {
@@ -13,21 +16,30 @@ export function getHoldingsData(date, priceData, allTransactions) {
     };
     let amount = 0;
     let costBasis = 0;
+    let realizedProfit = 0;
 
-    // Amount and cost basis
+    // Amount, cost basis, realized profit/loss
     transactions.forEach((transaction) => {
       if (holding.symbol === transaction.symbol) {
         if (transaction.type === 'Buy') {
           amount += transaction.amount;
           costBasis += transaction.price * transaction.amount;
         } else if (transaction.type === 'Sell') {
+          const originalAmount = amount;
+          const shareOfOriginalAmount = transaction.amount / originalAmount;
+          const transactionTotal = transaction.price * transaction.amount;
+          const realizedCostBasis = shareOfOriginalAmount * costBasis;
+
+          realizedProfit += transactionTotal - realizedCostBasis;
+          costBasis -= realizedCostBasis;
           amount -= transaction.amount;
-          costBasis -= transaction.price * transaction.amount;
         }
       }
     });
+
     holding.amount = amount;
     holding.costBasis = costBasis;
+    holding.realizedProfit = realizedProfit;
 
     // Price data
     const priceDatum = priceData.filter(p => p.currency === holding.symbol)[0];
@@ -37,9 +49,9 @@ export function getHoldingsData(date, priceData, allTransactions) {
       100
     ).toFixed(2);
 
-    // Profit/Loss
+    // Current value, unrealized profit/loss
     holding.currentValue = holding.currentPrice * holding.amount;
-    holding.profit = holding.currentValue - holding.costBasis;
+    holding.unrealizedProfit = holding.currentValue - holding.costBasis;
 
     holdingsData.push(holding);
   });
@@ -50,12 +62,16 @@ export function getHoldingsData(date, priceData, allTransactions) {
 export function getAggregateData(holdingsData, balance) {
   let costBasis = 0;
   let currentValue = 0;
-  let profit = 0;
+  // let profit = 0;
+  let realizedProfit = 0;
+  let unrealizedProfit = 0;
 
   holdingsData.forEach((holding) => {
     costBasis += +holding.costBasis;
     currentValue += +holding.currentValue;
-    profit += holding.profit;
+    // profit += holding.profit;
+    realizedProfit += holding.realizedProfit;
+    unrealizedProfit += holding.unrealizedProfit;
   });
 
   // Calculate aggregate 7d performance only for the holdings which have that data available
@@ -71,7 +87,8 @@ export function getAggregateData(holdingsData, balance) {
       balance,
       costBasis,
       currentValue,
-      profit,
+      realizedProfit,
+      unrealizedProfit,
       sevenDaysPerformance
     }
   ];

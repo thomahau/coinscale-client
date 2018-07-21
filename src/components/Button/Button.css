@@ -23,6 +23,11 @@
   border-color: #888;
 }
 
+.button:disabled {
+  color: #999;
+  cursor: wait;
+}
+
 .button.button-primary {
   color: #fff;
   background-color: #37b160;
@@ -33,6 +38,11 @@
 .button.button-primary:focus {
   background-color: #16a847;
   border-color: #16a847;
+}
+
+.button.button-primary:disabled {
+  background-color: #82dba0;
+  border-color: #82dba0;
 }
 
 .button.button-nav {

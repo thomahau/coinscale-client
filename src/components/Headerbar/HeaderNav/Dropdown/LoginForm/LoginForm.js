@@ -43,8 +43,8 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         {error}
-        <Button primary block type="submit">
-          Log in
+        <Button primary block type="submit" disabled={this.props.submitting}>
+          {this.props.submitting ? 'Logging in...' : 'Log in'}
         </Button>
       </form>
     );

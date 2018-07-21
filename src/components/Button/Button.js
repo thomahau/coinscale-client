@@ -4,7 +4,7 @@ import './Button.css';
 // Reusable component for different buttons
 export default function Button(props) {
   const {
-    primary, block, nav, login, logout, onClick, children
+    primary, block, nav, login, logout, disabled, onClick, children
   } = props;
   const primaryClass = primary ? 'button-primary' : '';
   const blockClass = block ? 'u-full-width' : '';
@@ -15,6 +15,7 @@ export default function Button(props) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={`button ${primaryClass} ${blockClass} ${navClass} ${loginClass} ${logoutClass}`}
     >
       {children}

@@ -11,6 +11,13 @@ const passwordLength = length({ min: 8, max: 72 });
 const matchesPassword = matches('registerPassword');
 
 export class RegistrationForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingDemo: false
+    };
+  }
+
   onSubmit(values) {
     const { registerUsername: username, registerPassword: password } = values;
     const user = { username, password };
@@ -24,6 +31,7 @@ export class RegistrationForm extends React.Component {
   handleDemo(event) {
     // Log in with demo account credentials
     event.preventDefault();
+    this.setState({ loadingDemo: true });
     return this.props.dispatch(login('demo', 'password')).then(() => window.scrollTo(0, 0));
   }
 
@@ -64,11 +72,21 @@ export class RegistrationForm extends React.Component {
                 className="u-full-width"
                 validate={[required, nonEmpty, matchesPassword]}
               />
-              <Button primary block type="submit">
-                Create account
+              <Button
+                primary
+                block
+                type="submit"
+                disabled={this.props.submitting || this.state.loadingDemo}
+              >
+                {this.props.submitting ? 'Logging in...' : 'Create account'}
               </Button>
-              <Button block className="demo-btn" onClick={event => this.handleDemo(event)}>
-                View demo
+              <Button
+                block
+                className="demo-btn"
+                disabled={this.state.loadingDemo || this.props.submitting}
+                onClick={event => this.handleDemo(event)}
+              >
+                {this.state.loadingDemo ? 'Logging in...' : 'View demo'}
               </Button>
             </form>
           </div>

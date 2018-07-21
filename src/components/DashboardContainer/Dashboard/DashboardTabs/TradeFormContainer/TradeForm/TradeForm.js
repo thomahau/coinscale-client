@@ -113,7 +113,7 @@ export class TradeForm extends React.Component {
         />
         {error}
         {success}
-        <Button primary block>
+        <Button primary block disabled={this.props.submitting}>
           Place trade
         </Button>
       </form>

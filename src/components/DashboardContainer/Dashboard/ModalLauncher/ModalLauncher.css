@@ -2,6 +2,7 @@
   margin-left: 15px;
   background-color: #fff;
   border: none;
+  cursor: pointer;
 }
 
 .card-header .modal-launcher {

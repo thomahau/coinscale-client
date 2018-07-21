@@ -1,6 +1,7 @@
 import React from 'react';
 import './Alert.css';
 
+// Reusable component for different alerts
 export default function Alert(props) {
   const { type, onClick, children } = props;
   const typeClass = `alert-${type}`;

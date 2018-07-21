@@ -8,7 +8,8 @@
   margin-bottom: 16px;
 }
 
-.alert-success {
+.alert-success,
+.alert-portrait {
   background-color: #dbf2e3;
   border-color: #cdedd8;
 }
@@ -34,13 +35,18 @@
   font-weight: bold;
 }
 
-.alert .mobile-help {
+.alert .mobile-help,
+.alert-portrait {
   display: none;
 }
 
 @media only screen and (max-width: 500px) {
   .alert .mobile-help {
     margin-top: 1rem;
+    display: block;
+  }
+
+  .alert-portrait {
     display: block;
   }
 }

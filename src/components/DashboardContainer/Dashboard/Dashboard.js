@@ -6,28 +6,29 @@ import Alert from './Alert/Alert';
 import './Dashboard.css';
 
 export default function Dashboard(props) {
-  let mainCardClass = 'main-dashboard-card';
+  const mainCardClass = props.demo ? 'reduced-height-card' : 'main-dashboard-card';
   // If in demo account, render informative welcome message
-  let demoAlert;
-  if (props.demo) {
-    mainCardClass = 'reduced-height-card';
-    demoAlert = (
-      <Alert type="success" className="dashboard-card">
-        <h4>Welcome to Coinscale</h4>
-        You are logged in as a demo user with sample data generated to show you what things might
-        look like.
-        <p className="mobile-help">
-          Consider using your device in landscape mode for a better experience!
-        </p>
-      </Alert>
-    );
-  }
+  // If user is on a phone, render advice to use landscape mode
+  const alert = props.demo ? (
+    <Alert type="success" className="dashboard-card">
+      <h4>Welcome to Coinscale</h4>
+      You are logged in as a demo user with sample data generated to show you what things might look
+      like.
+      <p className="mobile-help">
+        Consider using your device in landscape mode for a better experience!
+      </p>
+    </Alert>
+  ) : (
+    <Alert type="portrait" className="dashboard-card">
+      Consider using your device in landscape mode for a better experience!
+    </Alert>
+  );
 
   return (
     <div className="container-fluid">
       <div className="row dashboard-wrapper">
         <div className="seven columns">
-          {demoAlert}
+          {alert}
           <div className="row dashboard-card date-widget-card">
             <div className="card-header">
               <h4>Select date</h4>

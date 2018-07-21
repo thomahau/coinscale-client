@@ -75,15 +75,17 @@ h4 {
 
 .table-btn {
   font-size: 15px;
-  color: #16a847;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  color: #14963f;
 }
 
 .table-btn:hover,
 .table-btn:focus {
-  text-decoration: underline;
+  padding-bottom: 1px;
+  color: darkgreen;
+  border-bottom: 1px solid darkgreen;
 }
 
 .-pagination input,

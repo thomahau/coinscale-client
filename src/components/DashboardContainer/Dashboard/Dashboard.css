@@ -8,8 +8,9 @@
   margin-bottom: 10px;
 }
 
-.main-dashboard-card {
-  min-height: 70vh;
+.main-dashboard-card,
+.reduced-height-card {
+  min-height: 565px;
 }
 
 .card-header {

@@ -6,10 +6,11 @@ import Alert from './Alert/Alert';
 import './Dashboard.css';
 
 export default function Dashboard(props) {
+  let mainCardClass = 'main-dashboard-card';
   // If in demo account, render informative welcome message
   let demoAlert;
   if (props.demo) {
-    console.log(window.screen.height);
+    mainCardClass = 'reduced-height-card';
     demoAlert = (
       <Alert type="success" className="dashboard-card">
         <h4>Welcome to Coinscale</h4>
@@ -35,7 +36,7 @@ export default function Dashboard(props) {
               <DateWidgetContainer />
             </div>
           </div>
-          <div className="row dashboard-card main-dashboard-card">
+          <div className={`row dashboard-card ${mainCardClass}`}>
             <DashboardTabs />
           </div>
         </div>

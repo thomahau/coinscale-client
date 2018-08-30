@@ -7,8 +7,22 @@ import { required, nonEmpty } from '../../../../../validators';
 import './LoginForm.css';
 
 export class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingDemo: false
+    };
+  }
+
   onSubmit(values) {
     return this.props.dispatch(login(values.username, values.password));
+  }
+
+  handleDemo(event) {
+    // Log in with demo account credentials
+    event.preventDefault();
+    this.setState({ loadingDemo: true });
+    return this.props.dispatch(login('demo', 'password')).then(() => window.scrollTo(0, 0));
   }
 
   render() {
@@ -43,8 +57,20 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         {error}
-        <Button primary block type="submit" disabled={this.props.submitting}>
+        <Button
+          primary
+          block
+          type="submit"
+          disabled={this.props.submitting || this.state.loadingDemo}
+        >
           {this.props.submitting ? 'Logging in...' : 'Log in'}
+        </Button>
+        <Button
+          block
+          disabled={this.props.submitting || this.state.loadingDemo}
+          onClick={event => this.handleDemo(event)}
+        >
+          {this.props.submitting ? 'Logging in...' : 'Or view demo'}
         </Button>
       </form>
     );

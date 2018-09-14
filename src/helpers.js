@@ -1,10 +1,12 @@
-const moment = require('moment');
+const isBefore = require('date-fns/is_before');
+const isEqual = require('date-fns/is_equal');
 const _ = require('lodash');
 
 export function getHoldingsData(date, priceData, allTransactions) {
   // Get all of user's transactions up to and including selected date
   const filteredTransactions = allTransactions.filter(transaction =>
-    moment(transaction.date).isSameOrBefore(moment(date)));
+    isEqual(new Date(transaction.date), new Date(date)) ||
+      isBefore(new Date(transaction.date), new Date(date)));
   const transactions = _.sortBy(filteredTransactions, ['date']);
   const symbols = new Set(transactions.map(transaction => transaction.symbol));
   const holdingsData = [];
@@ -62,14 +64,12 @@ export function getHoldingsData(date, priceData, allTransactions) {
 export function getAggregateData(holdingsData, balance) {
   let costBasis = 0;
   let currentValue = 0;
-  // let profit = 0;
   let realizedProfit = 0;
   let unrealizedProfit = 0;
 
   holdingsData.forEach((holding) => {
     costBasis += +holding.costBasis;
     currentValue += +holding.currentValue;
-    // profit += holding.profit;
     realizedProfit += holding.realizedProfit;
     unrealizedProfit += holding.unrealizedProfit;
   });

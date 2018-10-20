@@ -43,6 +43,7 @@ export class TradeForm extends React.Component {
 
     return (
       <form
+        method="post"
         className="trade-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >

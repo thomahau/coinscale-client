@@ -37,6 +37,7 @@ export class LoginForm extends React.Component {
 
     return (
       <form
+        method="post"
         className="login-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >

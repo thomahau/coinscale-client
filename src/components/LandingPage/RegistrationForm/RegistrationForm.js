@@ -42,6 +42,7 @@ export class RegistrationForm extends React.Component {
         <div className="row">
           <div className="form-wrapper">
             <form
+              method="post"
               className="register-form"
               onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
             >
